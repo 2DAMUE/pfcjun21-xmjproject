@@ -35,15 +35,28 @@
         app:layout_constraintGuide_begin="999dp" />
 
     <ImageView
-        android:id="@+id/iv_fondo_logo"
-        android:layout_width="983dp"
-        android:layout_height="855dp"
+        android:id="@+id/iv_fondo_logoG"
+        android:layout_width="866dp"
+        android:layout_height="1026dp"
         android:alpha="0.1"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHDown"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVRight"
-        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guidelineVLeft"
         app:layout_constraintTop_toTopOf="@+id/guidelineHUp"
-        app:layout_constraintVertical_bias="0.675"
-        app:srcCompat="@drawable/logovacio" />
+        app:layout_constraintVertical_bias="0.701"
+        app:srcCompat="@drawable/gamesinfondo" />
+
+    <ImageView
+        android:id="@+id/iv_fondo_logoS"
+        android:layout_width="1083dp"
+        android:layout_height="550dp"
+        android:alpha="0.1"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHDown"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVRight"
+        app:layout_constraintHorizontal_bias="0.568"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVLeft"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHUp"
+        app:layout_constraintVertical_bias="0.939"
+        app:srcCompat="@drawable/gamesinfondo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
