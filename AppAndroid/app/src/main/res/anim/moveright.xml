@@ -12,6 +12,6 @@
 
         android:fromXDelta="0%"
         android:fromYDelta="0"
-        android:toXDelta="100"
+        android:toXDelta="1000"
         android:toYDelta="0"/>
 </set>

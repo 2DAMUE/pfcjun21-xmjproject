@@ -36,4 +36,10 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //Externas
+    implementation group: 'com.github.bumptech.glide', name: 'glide', version: '4.12.0'
+    implementation group: 'com.github.bumptech.glide', name: 'annotations', version: '4.8.0'
+
+
 }
