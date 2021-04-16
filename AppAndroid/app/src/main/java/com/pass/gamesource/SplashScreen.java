@@ -2,6 +2,8 @@ package com.pass.gamesource;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -10,6 +12,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 public class SplashScreen extends AppCompatActivity {
+    private MediaPlayer mediaplayer;
     private ImageView iv_fondo_logoG;
     private ImageView iv_fondo_logoS;
     private ImageView iv_fondo_G;
@@ -23,6 +26,8 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+        mediaplayer = MediaPlayer.create(this, R.raw.mystery);
+
 
         //implements and starts animations
         iv_fondo_logoG= findViewById(R.id.iv_fondo_logoG);
@@ -57,7 +62,8 @@ public class SplashScreen extends AppCompatActivity {
 
        //
         openApp(true);
-
+        //openApp2(true);
+        mediaplayer.start();
     }
 
 
@@ -67,11 +73,15 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
 
+                Intent intent = new Intent(SplashScreen
+                        .this, MainActivity.class); //Cambiar aqui para que pase a la nueva pantalla
+                startActivity(intent);
+                finish();
+
             }
-        }, 3000);
-
-
+        }, 4000);
 
     }
+
 
 }
