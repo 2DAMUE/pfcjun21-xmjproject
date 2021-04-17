@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="96ec5648-9a5c-422c-a208-c4b837bb0297" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/markdown-navigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/markdown-navigator.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppAndroid/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AppAndroid/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppAndroid/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AppAndroid/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppAndroid/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AppAndroid/app/src/main/AndroidManifest.xml" afterDir="false" />
-    </list>
+    <list default="true" id="96ec5648-9a5c-422c-a208-c4b837bb0297" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,7 +18,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/AppAndroid" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
