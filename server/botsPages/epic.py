@@ -1,7 +1,5 @@
 import urllib
 from bs4 import BeautifulSoup
-import pandas as pd
-import zipfile
 import os
 from random import randint
 from selenium import webdriver
@@ -9,7 +7,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait       
 from selenium.webdriver.common.by import By       
 from selenium.webdriver.support import expected_conditions as EC
-import time
+import pyrebase
+import json
 
 class Juego():
     def __init__(self, nombre, fecha, estado):
@@ -28,7 +27,7 @@ def sacar_datos(datos):
     
     nombre = datos[1]
     if estado == True:
-        fecha = [[-1, datos[2].split(' - ')[1]]]
+        fecha = [-1, datos[2].split(' - ')[1]]
     else:
         fecha = [datos[2].split(' - ')[0], datos[2].split(' - ')[1]]
     juego = Juego(nombre, fecha, estado)
@@ -62,10 +61,27 @@ for div in divs:
         datos_juego.append(span.text)
     juegosLista.append(sacar_datos(datos_juego))
 
+
+########## A partir de aqui subimos los datos a firebase #############
+config = {
+    "apiKey": "AIzaSyAsxaPfthuvrzCp2DCL0Sz4Fs1XzDtd7hg",
+    "authDomain": "gamesource-9bc51.firebaseapp.com",
+    "databaseURL": "https://gamesource-9bc51-default-rtdb.europe-west1.firebasedatabase.app",
+    "projectId": "gamesource-9bc51",
+    "storageBucket": "gamesource-9bc51.appspot.com"
+    '''
+    # estan comentado por que da error en principio no me pide estos datos, 
+    # los comento para guardarlos a futuro
+    "messagingSenderId": "204253438311",
+    "appId": "1:204253438311:web:fb99cf095a8bee96b10fc2",
+    "measurementId": "G-NK36BG5MBP"
+    '''
+}
+
+firebase = pyrebase.initialize_app(config)
+
+db = firebase.database()
+db.child('gratis').child('epic').remove()
 for j in juegosLista:
-    print(j)
-    print()
-
-print('fin')
-
-
+    juego = {'nombre':j.nombre, 'fechas': [j.fecha[0],j.fecha[1]], 'estado': j.estado }
+    db.child("gratis").child("epic").push(juego)

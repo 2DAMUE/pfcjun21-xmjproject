@@ -1,0 +1,25 @@
+{
+    "nombre": "Spring Into VR",
+    "tramos": [
+        1,
+        12.4,
+        12.59
+    ],
+    "juegos_por_tramo": [
+        [
+            "Detached"
+        ],
+        [
+            "Star Treck: Bridge Crew",
+            "Surgeon Simulator: Experience Reality",
+            "Swords of Gurrah",
+            "Espire 1: VR Operative"
+        ],
+        [
+            "Job Simulator",
+            "Sairento VR",
+            "Borderlands 2 VR"
+        ]
+    ],
+    "fecha_expiracion": "proximamente"
+}
