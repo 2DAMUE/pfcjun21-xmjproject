@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashScreen"
+    android:background="@color/black_GameSource"
+    >
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="-500dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="879dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="-20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="999dp" />
+
+    <ImageView
+        android:id="@+id/iv_fondo_logoG"
+        android:layout_width="2159dp"
+        android:layout_height="510dp"
+        android:alpha="0.1"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHDown"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVRight"
+        app:layout_constraintHorizontal_bias="0.012"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVLeft"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHUp"
+        app:layout_constraintVertical_bias="0.537"
+        app:srcCompat="@drawable/gamesinfondo" />
+
+    <ImageView
+        android:id="@+id/iv_fondo_logoS"
+        android:layout_width="1091dp"
+        android:layout_height="494dp"
+        android:alpha="0.1"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHDown"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVRight"
+        app:layout_constraintHorizontal_bias="0.351"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVLeft"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHUp"
+        app:layout_constraintVertical_bias="0.765"
+        app:srcCompat="@drawable/sourcesinfondo" />
+
+    <ImageView
+        android:id="@+id/iv_G"
+        android:layout_width="175dp"
+        android:layout_height="298dp"
+        android:alpha="1"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHDown"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVRight"
+        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVLeft"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHUp"
+        app:layout_constraintVertical_bias="0.541"
+        app:srcCompat="@drawable/g" />
+
+    <ImageView
+        android:id="@+id/iv_S"
+        android:layout_width="125dp"
+        android:layout_height="248dp"
+        android:alpha="1"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHDown"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVRight"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVLeft"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHUp"
+        app:layout_constraintVertical_bias="0.629"
+        app:srcCompat="@drawable/s" />
+
+    <ImageView
+        android:id="@+id/iv_encadenadas"
+        android:layout_width="203dp"
+        android:layout_height="366dp"
+        android:alpha="1"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHDown"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVRight"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVLeft"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHUp"
+        app:layout_constraintVertical_bias="0.592"
+        app:srcCompat="@drawable/letrasencadenadas" />
+
+    <ImageView
+        android:id="@+id/iv_game"
+        android:layout_width="293dp"
+        android:layout_height="155dp"
+        android:alpha="1"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHDown"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVRight"
+        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVLeft"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHUp"
+        app:layout_constraintVertical_bias="0.726"
+        app:srcCompat="@drawable/gamesuelto" />
+
+    <ImageView
+        android:id="@+id/iv_source"
+        android:layout_width="315dp"
+        android:layout_height="181dp"
+        android:alpha="1"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHDown"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVRight"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVLeft"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHUp"
+        app:layout_constraintVertical_bias="0.777"
+        app:srcCompat="@drawable/soucersuelto" />
+
+    <ImageView
+        android:id="@+id/iv_gameSource"
+        android:layout_width="358dp"
+        android:layout_height="339dp"
+        android:alpha="1"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHDown"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVRight"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVLeft"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHUp"
+        app:layout_constraintVertical_bias="0.782"
+        app:srcCompat="@drawable/logorelleno" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
