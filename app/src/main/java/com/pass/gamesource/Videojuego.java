@@ -2,10 +2,16 @@ package com.pass.gamesource;
 
 import android.net.Uri;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data @NoArgsConstructor @AllArgsConstructor
 public class Videojuego {
     private String titulo;
     private String precio;
     private String descripcion;
+    private int img;
     private Uri uri;
 
     public Videojuego(String titulo, String precio, String descripcion, Uri uri) {
@@ -58,5 +64,13 @@ public class Videojuego {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public int getImg() {
+        return img;
+    }
+
+    public void setImg(int img) {
+        this.img = img;
     }
 }

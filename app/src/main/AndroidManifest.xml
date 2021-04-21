@@ -9,15 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GameSource">
-        <activity android:name=".SearchRecycler"></activity>
-        <activity
-            android:name=".SplashScreen"
-            android:theme="@style/Theme.GameSourceNoBar">
+        <activity android:name=".SearchRecycler">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/Theme.GameSourceNoBar">
+
         </activity>
         <activity android:name=".MainActivity"></activity>
     </application>
