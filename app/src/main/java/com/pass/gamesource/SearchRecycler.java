@@ -11,7 +11,7 @@ public class SearchRecycler extends AppCompatActivity {
 
 
     private ListView listView;
-    private AdaptadorSerach AdaptadorSerach;
+    private AdaptadorSerach adaptadorSerach;
 
     public static final String TEXTO = "texto";
     public static final String AUDIO = "audio";
@@ -21,18 +21,18 @@ public class SearchRecycler extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_search_recycler);
 
         init();
 
-        this.listView.setNestedScrollingEnabled(true);
-        this.listView.setAdapter(AdaptadorSerach);
+       this.listView.setNestedScrollingEnabled(false);
+       this.listView.setAdapter(adaptadorSerach);
 
     }
 
     private void init() {
         this.listView = findViewById(R.id.listaHistorico);
-        this.AdaptadorSerach = new CustomAdapter(this, getArrayList());
+        this.adaptadorSerach = new AdaptadorSerach(this, getArrayList());
 
 
     }
@@ -42,33 +42,35 @@ public class SearchRecycler extends AppCompatActivity {
     }
 
 
-    private ArrayList<ObjetoListView> getArrayList() {
+    private ArrayList<Videojuego> getArrayList() {
 
-        ArrayList<ObjetoListView> arrayList = new ArrayList<>();
+        ArrayList<Videojuego> arrayList = new ArrayList<>();
 
-        arrayList.add(new ObjetoListView("Familia" + getEmoji(0x1F601), "Juan: " + getEmoji(0x1F64C),
-                "10/8/18", TEXTO, false, 3, "", R.drawable.img_1));
-        arrayList.add(new ObjetoListView("Alicia", "", "4/8/18", AUDIO, false, 1, "0:34",R.drawable.img_2));
-        arrayList.add(new ObjetoListView("Juan", "", "AYER", IMAGEN, true, 1, "Foto",R.drawable.img_3));
-        arrayList.add(new ObjetoListView("Amaya", "", "JUEVES", VIDEO, true, 1, "Video",R.drawable.img_4));
-        arrayList.add(new ObjetoListView("Diana", "Nos vemos viernes "+ getEmoji(0x1F60A), "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
-        arrayList.add(new ObjetoListView("Comida", "tú: ¡Me parece genial!", "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
-        arrayList.add(new ObjetoListView("Juan", "", "AYER", IMAGEN, true, 1, "Foto",R.drawable.img_3));
-        arrayList.add(new ObjetoListView("Amaya", "", "JUEVES", VIDEO, true, 1, "Video",R.drawable.img_4));
-        arrayList.add(new ObjetoListView("Diana", "Nos vemos viernes "+ getEmoji(0x1F60A), "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
-        arrayList.add(new ObjetoListView("Comida", "tú: ¡Me parece genial!", "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
-        arrayList.add(new ObjetoListView("Juan", "", "AYER", IMAGEN, true, 1, "Foto",R.drawable.img_3));
-        arrayList.add(new ObjetoListView("Amaya", "", "JUEVES", VIDEO, true, 1, "Video",R.drawable.img_4));
-        arrayList.add(new ObjetoListView("Diana", "Nos vemos viernes "+ getEmoji(0x1F60A), "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
-        arrayList.add(new ObjetoListView("Comida", "tú: ¡Me parece genial!", "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
-        arrayList.add(new ObjetoListView("Juan", "", "AYER", IMAGEN, true, 1, "Foto",R.drawable.img_3));
-        arrayList.add(new ObjetoListView("Amaya", "", "JUEVES", VIDEO, true, 1, "Video",R.drawable.img_4));
-        arrayList.add(new ObjetoListView("Diana", "Nos vemos viernes "+ getEmoji(0x1F60A), "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
-        arrayList.add(new ObjetoListView("Comida", "tú: ¡Me parece genial!", "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
-        arrayList.add(new ObjetoListView("Juan", "", "AYER", IMAGEN, true, 1, "Foto",R.drawable.img_3));
-        arrayList.add(new ObjetoListView("Amaya", "", "JUEVES", VIDEO, true, 1, "Video",R.drawable.img_4));
-        arrayList.add(new ObjetoListView("Diana", "Nos vemos viernes "+ getEmoji(0x1F60A), "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
-        arrayList.add(new ObjetoListView("Comida", "tú: ¡Me parece genial!", "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
+        arrayList.add(new Videojuego("Fantasya", "Fina Fantasy: ", TEXTO, false, 1, "", R.drawable.g));
+        arrayList.add(new Videojuego("Fantasya", "Fina Fantasy: ", TEXTO, false, 2, "", R.drawable.s));
+        arrayList.add(new Videojuego("Fantasya", "Fina Fantasy: ", TEXTO, false, 3, "", R.drawable.gamesinfondo));
+        arrayList.add(new Videojuego("Fantasya", "Fina Fantasy: ", TEXTO, false, 4, "", R.drawable.gssinfondo));
+        arrayList.add(new Videojuego("Fantasya", "Fina Fantasy: ", TEXTO, false, 5, "", R.drawable.soucersuelto));
+//        arrayList.add(new Videojuego("Juan", "", "AYER", IMAGEN, true, 1, "Foto",R.drawable.img_3));
+//        arrayList.add(new Videojuego("Amaya", "", "JUEVES", VIDEO, true, 1, "Video",R.drawable.img_4));
+//        arrayList.add(new Videojuego("Diana", "Nos vemos viernes "+ getEmoji(0x1F60A), "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
+//        arrayList.add(new Videojuego("Comida", "tú: ¡Me parece genial!", "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
+//        arrayList.add(new Videojuego("Juan", "", "AYER", IMAGEN, true, 1, "Foto",R.drawable.img_3));
+//        arrayList.add(new Videojuego("Amaya", "", "JUEVES", VIDEO, true, 1, "Video",R.drawable.img_4));
+//        arrayList.add(new Videojuego("Diana", "Nos vemos viernes "+ getEmoji(0x1F60A), "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
+//        arrayList.add(new Videojuego("Comida", "tú: ¡Me parece genial!", "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
+//        arrayList.add(new Videojuego("Juan", "", "AYER", IMAGEN, true, 1, "Foto",R.drawable.img_3));
+//        arrayList.add(new Videojuego("Amaya", "", "JUEVES", VIDEO, true, 1, "Video",R.drawable.img_4));
+//        arrayList.add(new Videojuego("Diana", "Nos vemos viernes "+ getEmoji(0x1F60A), "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
+//        arrayList.add(new Videojuego("Comida", "tú: ¡Me parece genial!", "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
+//        arrayList.add(new Videojuego("Juan", "", "AYER", IMAGEN, true, 1, "Foto",R.drawable.img_3));
+//        arrayList.add(new Videojuego("Amaya", "", "JUEVES", VIDEO, true, 1, "Video",R.drawable.img_4));
+//        arrayList.add(new Videojuego("Diana", "Nos vemos viernes "+ getEmoji(0x1F60A), "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
+//        arrayList.add(new Videojuego("Comida", "tú: ¡Me parece genial!", "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
+//        arrayList.add(new Videojuego("Juan", "", "AYER", IMAGEN, true, 1, "Foto",R.drawable.img_3));
+//        arrayList.add(new Videojuego("Amaya", "", "JUEVES", VIDEO, true, 1, "Video",R.drawable.img_4));
+//        arrayList.add(new Videojuego("Diana", "Nos vemos viernes "+ getEmoji(0x1F60A), "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
+//        arrayList.add(new Videojuego("Comida", "tú: ¡Me parece genial!", "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
 
         return arrayList;
     }

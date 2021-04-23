@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data
 public class Videojuego {
     private String titulo;
     private String precio;
@@ -19,6 +19,9 @@ public class Videojuego {
         this.precio = precio;
         this.descripcion = descripcion;
         this.uri = uri;
+    }
+
+    public Videojuego(String fantasya, String s, String texto, boolean b, int i, String s1, int g) {
     }
 
     public Uri getUri() {
