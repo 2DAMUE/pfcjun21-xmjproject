@@ -13,8 +13,7 @@
         android:id="@+id/img_Caratula"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:layout_margin="16dp"
-        android:src="@drawable/g" />
+        android:layout_margin="16dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -114,24 +113,30 @@
             </LinearLayout>
 
 
-            <TextView
-                android:id="@+id/tv_Pensandomelo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:background="@drawable/logovacio"
-                android:text="X"
-                android:textAlignment="center"
-                android:textColor="@android:color/white"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:visibility="gone" />
+<!--            <TextView-->
+<!--                android:id="@+id/tv_Pensandomelo"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="end"-->
+<!--                android:background="@drawable/logovacio"-->
+<!--                android:text="X"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="@android:color/white"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:visibility="gone" />-->
 
 
         </LinearLayout>
 
 
     </LinearLayout>
-
+    <TextView
+        android:id="@+id/linea"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black_GameSource"
+        android:layout_below="@id/img_Caratula"
+        android:layout_marginTop="11dp"/>
 
 </LinearLayout>

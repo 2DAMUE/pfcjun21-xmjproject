@@ -19,7 +19,6 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
     private ArrayList<Videojuego> listaJuegos;
     private RecyclerView recyclerViewJuegos;
 
-    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +28,7 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
  * Declaracion del array y el Recycler
  */
         listaJuegos = new ArrayList<>();
-        recyclerViewJuegos = (RecyclerView) findViewById(R.id.recyclerJuegosActivity);
+        recyclerViewJuegos = findViewById(R.id.recyclerJuegosActivity);
         recyclerViewJuegos.setLayoutManager(new LinearLayoutManager(this));
 
         loadGames();
