@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GameSource</string>
+    <string name="Volver">&lt; <b>volver</b></string>
 </resources>

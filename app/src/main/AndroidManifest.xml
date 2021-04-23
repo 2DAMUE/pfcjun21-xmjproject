@@ -12,7 +12,6 @@
         <activity
             android:name=".SplashScreen"
             android:theme="@style/Theme.GameSourceNoBar">
-
         </activity>
         <activity
             android:name=".SearchRecycler"

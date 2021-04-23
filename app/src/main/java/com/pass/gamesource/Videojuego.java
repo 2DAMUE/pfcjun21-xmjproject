@@ -2,47 +2,23 @@ package com.pass.gamesource;
 
 import android.net.Uri;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
 public class Videojuego {
     private String titulo;
     private String precio;
     private String descripcion;
+    private String fecha;
     private int img;
     private Uri uri;
-
-    public Videojuego(String titulo, String precio, String descripcion, Uri uri) {
-        this.titulo = titulo;
-        this.precio = precio;
-        this.descripcion = descripcion;
-        this.uri = uri;
-    }
-
-    public Videojuego(String fantasya, String s, String texto, boolean b, int i, String s1, int g) {
-    }
-
-    public Uri getUri() {
-        return uri;
-    }
-
-    public void setUri(Uri uri) {
-        this.uri = uri;
-    }
-
-    public Videojuego(String titulo) {
-        this.titulo = titulo;
-    }
 
     public Videojuego() {
     }
 
-    public Videojuego(String titulo, String precio, String descripcion) {
+    public Videojuego(String titulo, String descripcion, String fecha, int img) {
         this.titulo = titulo;
-        this.precio = precio;
         this.descripcion = descripcion;
+        this.fecha = fecha;
+        this.img = img;
     }
 
     public String getTitulo() {
@@ -69,11 +45,27 @@ public class Videojuego {
         this.descripcion = descripcion;
     }
 
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
     public int getImg() {
         return img;
     }
 
     public void setImg(int img) {
         this.img = img;
+    }
+
+    public Uri getUri() {
+        return uri;
+    }
+
+    public void setUri(Uri uri) {
+        this.uri = uri;
     }
 }

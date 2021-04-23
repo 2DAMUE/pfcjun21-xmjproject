@@ -1,77 +1,96 @@
 package com.pass.gamesource;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ListView;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class SearchRecycler extends AppCompatActivity {
+public class SearchRecycler extends AppCompatActivity implements View.OnClickListener {
 
+    private ArrayList<Videojuego> listaJuegos;
+    private RecyclerView recyclerViewJuegos;
 
-    private ListView listView;
-    private AdaptadorSerach adaptadorSerach;
-
-    public static final String TEXTO = "texto";
-    public static final String AUDIO = "audio";
-    public static final String IMAGEN = "imagen";
-    public static final String VIDEO = "video";
-
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_recycler);
 
-        init();
+/**
+ * Declaracion del array y el Recycler
+ */
+        listaJuegos = new ArrayList<>();
+        recyclerViewJuegos = (RecyclerView) findViewById(R.id.recyclerJuegosActivity);
+        recyclerViewJuegos.setLayoutManager(new LinearLayoutManager(this));
 
-       this.listView.setNestedScrollingEnabled(false);
-       this.listView.setAdapter(adaptadorSerach);
+        loadGames();
+        /**
+         * Pasamos el array con los datos al adaptador del Recycler
+         */
+        AdaptadorSearch adapter = new AdaptadorSearch(this, listaJuegos);
+        recyclerViewJuegos.setAdapter(adapter);
+
+
+        /**
+         * Declaracion de los botones
+         */
+        findViewById(R.id.tv_back).setOnClickListener(this);
+        findViewById(R.id.img_setting).setOnClickListener(this);
+
 
     }
 
-    private void init() {
-        this.listView = findViewById(R.id.listaHistorico);
-        this.adaptadorSerach = new AdaptadorSerach(this, getArrayList());
-
+    /**
+     * Cargamos el array de donde el Recycler leera los datos
+     */
+    private void loadGames() {
+        listaJuegos.add(new Videojuego("Final Fantasy VII", "Juego de fantasya VII RPG", "3/04/1985", R.drawable.finalfantasyvii));
+        listaJuegos.add(new Videojuego("RocketLeague", "RocketLeague", "3/04/1985", R.drawable.rocketleague));
+        listaJuegos.add(new Videojuego("Kena", "Kena", "3/04/1985", R.drawable.kena));
+        listaJuegos.add(new Videojuego("GTAV", "GTAV", "3/04/1985", R.drawable.gtav));
+        listaJuegos.add(new Videojuego("HoodOutlaws", "HoodOutlaws", "3/04/1985", R.drawable.hoodoutlaws));
+        listaJuegos.add(new Videojuego("Final Fantasy VII", "Juego de fantasya VII RPG", "3/04/1985", R.drawable.finalfantasyvii));
+        listaJuegos.add(new Videojuego("LostWords", "LostWords", "3/04/1985", R.drawable.lostwords));
+        listaJuegos.add(new Videojuego("RocketLeague", "RocketLeague", "3/04/1985", R.drawable.rocketleague));
+        listaJuegos.add(new Videojuego("Kena", "Kena", "3/04/1985", R.drawable.kena));
+        listaJuegos.add(new Videojuego("GTAV", "GTAV", "3/04/1985", R.drawable.gtav));
+        listaJuegos.add(new Videojuego("Final Fantasy VII", "Juego de fantasya VII RPG", "3/04/1985", R.drawable.finalfantasyvii));
+        listaJuegos.add(new Videojuego("RocketLeague", "RocketLeague", "3/04/1985", R.drawable.rocketleague));
+        listaJuegos.add(new Videojuego("Kena", "Kena", "3/04/1985", R.drawable.kena));
+        listaJuegos.add(new Videojuego("GTAV", "GTAV", "3/04/1985", R.drawable.gtav));
+        listaJuegos.add(new Videojuego("HoodOutlaws", "HoodOutlaws", "3/04/1985", R.drawable.hoodoutlaws));
+        listaJuegos.add(new Videojuego("Final Fantasy VII", "Juego de fantasya VII RPG", "3/04/1985", R.drawable.finalfantasyvii));
+        listaJuegos.add(new Videojuego("LostWords", "LostWords", "3/04/1985", R.drawable.lostwords));
+        listaJuegos.add(new Videojuego("RocketLeague", "RocketLeague", "3/04/1985", R.drawable.rocketleague));
+        listaJuegos.add(new Videojuego("Kena", "Kena", "3/04/1985", R.drawable.kena));
+        listaJuegos.add(new Videojuego("GTAV", "GTAV", "3/04/1985", R.drawable.gtav));
 
     }
 
-    private String getEmoji(int unicode) {
-        return new String(Character.toChars(unicode));
-    }
-
-
-    private ArrayList<Videojuego> getArrayList() {
-
-        ArrayList<Videojuego> arrayList = new ArrayList<>();
-
-        arrayList.add(new Videojuego("Fantasya", "Fina Fantasy: ", TEXTO, false, 1, "", R.drawable.g));
-        arrayList.add(new Videojuego("Fantasya", "Fina Fantasy: ", TEXTO, false, 2, "", R.drawable.s));
-        arrayList.add(new Videojuego("Fantasya", "Fina Fantasy: ", TEXTO, false, 3, "", R.drawable.gamesinfondo));
-        arrayList.add(new Videojuego("Fantasya", "Fina Fantasy: ", TEXTO, false, 4, "", R.drawable.gssinfondo));
-        arrayList.add(new Videojuego("Fantasya", "Fina Fantasy: ", TEXTO, false, 5, "", R.drawable.soucersuelto));
-//        arrayList.add(new Videojuego("Juan", "", "AYER", IMAGEN, true, 1, "Foto",R.drawable.img_3));
-//        arrayList.add(new Videojuego("Amaya", "", "JUEVES", VIDEO, true, 1, "Video",R.drawable.img_4));
-//        arrayList.add(new Videojuego("Diana", "Nos vemos viernes "+ getEmoji(0x1F60A), "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
-//        arrayList.add(new Videojuego("Comida", "tú: ¡Me parece genial!", "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
-//        arrayList.add(new Videojuego("Juan", "", "AYER", IMAGEN, true, 1, "Foto",R.drawable.img_3));
-//        arrayList.add(new Videojuego("Amaya", "", "JUEVES", VIDEO, true, 1, "Video",R.drawable.img_4));
-//        arrayList.add(new Videojuego("Diana", "Nos vemos viernes "+ getEmoji(0x1F60A), "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
-//        arrayList.add(new Videojuego("Comida", "tú: ¡Me parece genial!", "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
-//        arrayList.add(new Videojuego("Juan", "", "AYER", IMAGEN, true, 1, "Foto",R.drawable.img_3));
-//        arrayList.add(new Videojuego("Amaya", "", "JUEVES", VIDEO, true, 1, "Video",R.drawable.img_4));
-//        arrayList.add(new Videojuego("Diana", "Nos vemos viernes "+ getEmoji(0x1F60A), "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
-//        arrayList.add(new Videojuego("Comida", "tú: ¡Me parece genial!", "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
-//        arrayList.add(new Videojuego("Juan", "", "AYER", IMAGEN, true, 1, "Foto",R.drawable.img_3));
-//        arrayList.add(new Videojuego("Amaya", "", "JUEVES", VIDEO, true, 1, "Video",R.drawable.img_4));
-//        arrayList.add(new Videojuego("Diana", "Nos vemos viernes "+ getEmoji(0x1F60A), "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
-//        arrayList.add(new Videojuego("Comida", "tú: ¡Me parece genial!", "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
-//        arrayList.add(new Videojuego("Juan", "", "AYER", IMAGEN, true, 1, "Foto",R.drawable.img_3));
-//        arrayList.add(new Videojuego("Amaya", "", "JUEVES", VIDEO, true, 1, "Video",R.drawable.img_4));
-//        arrayList.add(new Videojuego("Diana", "Nos vemos viernes "+ getEmoji(0x1F60A), "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
-//        arrayList.add(new Videojuego("Comida", "tú: ¡Me parece genial!", "2/8/18", TEXTO, true, 1, "",R.drawable.img_5));
-
-        return arrayList;
+    /**
+     * Oyente de botones
+     * @param v coger el parametro del botn especificado arriba.
+     */
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tv_back:
+                Intent intent1 = new Intent(SearchRecycler.this, SplashScreen.class);
+                startActivity(intent1);
+                break;
+            case R.id.img_setting:
+                Intent intent2 = new Intent(SearchRecycler.this, SplashScreen.class);
+                startActivity(intent2);
+                break;
+        }
     }
 }
