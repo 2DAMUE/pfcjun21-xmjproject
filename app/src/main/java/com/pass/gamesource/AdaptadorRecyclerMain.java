@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,6 +26,7 @@ public class AdaptadorRecyclerMain extends RecyclerView.Adapter<AdaptadorRecycle
         View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.vistajuegorecycler, parent, false);
         MiContenedorDeVistas contenedor = new MiContenedorDeVistas(vista);
         ImageView ivJuego = vista.findViewById(R.id.imagenJuegoRecyclerMain);
+        TextView tvTitulo = vista.findViewById(R.id.tvTituloJuegoRecycler);
         Log.d("Contenedor", "Creando contenedor de vistas...");
         return contenedor;
     }
@@ -33,6 +35,7 @@ public class AdaptadorRecyclerMain extends RecyclerView.Adapter<AdaptadorRecycle
     public void onBindViewHolder(@NonNull MiContenedorDeVistas holder, int position) {
         Videojuego v = listaVideojuegos.get(position);
         holder.ivJuego.setImageURI(v.getUri());
+        holder.tvTitulo.setText(v.getTitulo());
         Log.d("Contenedor", "Vinculando position " + position);
     }
 
@@ -43,10 +46,12 @@ public class AdaptadorRecyclerMain extends RecyclerView.Adapter<AdaptadorRecycle
 
     public static class MiContenedorDeVistas extends RecyclerView.ViewHolder {
         public ImageView ivJuego;
+        public TextView tvTitulo;
 
         public MiContenedorDeVistas(View vista) {
             super(vista);
             this.ivJuego = vista.findViewById(R.id.imagenJuegoRecyclerMain);
+            this.tvTitulo = vista.findViewById(R.id.tvTituloJuegoRecycler);
         }
 
     }

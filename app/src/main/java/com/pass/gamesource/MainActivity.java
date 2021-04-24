@@ -1,7 +1,7 @@
 package com.pass.gamesource;
 
-import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,10 +17,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ArrayList<Videojuego> listaVideojuegos = new ArrayList<Videojuego>();
-        Videojuego v = new Videojuego("No man's Sky", "10.90", "Exploración y aventura a saco paco", Uri.parse("https://s1.gaming-cdn.com/images/products/414/271x377/no-mans-sky-cover.jpg"));
+        Videojuego v = new Videojuego("No man's Sky", "10.90", "Exploración y aventura a saco paco");
+        Videojuego v2 = new Videojuego("Albion Online", "0", "MMORPG");
         listaVideojuegos.add(v);
+        listaVideojuegos.add(v2);
+        Log.d("", v.toString());
         RecyclerView recyclerView = findViewById(R.id.recyclerMain);
-        RecyclerView.LayoutManager gestor = new LinearLayoutManager(this);
+        LinearLayoutManager gestor = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         AdaptadorRecyclerMain adaptador = new AdaptadorRecyclerMain(listaVideojuegos);
         recyclerView.setLayoutManager(gestor);
         recyclerView.setAdapter(adaptador);
