@@ -37,7 +37,7 @@ public class AdaptadorRecyclerMain extends RecyclerView.Adapter<AdaptadorRecycle
     public void onBindViewHolder(@NonNull MiContenedorDeVistas holder, int position) {
         Videojuego v = listaVideojuegos.get(position);
         Log.d("mensaje", v.toString());
-        Glide.with(holder.vista).load(v.getUri()).into(holder.ivJuego);
+        Glide.with(holder.vista).load(v.getUri()).centerCrop().into(holder.ivJuego);
         holder.tvTitulo.setText(v.getTitulo());
         Log.d("Contenedor", "Vinculando position " + position);
     }

@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/JuegoPrincipal"
         android:layout_width="410dp"
-        android:layout_height="532dp"
+        android:layout_height="432dp"
         android:contentDescription="@string/juego_destacado"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
