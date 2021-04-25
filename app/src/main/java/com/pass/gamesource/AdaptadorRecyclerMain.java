@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class AdaptadorRecyclerMain extends RecyclerView.Adapter<AdaptadorRecyclerMain.MiContenedorDeVistas> {
@@ -34,7 +36,8 @@ public class AdaptadorRecyclerMain extends RecyclerView.Adapter<AdaptadorRecycle
     @Override
     public void onBindViewHolder(@NonNull MiContenedorDeVistas holder, int position) {
         Videojuego v = listaVideojuegos.get(position);
-        holder.ivJuego.setImageURI(v.getUri());
+        Log.d("mensaje", v.toString());
+        Glide.with(holder.vista).load(v.getUri()).into(holder.ivJuego);
         holder.tvTitulo.setText(v.getTitulo());
         Log.d("Contenedor", "Vinculando position " + position);
     }
@@ -47,11 +50,13 @@ public class AdaptadorRecyclerMain extends RecyclerView.Adapter<AdaptadorRecycle
     public static class MiContenedorDeVistas extends RecyclerView.ViewHolder {
         public ImageView ivJuego;
         public TextView tvTitulo;
+        public View vista;
 
         public MiContenedorDeVistas(View vista) {
             super(vista);
             this.ivJuego = vista.findViewById(R.id.imagenJuegoRecyclerMain);
             this.tvTitulo = vista.findViewById(R.id.tvTituloJuegoRecycler);
+            this.vista = vista;
         }
 
     }

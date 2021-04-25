@@ -1,25 +1,23 @@
 package com.pass.gamesource;
 
-import android.net.Uri;
-
 public class Videojuego {
     private String titulo;
     private String precio;
     private String descripcion;
-    private Uri uri;
+    private String uri;
 
-    public Videojuego(String titulo, String precio, String descripcion, Uri uri) {
+    public Videojuego(String titulo, String precio, String descripcion, String uri) {
         this.titulo = titulo;
         this.precio = precio;
         this.descripcion = descripcion;
         this.uri = uri;
     }
 
-    public Uri getUri() {
+    public String getUri() {
         return uri;
     }
 
-    public void setUri(Uri uri) {
+    public void setUri(String uri) {
         this.uri = uri;
     }
 
@@ -58,5 +56,15 @@ public class Videojuego {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    @Override
+    public String toString() {
+        return "Videojuego{" +
+                "titulo='" + titulo + '\'' +
+                ", precio='" + precio + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", uri=" + uri +
+                '}';
     }
 }
