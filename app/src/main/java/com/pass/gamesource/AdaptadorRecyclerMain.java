@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class AdaptadorRecyclerMain extends RecyclerView.Adapter<AdaptadorRecyclerMain.MiContenedorDeVistas> {
 
     private ArrayList<Videojuego> listaVideojuegos = new ArrayList<>();
+    private MainActivity main = new MainActivity();
 
     public AdaptadorRecyclerMain(ArrayList<Videojuego> listaVideojuegos) {
         this.listaVideojuegos = listaVideojuegos;
@@ -35,10 +36,16 @@ public class AdaptadorRecyclerMain extends RecyclerView.Adapter<AdaptadorRecycle
 
     @Override
     public void onBindViewHolder(@NonNull MiContenedorDeVistas holder, int position) {
-        Videojuego v = listaVideojuegos.get(position);
-        Log.d("mensaje", v.toString());
-        Glide.with(holder.vista).load(v.getUri()).centerCrop().into(holder.ivJuego);
-        holder.tvTitulo.setText(v.getTitulo());
+        Videojuego juego = listaVideojuegos.get(position);
+        Log.d("mensaje", juego.toString());
+        Glide.with(holder.vista).load(juego.getUri()).centerCrop().into(holder.ivJuego);
+        holder.ivJuego.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                main.mostrarAlertDialog(juego);
+            }
+        });
+        holder.tvTitulo.setText(juego.getTitulo());
         Log.d("Contenedor", "Vinculando position " + position);
     }
 
@@ -47,7 +54,7 @@ public class AdaptadorRecyclerMain extends RecyclerView.Adapter<AdaptadorRecycle
         return listaVideojuegos.size();
     }
 
-    public static class MiContenedorDeVistas extends RecyclerView.ViewHolder {
+    public class MiContenedorDeVistas extends RecyclerView.ViewHolder {
         public ImageView ivJuego;
         public TextView tvTitulo;
         public View vista;

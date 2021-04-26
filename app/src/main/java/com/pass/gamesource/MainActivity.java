@@ -4,9 +4,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -33,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         listaVideojuegos.add(v6);
 
         ImageView ivMain = findViewById(R.id.JuegoPrincipal);
+        Glide.with(this)
+                .load("https://image.api.playstation.com/vulcan/img/cfn/11307CjjUZ9rA_whmJUghJsG9Hl1-rmnOUTk3-nccj01ZpYMCHrJ8k8kzBrVyp-p-iCPej73TEJAs88ZBeiZ1uirtj0fsa16.png")
+                .centerCrop().into(ivMain);
 
         Log.d("", v.toString());
         RecyclerView recyclerView = findViewById(R.id.recyclerMain);
@@ -41,5 +47,15 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(gestor);
         recyclerView.setAdapter(adaptador);
 
+
     }
+
+    public void mostrarAlertDialog(Videojuego v) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setView(getLayoutInflater().inflate(R.layout.alertdialogmain, null));
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
 }
