@@ -19,8 +19,6 @@ public class AdaptadorSearch extends RecyclerView.Adapter<AdaptadorSearch.ViewHo
     public ArrayList<Videojuego> listaJuegos;
 
 
-
-
     public AdaptadorSearch(SearchRecycler activity, ArrayList<Videojuego> listaJuegos) {
         this.activity = activity;
         this.listaJuegos = listaJuegos;
@@ -48,12 +46,10 @@ public class AdaptadorSearch extends RecyclerView.Adapter<AdaptadorSearch.ViewHo
      */
     @Override
     public void onBindViewHolder(@NonNull ViewHolderJuegos holder, int position) {
-
         holder.tv_Titulo.setText(listaJuegos.get(position).getTitulo());
         holder.tv_Fecha.setText(listaJuegos.get(position).getFecha());
         holder.tv_Descripcion.setText(listaJuegos.get(position).getDescripcion());
         holder.img_Caratula.setImageResource(listaJuegos.get(position).getImg());
-
     }
 
     /**
@@ -65,7 +61,6 @@ public class AdaptadorSearch extends RecyclerView.Adapter<AdaptadorSearch.ViewHo
     public int getItemCount() {
         return listaJuegos.size();
     }
-
 
     public class ViewHolderJuegos extends RecyclerView.ViewHolder {
         TextView tv_Titulo, tv_Descripcion, tv_Fecha, tv_temporizador;

@@ -38,13 +38,11 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
         AdaptadorSearch adapter = new AdaptadorSearch(this, listaJuegos);
         recyclerViewJuegos.setAdapter(adapter);
 
-
         /**
          * Declaracion de los botones
          */
         findViewById(R.id.tv_back).setOnClickListener(this);
         findViewById(R.id.img_setting).setOnClickListener(this);
-
 
     }
 
@@ -77,6 +75,7 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
 
     /**
      * Oyente de botones
+     *
      * @param v coger el parametro del botn especificado arriba.
      */
     @Override
