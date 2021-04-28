@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView ivMain = findViewById(R.id.JuegoPrincipal);
         Glide.with(this)
-                .load("https://image.api.playstation.com/vulcan/img/cfn/11307CjjUZ9rA_whmJUghJsG9Hl1-rmnOUTk3-nccj01ZpYMCHrJ8k8kzBrVyp-p-iCPej73TEJAs88ZBeiZ1uirtj0fsa16.png")
+                .load("https://firebasestorage.googleapis.com/v0/b/gamesource-9bc51.appspot.com/o/epic_free%2FAlien%3A%20Isolation%20.JPEG?alt=media")
                 .centerCrop().into(ivMain);
 
         Log.d("", v.toString());

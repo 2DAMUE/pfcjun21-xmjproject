@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">GameSource</string>
     <string name="juego_destacado">Juego destacado</string>
+    <string name="juegoDestacado">JuegoDestacado</string>
 </resources>
