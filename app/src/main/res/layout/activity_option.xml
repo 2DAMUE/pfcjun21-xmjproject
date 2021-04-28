@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OptionActivity">
+
+    <TextView
+        android:id="@+id/tv_back"
+        android:layout_width="78dp"
+        android:layout_height="51dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="318dp"
+        android:layout_marginBottom="793dp"
+        android:layout_toStartOf="@+id/img_setting"
+        android:text="@string/Volver"
+        android:textColor="@color/black_GameSource"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.222" />
+
+    <TextView
+        android:id="@+id/tv_opciones"
+        android:layout_width="225dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="129dp"
+        android:layout_marginEnd="93dp"
+        android:layout_marginBottom="661dp"
+        android:text="@string/opciones"
+        android:textAlignment="center"
+        android:textColor="@color/black_GameSource"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_notificacion"
+        android:layout_width="69dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="23dp"
+        app:layout_constraintBottom_toTopOf="@+id/img_user"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_opciones"
+        app:srcCompat="@drawable/img_notificacion_foreground" />
+
+    <ImageView
+        android:id="@+id/img_user"
+        android:layout_width="69dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="225dp"
+        app:layout_constraintBottom_toTopOf="@+id/img_ayuda"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_notificacion"
+        app:srcCompat="@drawable/img_user_foreground" />
+
+    <TextView
+        android:id="@+id/tv_notificaciones"
+        android:layout_width="178dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="53dp"
+        android:text="@string/notificaciones"
+        android:textAlignment="gravity"
+        android:textColor="@color/black_GameSource"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_cuenta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/img_notificacion"
+        app:layout_constraintTop_toBottomOf="@+id/tv_opciones" />
+
+    <TextView
+        android:id="@+id/tv_cuenta"
+        android:layout_width="131dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="245dp"
+        android:text="@string/cuenta"
+        android:textAlignment="gravity"
+        android:textColor="@color/black_GameSource"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_ayuda"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/img_user"
+        app:layout_constraintTop_toBottomOf="@+id/tv_notificaciones" />
+
+    <TextView
+        android:id="@+id/tv_ayuda"
+        android:layout_width="118dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="218dp"
+        android:layout_marginEnd="184dp"
+        android:text="@string/ayuda"
+        android:textAlignment="gravity"
+        android:textColor="@color/black_GameSource"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/img_ayuda"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cuenta" />
+
+    <ImageView
+        android:id="@+id/img_ayuda"
+        android:layout_width="69dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="196dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_user"
+        app:srcCompat="@drawable/img_info_foreground" />
+    tools:layout_editor_absoluteX="163dp"
+        tools:layout_editor_absoluteY="122dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

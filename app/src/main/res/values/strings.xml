@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">GameSource</string>
     <string name="Volver">&lt; <b>volver</b></string>
+    <string name="opciones"><b>Opciones</b></string>
+    <string name="notificaciones"><b>Notificaciones</b></string>
+    <string name="cuenta"><b>Cuenta</b></string>
+    <string name="ayuda"><b>Ayuda</b></string>
 </resources>
