@@ -1,10 +1,14 @@
 package com.pass.gamesource;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
 
 public class OptionActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -12,11 +16,7 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_option);
-
-
-
-
-
+        menuLateral();
 
         /**
          * Declaracion de los botones
@@ -30,11 +30,13 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
         findViewById(R.id.img_user).setOnClickListener(this);
         findViewById(R.id.img_ayuda).setOnClickListener(this);
 
-
+        findViewById(R.id.img_Home_Logo).setOnClickListener(this);
+        findViewById(R.id.img_Search_Logo).setOnClickListener(this);
+        findViewById(R.id.img_Historial_Logo).setOnClickListener(this);
+        findViewById(R.id.img_Calendar_Logo).setOnClickListener(this);
 
 
     }
-
 
     @Override
     public void onClick(View v) {
@@ -67,7 +69,63 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
                 Intent intent7 = new Intent(OptionActivity.this, SplashScreen.class);
                 startActivity(intent7);
                 break;
+
+            /**
+             *navigation Bar
+             */
+
+            case R.id.img_Home_Logo:
+                Intent intent8 = new Intent(OptionActivity.this, SplashScreen.class);
+                startActivity(intent8);
+                break;
+            case R.id.img_Search_Logo:
+                Intent intent9 = new Intent(OptionActivity.this, SplashScreen.class);
+                startActivity(intent9);
+                break;
+            case R.id.img_Historial_Logo:
+                Intent intent10 = new Intent(OptionActivity.this, SplashScreen.class);
+                startActivity(intent10);
+                break;
+            case R.id.img_Calendar_Logo:
+                Intent intent11 = new Intent(OptionActivity.this, SplashScreen.class);
+                startActivity(intent11);
+                break;
+            case R.id.item_opciones:
+                Intent intent12 = new Intent(OptionActivity.this, SearchRecycler.class);
+                startActivity(intent12);
+                break;
+        }
+
+
+    }
+
+    /**
+     * Menu lateral
+     */
+    private DrawerLayout drawerLayout;
+
+    public void menuLateral() {
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+
+        drawerLayout = findViewById(R.id.drawerLayout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawerLayout, toolbar, R.string.app_name, R.string.app_name);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
     }
 
+
+
 }
+

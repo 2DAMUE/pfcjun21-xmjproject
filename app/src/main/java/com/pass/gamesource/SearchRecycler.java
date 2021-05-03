@@ -89,6 +89,28 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
                 Intent intent2 = new Intent(SearchRecycler.this, SplashScreen.class);
                 startActivity(intent2);
                 break;
+
+
+            /**
+             *navigation Bar
+             */
+
+            case R.id.img_Home_Logo:
+                Intent intent3 = new Intent(SearchRecycler.this, SplashScreen.class);
+                startActivity(intent3);
+                break;
+            case R.id.img_Search_Logo:
+                Intent intent4 = new Intent(SearchRecycler.this, SearchRecycler.class);
+                startActivity(intent4);
+                break;
+            case R.id.img_Historial_Logo:
+                Intent intent5 = new Intent(SearchRecycler.this, SplashScreen.class);
+                startActivity(intent5);
+                break;
+            case R.id.img_Calendar_Logo:
+                Intent intent6 = new Intent(SearchRecycler.this, SplashScreen.class);
+                startActivity(intent6);
+                break;
         }
     }
 }
