@@ -1,24 +1,39 @@
 package com.pass.gamesource;
 
-import android.net.Uri;
-
-
 public class Videojuego {
     private String titulo;
     private String precio;
     private String descripcion;
+    private String uri;
     private String fecha;
     private int img;
-    private Uri uri;
+
+    public Videojuego(String titulo, String precio, String descripcion, String uri) {
+        this.titulo = titulo;
+        this.precio = precio;
+        this.descripcion = descripcion;
+        this.uri = uri;
+    }
+
+    public String getUri() {
+        return uri;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
+
+    public Videojuego(String titulo) {
+        this.titulo = titulo;
+    }
 
     public Videojuego() {
     }
 
-    public Videojuego(String titulo, String descripcion, String fecha, int img) {
+    public Videojuego(String titulo, String precio, String descripcion) {
         this.titulo = titulo;
+        this.precio = precio;
         this.descripcion = descripcion;
-        this.fecha = fecha;
-        this.img = img;
     }
 
     public String getTitulo() {
@@ -45,6 +60,17 @@ public class Videojuego {
         this.descripcion = descripcion;
     }
 
+    @Override
+    public String toString() {
+        return "Videojuego{" +
+                "titulo='" + titulo + '\'' +
+                ", precio='" + precio + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", URI='" + uri + '\'' +
+                ", fecha='" + fecha + '\'' +
+                '}';
+    }
+
     public String getFecha() {
         return fecha;
     }
@@ -53,19 +79,4 @@ public class Videojuego {
         this.fecha = fecha;
     }
 
-    public int getImg() {
-        return img;
-    }
-
-    public void setImg(int img) {
-        this.img = img;
-    }
-
-    public Uri getUri() {
-        return uri;
-    }
-
-    public void setUri(Uri uri) {
-        this.uri = uri;
-    }
 }
