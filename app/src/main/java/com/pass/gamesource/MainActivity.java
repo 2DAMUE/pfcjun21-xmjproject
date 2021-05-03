@@ -1,5 +1,6 @@
 package com.pass.gamesource;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -14,9 +15,11 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        context = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -28,12 +31,19 @@ public class MainActivity extends AppCompatActivity {
         Videojuego v4 = new Videojuego("Fortnite", "0", "Battle royale de acción", "https://cdn2.unrealengine.com/16br-agentjonesy-egs-s2-1200x1600-1200x1600-2531e05bb04f.jpg");
         Videojuego v5 = new Videojuego("Destiny 2", "0", "FPS de rol ambientado en el espacio", "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2017/06/destiny_2_caratula.png?itok=3014kE94");
         Videojuego v6 = new Videojuego("Ark", "0", "Juego de rol ambientado en la prehistoria", "https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fark%2Fhome%2FEGS_ARKSurvivalEvolved_StudioWildcard_S2-1200x1600-880bbe4ea103bc00a67c12144161bdcfb1c73df1.jpg");
+        Videojuego v7 = new Videojuego("cities Skylines", "0", "Juego de contrucción de ciudades", "https://cdn2.unrealengine.com/egs-citiesskylines-colossalorder-s5-1920x1080-689706625.jpg?h=1080&resize=1&w=1920");
+        Videojuego v8 = new Videojuego("Asseto Corsa", "0", "Juego de simulación de conducción", "https://image.api.playstation.com/cdn/EP4040/CUSA01797_00/NMcAucyANMnYMNkz6V5vk9f5YXty2mCz.png");
+        Videojuego v9 = new Videojuego("Euro Truck Simulator", "0", "Juego de simulación de conducción de camiones", "https://s1.gaming-cdn.com/images/products/309/orig/euro-truck-simulator-2-cover.jpg");
+
         listaVideojuegos.add(v);
         listaVideojuegos.add(v2);
         listaVideojuegos.add(v3);
         listaVideojuegos.add(v4);
         listaVideojuegos.add(v5);
         listaVideojuegos.add(v6);
+        listaVideojuegos.add(v7);
+        listaVideojuegos.add(v8);
+        listaVideojuegos.add(v9);
 
         ImageView ivMain = findViewById(R.id.JuegoPrincipal);
         Glide.with(this)
@@ -51,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void mostrarAlertDialog(Videojuego v) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
         builder.setView(getLayoutInflater().inflate(R.layout.alertdialogmain, null));
         AlertDialog alert = builder.create();

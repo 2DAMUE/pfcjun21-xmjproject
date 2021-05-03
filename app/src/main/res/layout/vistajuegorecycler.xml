@@ -3,21 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="150dp"
-    android:layout_marginRight="5dp"
     android:layout_height="match_parent"
-    android:layout_marginEnd="5dp">
+    android:layout_marginTop="3dp"
+    android:layout_marginEnd="5dp"
+    android:layout_marginRight="5dp">
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTituloJuegoRecycler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/imagenJuegoRecyclerMain"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:textAlignment="center"
         android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:textAlignment="center"
+        android:textColor="@color/white_GameSource"
         android:textSize="10pt"
-        android:id="@+id/tvTituloJuegoRecycler"
-        android:gravity="center_horizontal" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imagenJuegoRecyclerMain" />
 
     <ImageView
         android:id="@+id/imagenJuegoRecyclerMain"
