@@ -96,7 +96,7 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
              */
 
             case R.id.img_Home_Logo:
-                Intent intent3 = new Intent(SearchRecycler.this, SplashScreen.class);
+                Intent intent3 = new Intent(SearchRecycler.this, MainActivity.class);
                 startActivity(intent3);
                 break;
             case R.id.img_Search_Logo:
@@ -104,11 +104,11 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
                 startActivity(intent4);
                 break;
             case R.id.img_Historial_Logo:
-                Intent intent5 = new Intent(SearchRecycler.this, SplashScreen.class);
+                Intent intent5 = new Intent(SearchRecycler.this, MainActivity.class);
                 startActivity(intent5);
                 break;
             case R.id.img_Calendar_Logo:
-                Intent intent6 = new Intent(SearchRecycler.this, SplashScreen.class);
+                Intent intent6 = new Intent(SearchRecycler.this, MainActivity.class);
                 startActivity(intent6);
                 break;
         }

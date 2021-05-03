@@ -207,8 +207,6 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-
-
             app:srcCompat="@drawable/calendar_logo_foreground" />
 
 
