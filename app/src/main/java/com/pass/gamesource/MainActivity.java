@@ -3,7 +3,9 @@ package com.pass.gamesource;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +17,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    Context context;
+    Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,19 +55,30 @@ public class MainActivity extends AppCompatActivity {
         Log.d("", v.toString());
         RecyclerView recyclerView = findViewById(R.id.recyclerMain);
         RecyclerView.LayoutManager gestor = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-        AdaptadorRecyclerMain adaptador = new AdaptadorRecyclerMain(listaVideojuegos);
+        AdaptadorRecyclerMain adaptador = new AdaptadorRecyclerMain(listaVideojuegos, this);
         recyclerView.setLayoutManager(gestor);
         recyclerView.setAdapter(adaptador);
 
 
     }
 
-    public void mostrarAlertDialog(Videojuego v) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+    public void mostrarAlertDialog(Videojuego v, MainActivity view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(view);
 
-        builder.setView(getLayoutInflater().inflate(R.layout.alertdialogmain, null));
         AlertDialog alert = builder.create();
-        alert.show();
+        View view2 = getLayoutInflater().inflate(R.layout.alertdialogmain, null, false);
+        alert.setView(view2);
+        builder.setView(view2);
+        TextView tvNombre = view2.findViewById(R.id.nombreAlert);
+        TextView tvDescripcion = view2.findViewById(R.id.descripcionAlert);
+        TextView tvPrecio = view2.findViewById(R.id.precioAlert);
+        ImageView imagenAlert = view2.findViewById(R.id.imagenJuego);
+        Glide.with(view).load(v.getUri()).centerCrop().into(imagenAlert);
+        tvDescripcion.setText(v.getDescripcion());
+        tvNombre.setText(v.getTitulo());
+        tvPrecio.setText(v.getPrecio());
+        builder.show();
+        //alert.show();
     }
 
 }

@@ -17,10 +17,11 @@ import java.util.ArrayList;
 public class AdaptadorRecyclerMain extends RecyclerView.Adapter<AdaptadorRecyclerMain.MiContenedorDeVistas> {
 
     private ArrayList<Videojuego> listaVideojuegos = new ArrayList<>();
-    private MainActivity main = new MainActivity();
+    private MainActivity main;
 
-    public AdaptadorRecyclerMain(ArrayList<Videojuego> listaVideojuegos) {
+    public AdaptadorRecyclerMain(ArrayList<Videojuego> listaVideojuegos, MainActivity main) {
         this.listaVideojuegos = listaVideojuegos;
+        this.main = main;
     }
 
     @NonNull
@@ -42,7 +43,7 @@ public class AdaptadorRecyclerMain extends RecyclerView.Adapter<AdaptadorRecycle
         holder.ivJuego.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                main.mostrarAlertDialog(juego);
+                main.mostrarAlertDialog(juego, main);
             }
         });
         holder.tvTitulo.setText(juego.getTitulo());
