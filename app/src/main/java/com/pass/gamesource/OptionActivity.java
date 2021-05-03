@@ -30,6 +30,13 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
         findViewById(R.id.img_user).setOnClickListener(this);
         findViewById(R.id.img_ayuda).setOnClickListener(this);
 
+        findViewById(R.id.img_Home_Logo).setOnClickListener(this);
+        findViewById(R.id.img_Search_Logo).setOnClickListener(this);
+        findViewById(R.id.img_Historial_Logo).setOnClickListener(this);
+        findViewById(R.id.img_Calendar_Logo).setOnClickListener(this);
+
+
+
 
 
 
@@ -66,6 +73,27 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.tv_ayuda:
                 Intent intent7 = new Intent(OptionActivity.this, SplashScreen.class);
                 startActivity(intent7);
+                break;
+
+            /**
+             *navigation Bar
+             */
+
+            case R.id.img_Home_Logo:
+                Intent intent8 = new Intent(OptionActivity.this, SplashScreen.class);
+                startActivity(intent8);
+                break;
+            case R.id.img_Search_Logo:
+                Intent intent9 = new Intent(OptionActivity.this, SplashScreen.class);
+                startActivity(intent9);
+                break;
+            case R.id.img_Historial_Logo:
+                Intent intent10 = new Intent(OptionActivity.this, SplashScreen.class);
+                startActivity(intent10);
+                break;
+            case R.id.img_Calendar_Logo:
+                Intent intent11 = new Intent(OptionActivity.this, SplashScreen.class);
+                startActivity(intent11);
                 break;
         }
     }
