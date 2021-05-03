@@ -8,6 +8,21 @@ public class Videojuego {
     private String fecha;
     private int img;
 
+    public int getImg() {
+        return img;
+    }
+
+    public void setImg(int img) {
+        this.img = img;
+    }
+
+    public Videojuego(String titulo, String precio, String descripcion, int img) {
+        this.titulo = titulo;
+        this.precio = precio;
+        this.descripcion = descripcion;
+        this.img = img;
+    }
+
     public Videojuego(String titulo, String precio, String descripcion, String uri) {
         this.titulo = titulo;
         this.precio = precio;

@@ -1,7 +1,5 @@
 package com.pass.gamesource;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -11,11 +9,13 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 /**
  * @author XMJproject
  * @author Xavier R, Jorge B, Miguel Parra
  * @version 0.01
- *@ @see HomeActivity
+ * @ @see HomeActivity
  * @see anim
  * @see layout\activity_splash_screen.xml
  */
@@ -77,7 +77,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 Intent intent = new Intent(SplashScreen
-                        .this, SearchRecycler.class);
+                        .this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }

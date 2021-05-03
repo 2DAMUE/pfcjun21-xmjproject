@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GameSource">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
         <activity
             android:name=".OptionActivity"
             android:theme="@style/Theme.GameSourceNoBar"></activity>
