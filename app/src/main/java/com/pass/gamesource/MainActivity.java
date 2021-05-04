@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     startActivity(intent10);
                 break;
             case R.id.img_Calendar_Logo:
-    Intent intent11 = new Intent(MainActivity.this, MainActivity.class);
+    Intent intent11 = new Intent(MainActivity.this, CalendarActivity.class);
     startActivity(intent11);
                 break;
 

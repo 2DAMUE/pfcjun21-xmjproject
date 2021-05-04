@@ -8,4 +8,5 @@
     <string name="juego_destacado">Juego destacado</string>
     <string name="juegoDestacado">JuegoDestacado</string>
     <string name="stringPrecioAlert">Precio</string>
+    <string name="calendario_title"><b>Calendario</b></string>
 </resources>
