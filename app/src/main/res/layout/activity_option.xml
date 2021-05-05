@@ -115,9 +115,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
+                app:navigationIcon="@color/design_default_color_on_secondary"
+                app:titleTextColor="@color/design_default_color_on_secondary"
+                android:background="@color/design_default_color_on_primary"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"/>
 
