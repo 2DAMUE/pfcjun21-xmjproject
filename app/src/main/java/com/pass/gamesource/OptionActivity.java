@@ -1,22 +1,35 @@
 package com.pass.gamesource;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.navigation.NavigationView;
+
+import org.jetbrains.annotations.NotNull;
 
 
-public class OptionActivity extends AppCompatActivity implements View.OnClickListener {
+public class OptionActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener,
+        DrawerLayout.DrawerListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_option);
-        menuLateral();
+       menuLateral();
 
         /**
          * Declaracion de los botones
@@ -37,6 +50,7 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
 
 
     }
+
 
     @Override
     public void onClick(View v) {
@@ -70,6 +84,7 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(intent7);
                 break;
 
+
             /**
              *navigation Bar
              */
@@ -90,10 +105,6 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
                 Intent intent11 = new Intent(OptionActivity.this, SplashScreen.class);
                 startActivity(intent11);
                 break;
-            case R.id.item_opciones:
-                Intent intent12 = new Intent(OptionActivity.this, SearchRecycler.class);
-                startActivity(intent12);
-                break;
         }
 
 
@@ -109,11 +120,30 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
-        drawerLayout = findViewById(R.id.drawerLayout);
+        drawerLayout = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawerLayout, toolbar, R.string.app_name, R.string.app_name);
+                this, drawerLayout, toolbar, R.string.app_name,
+                R.string.app_name);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+        NavigationView navigationView = findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        MenuItem menuItem = navigationView.getMenu().getItem(0);
+        onNavigationItemSelected(menuItem);
+        menuItem.setChecked(true);
+
+        drawerLayout.addDrawerListener(this);
+
+        View header = navigationView.getHeaderView(0);
+        header.findViewById(R.id.copyright).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(OptionActivity.this, getString(R.string.copyright),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -125,7 +155,59 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case R.id.nav_camera:
 
 
+                break;
+            case R.id.nav_gallery:
+                Intent intent23 = new Intent(OptionActivity.this.getBaseContext(),
+                        MainActivity.class);
+                startActivity(intent23);
+                break;
+            case R.id.nav_manage:
+
+                break;
+            case R.id.nav_share:
+
+                break;
+            case R.id.nav_send:
+
+                break;
+            default:
+                throw new IllegalArgumentException("menu option not implemented!!");
+        }
+        getSupportFragmentManager()
+                .beginTransaction()
+                .setCustomAnimations(R.anim.nav_enter, R.anim.nav_exit)
+                .commit();
+
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+        return true;
+
+    }
+
+    @Override
+    public void onDrawerSlide(@NonNull @NotNull View drawerView, float slideOffset) {
+
+    }
+
+    @Override
+    public void onDrawerOpened(@NonNull @NotNull View drawerView) {
+
+    }
+
+    @Override
+    public void onDrawerClosed(@NonNull @NotNull View drawerView) {
+
+    }
+
+    @Override
+    public void onDrawerStateChanged(int newState) {
+
+    }
 }
-

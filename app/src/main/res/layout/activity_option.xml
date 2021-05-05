@@ -123,35 +123,36 @@
         app:srcCompat="@drawable/img_info_foreground" />
 
     <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawerLayout"
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
-
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start">
 
         <LinearLayout
+            android:id="@+id/home_content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <androidx.appcompat.widget.Toolbar
+            <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/white_GameSource"
-                android:theme="@style/Theme.GameSourceNoBar">
+                android:layout_height="?attr/actionBarSize"/>
 
-            </androidx.appcompat.widget.Toolbar>
         </LinearLayout>
 
         <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="match_parent"
+            android:id="@+id/navigation_view"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            android:fitsSystemWindows="true"
             app:headerLayout="@layout/nav_header"
-            app:menu="@menu/menu"
-
-            ></com.google.android.material.navigation.NavigationView>
+            app:itemBackground="@drawable/drawer_background_selector"
+            app:itemIconTint="@drawable/drawer_selector"
+            app:itemTextColor="@drawable/drawer_selector"
+            app:menu="@menu/activity_home_navigation_drawer" />
 
     </androidx.drawerlayout.widget.DrawerLayout>
 
@@ -230,6 +231,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent=".75" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

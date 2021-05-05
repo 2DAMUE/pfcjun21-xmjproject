@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/img_setting_foreground"
+            android:title="@string/opciones" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/img_notificacion_foreground"
+            android:title="@string/notificaciones" />
+    </group>
+
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/img_user_foreground"
+            android:title="@string/cuenta" />
+    </group>
+
+    <item android:title="@string/app_name">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_share"
+                    android:icon="@drawable/img_setting_foreground"
+                    android:title="@string/app_name" />
+
+                <item
+                    android:id="@+id/nav_send"
+                    android:icon="@drawable/img_setting_foreground"
+                    android:title="@string/app_name" />
+            </group>
+        </menu>
+    </item>
+
+</menu>
