@@ -14,7 +14,7 @@
         android:layout_width="2506dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:padding="15dp"
         android:src="@drawable/logovacio"
         app:layout_constraintBottom_toTopOf="@+id/copyright"
         app:layout_constraintEnd_toEndOf="parent"

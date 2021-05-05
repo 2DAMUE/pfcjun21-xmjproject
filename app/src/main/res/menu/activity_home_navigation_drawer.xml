@@ -5,11 +5,11 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/option"
             android:icon="@drawable/img_setting_foreground"
             android:title="@string/opciones" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/notification"
             android:icon="@drawable/img_notificacion_foreground"
             android:title="@string/notificaciones" />
     </group>
@@ -18,23 +18,28 @@
         android:id="@+id/group1"
         android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/account"
             android:icon="@drawable/img_user_foreground"
             android:title="@string/cuenta" />
     </group>
 
-    <item android:title="@string/app_name">
+    <item android:title="@string/social">
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/nav_share"
-                    android:icon="@drawable/img_setting_foreground"
-                    android:title="@string/app_name" />
+                    android:id="@+id/share"
+                    android:icon="@drawable/img_share_logo_foreground"
+                    android:title="@string/share" />
 
                 <item
-                    android:id="@+id/nav_send"
-                    android:icon="@drawable/img_setting_foreground"
-                    android:title="@string/app_name" />
+                    android:id="@+id/rate"
+                    android:icon="@drawable/img_reviews_logo_foreground"
+                    android:title="@string/valoracion" />
+
+                <item
+                    android:id="@+id/info"
+                    android:icon="@drawable/img_info_foreground"
+                    android:title="@string/ayuda" />
             </group>
         </menu>
     </item>
