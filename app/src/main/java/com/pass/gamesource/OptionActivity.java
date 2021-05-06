@@ -21,7 +21,9 @@ import com.google.android.material.navigation.NavigationView;
 
 import org.jetbrains.annotations.NotNull;
 
-
+/**
+ * @author GameSource
+ */
 public class OptionActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener,
         DrawerLayout.DrawerListener {
 
@@ -149,6 +151,9 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
         });
     }
 
+    /**
+     * Comportamiento al abrir o cerrar el menu
+     */
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -160,6 +165,7 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
 
     /**
      * Botones de navegacion y sus funciones
+     *
      * @param menuItem
      * @return
      */

@@ -115,13 +115,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
-                app:navigationIcon="@color/design_default_color_on_secondary"
-                app:titleTextColor="@color/design_default_color_on_secondary"
-                android:background="@color/design_default_color_on_primary"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"/>
+                android:layout_height="?attr/actionBarSize" />
 
         </LinearLayout>
 
@@ -141,56 +139,56 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="horizontal"
+        android:layout_height="65dp"
+        android:alpha="0.9"
         android:background="@color/black_GameSource"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:alpha="0.9"
         app:layout_constraintVertical_bias="1.0">
 
 
         <ImageView
             android:id="@+id/img_Home_Logo"
             android:layout_width="0dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/guideline_25"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            app:layout_constraintEnd_toStartOf="@id/guideline_25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/home_logo_foreground" />
 
         <ImageView
             android:id="@+id/img_Search_Logo"
             android:layout_width="0dp"
-            app:layout_constraintStart_toStartOf="@id/guideline_25"
-            app:layout_constraintEnd_toStartOf="@id/guideline_50"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            app:layout_constraintEnd_toStartOf="@id/guideline_50"
+            app:layout_constraintStart_toStartOf="@id/guideline_25"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/search_logo_foreground" />
 
         <ImageView
             android:id="@+id/img_Historial_Logo"
             android:layout_width="0dp"
-            app:layout_constraintStart_toStartOf="@id/guideline_50"
-            app:layout_constraintEnd_toStartOf="@id/guideline_75"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            app:layout_constraintEnd_toStartOf="@id/guideline_75"
+            app:layout_constraintStart_toStartOf="@id/guideline_50"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/historial_logo_foreground" />
 
         <ImageView
             android:id="@+id/img_Calendar_Logo"
             android:layout_width="0dp"
-            app:layout_constraintStart_toStartOf="@id/guideline_75"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline_75"
+            app:layout_constraintTop_toTopOf="parent"
 
 
             app:srcCompat="@drawable/calendar_logo_foreground" />
@@ -202,12 +200,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent=".25" />
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_50"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent=".5" />
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_75"
             android:layout_width="wrap_content"
