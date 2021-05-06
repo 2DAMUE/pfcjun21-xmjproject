@@ -38,6 +38,7 @@ class Juego():
         self.descripcion = descripcion
         self.my_db_image = my_db_image
         self.generos = generos
+        self.plataforma = 'pc'
     
     def __str__(self):
         return ("""el juego %s con fechas %s estado %s"""%(self.nombre, self.fecha , self.estado))
@@ -63,7 +64,7 @@ def sacar_datos(datos, url, image_url):
 def obtenerGeneros(url):
     html = urllib.request.urlopen(url)
     soup = BeautifulSoup(html, "lxml")
-    divs = soup.find_all('div', class_='css-yqbyl2-GameMeta-styles__items')
+    divs = soup.find_all('div', class_='css-h8dgd-AboutSectionLayout__row')
     spans = divs[2].find_all('span')
     generos = []
     for span in spans:
@@ -85,7 +86,7 @@ def obtenerDescripcion(url):
     html = urllib.request.urlopen(url)
     soup = BeautifulSoup(html, "lxml")
 
-    div = soup.find('div', class_='css-167ntke')
+    div = soup.find('div', class_='css-pfxkyb')
     descripcion = div.text
     return descripcion
 
@@ -135,5 +136,5 @@ db = firebase.database()
 db.child('gratis').child('epic').remove()
 for j in juegosLista:
     juego = {'nombre':j.nombre, 'fechas': [j.fecha[0],j.fecha[1]], 'estado': j.estado , 
-    'descripcion': j.descripcion, 'image_url': j.my_db_image, 'generos': j.generos}
+    'descripcion': j.descripcion, 'image_url': j.my_db_image, 'generos': j.generos, 'plataforma': j.plataforma}
     db.child("gratis").child("epic").push(juego)
