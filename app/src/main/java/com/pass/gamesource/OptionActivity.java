@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -74,25 +75,22 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
              *navigation Bar
              */
 
+
             case R.id.img_Home_Logo:
-                Intent intent8 = new Intent(OptionActivity.this, SplashScreen.class);
+                Intent intent8 = new Intent(OptionActivity.this, MainActivity.class);
                 startActivity(intent8);
                 break;
             case R.id.img_Search_Logo:
-                Intent intent9 = new Intent(OptionActivity.this, SplashScreen.class);
+                Intent intent9 = new Intent(OptionActivity.this, SearchRecycler.class);
                 startActivity(intent9);
                 break;
             case R.id.img_Historial_Logo:
-                Intent intent10 = new Intent(OptionActivity.this, SplashScreen.class);
+                Intent intent10 = new Intent(OptionActivity.this, MainActivity.class);
                 startActivity(intent10);
                 break;
             case R.id.img_Calendar_Logo:
-                Intent intent11 = new Intent(OptionActivity.this, SplashScreen.class);
+                Intent intent11 = new Intent(OptionActivity.this, CalendarActivity.class);
                 startActivity(intent11);
-                break;
-            case R.id.item_opciones:
-                Intent intent12 = new Intent(OptionActivity.this, SearchRecycler.class);
-                startActivity(intent12);
                 break;
         }
 
@@ -124,7 +122,6 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
             super.onBackPressed();
         }
     }
-
 
 
 }

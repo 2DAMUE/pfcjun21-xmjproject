@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pass.gamesource">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,21 +11,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GameSource">
-        <activity android:name=".MainActivity" android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity android:name=".CalendarActivity"
+            android:theme="@style/Theme.GameSourceNoBar">
+
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".OptionActivity"
-            android:theme="@style/Theme.GameSourceNoBar"></activity>
-        <activity
-            android:name=".SplashScreen"
             android:theme="@style/Theme.GameSourceNoBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/Theme.GameSourceNoBar">
+
         </activity>
         <activity
             android:name=".SearchRecycler"
-            android:theme="@style/Theme.GameSourceNoBar"></activity>
+            android:theme="@style/Theme.GameSourceNoBar" />
     </application>
 
 </manifest>
