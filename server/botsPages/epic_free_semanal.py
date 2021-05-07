@@ -28,7 +28,7 @@ config = {
 }
 
 firebase = pyrebase.initialize_app(config)
-
+storage = firebase.storage()
 ############ CREAMOS EL OBJETO JUEGO #################
 class Juego():
     def __init__(self, nombre, fecha, estado, descripcion, my_db_image, generos):
@@ -43,6 +43,9 @@ class Juego():
     def __str__(self):
         return ("""el juego %s con fechas %s estado %s"""%(self.nombre, self.fecha , self.estado))
 
+    def __json__(self):
+        return {'nombre': self.nombre, 'fechas': [self.fecha[0],self.fecha[1]], 'estado': self.estado , 
+    'descripcion': self.descripcion, 'image_url': self.my_db_image, 'generos': self.generos, 'plataforma': self.plataforma}
 
 def sacar_datos(datos, url, image_url):
     estado = True
@@ -76,7 +79,6 @@ def guardarImagen(image_url, nombre):
     image_object = requests.get(image_url)
     image = Image.open(BytesIO(image_object.content))
     image.save("img/epic/" + nombre + "." + image.format, image.format)
-    storage = firebase.storage()
     nombre_juego = nombre + "." + image.format
     storage.child('epic_free/'+nombre_juego).put("img/epic/" + nombre_juego)
     url_my_db = storage.child('epic_free/'+ nombre_juego).get_url(None)
@@ -135,6 +137,4 @@ for div in divs:
 db = firebase.database()
 db.child('gratis').child('epic').remove()
 for j in juegosLista:
-    juego = {'nombre':j.nombre, 'fechas': [j.fecha[0],j.fecha[1]], 'estado': j.estado , 
-    'descripcion': j.descripcion, 'image_url': j.my_db_image, 'generos': j.generos, 'plataforma': j.plataforma}
-    db.child("gratis").child("epic").push(juego)
+    db.child("gratis").child("epic").push(j.__json__())
