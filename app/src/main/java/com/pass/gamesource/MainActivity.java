@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Context context = this;
 
     @Override
@@ -71,51 +71,55 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void mostrarAlertDialog(Videojuego v, MainActivity view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(view);
-
         AlertDialog alert = builder.create();
         View view2 = getLayoutInflater().inflate(R.layout.alertdialogmain, null, false);
+
         alert.setView(view2);
         builder.setView(view2);
+
         TextView tvNombre = view2.findViewById(R.id.nombreAlert);
         TextView tvDescripcion = view2.findViewById(R.id.descripcionAlert);
         TextView tvPrecio = view2.findViewById(R.id.precioAlert);
         ImageView imagenAlert = view2.findViewById(R.id.imagenJuego);
+
         Glide.with(view).load(v.getUri()).centerCrop().into(imagenAlert);
+
         tvDescripcion.setText(v.getDescripcion());
         tvNombre.setText(v.getTitulo());
         tvPrecio.setText(v.getPrecio());
-        builder.show();
-        //alert.show();
+
+        //builder.show();
+        alert.show();
     }
 
     /**
-     *navigation Bar
+     * navigation Bar
      */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
 
             case R.id.img_Home_Logo:
-    Intent intent8 = new Intent(MainActivity.this, MainActivity.class);
-    startActivity(intent8);
+                Intent intent8 = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent8);
                 break;
             case R.id.img_Search_Logo:
-    Intent intent9 = new Intent(MainActivity.this, SearchRecycler.class);
-    startActivity(intent9);
+                Intent intent9 = new Intent(MainActivity.this, SearchRecycler.class);
+                startActivity(intent9);
                 break;
             case R.id.img_Historial_Logo:
-    Intent intent10 = new Intent(MainActivity.this, MainActivity.class);
-    startActivity(intent10);
+                Intent intent10 = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent10);
                 break;
             case R.id.img_Calendar_Logo:
-    Intent intent11 = new Intent(MainActivity.this, CalendarActivity.class);
-    startActivity(intent11);
+                Intent intent11 = new Intent(MainActivity.this, CalendarActivity.class);
+                startActivity(intent11);
                 break;
 
-}
+        }
 
 
     }
 
 
-            }
+}
