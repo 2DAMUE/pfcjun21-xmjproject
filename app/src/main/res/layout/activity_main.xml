@@ -10,10 +10,11 @@
     <ImageView
         android:id="@+id/JuegoPrincipal"
         android:layout_width="410dp"
-        android:layout_height="440dp"
+        android:layout_height="0dp"
         android:contentDescription="@string/juego_destacado"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/recyclerMain"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/gamesuelto" />
 
@@ -32,19 +33,18 @@
         android:id="@+id/tvNombreJuegoDestacado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginBottom="7dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="15dp"
         android:text="@string/juegoDestacado"
         android:textColor="@color/white_GameSource"
         android:textSize="10pt"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerMain"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="260dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

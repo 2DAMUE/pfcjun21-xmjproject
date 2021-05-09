@@ -6,7 +6,7 @@
     <string name="cuenta"><b>Cuenta</b></string>
     <string name="ayuda"><b>Ayuda</b></string>
     <string name="juego_destacado">Juego destacado</string>
-    <string name="juegoDestacado">JuegoDestacado</string>
+    <string name="juegoDestacado">Juego Destacado</string>
     <string name="stringPrecioAlert">Precio</string>
     <string name="calendario_title"><b>Calendario</b></string>
 </resources>
