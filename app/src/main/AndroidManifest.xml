@@ -13,11 +13,15 @@
         android:theme="@style/Theme.GameSource">
         <activity
             android:name=".CalendarActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.GameSourceNoBar">
 
         </activity>
         <activity
             android:name=".MainActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".OptionActivity"
@@ -27,6 +31,8 @@
         </activity>
         <activity
             android:name=".SplashScreen"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.GameSourceNoBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,6 +41,8 @@
         </activity>
         <activity
             android:name=".SearchRecycler"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.GameSourceNoBar" />
     </application>
 

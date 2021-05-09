@@ -3,7 +3,6 @@ package com.pass.gamesource;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -105,8 +104,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent11 = new Intent(MainActivity.this, CalendarActivity.class);
                 startActivity(intent11);
                 break;
-            case R.id.JuegoPrincipal:
-
+            case R.drawable.scrim:
+                mostrarAlertDialog(new Videojuego("Alien Isolation", "0", "Juego de terror en el que seremos perseguidos por unos peligrosos alienígenas que quieren acabar con nosotros", "https://firebasestorage.googleapis.com/v0/b/gamesource-9bc51.appspot.com/o/epic_free%2FAlien%3A%20Isolation%20.JPEG?alt=media"), this);
+                break;
 
         }
 
