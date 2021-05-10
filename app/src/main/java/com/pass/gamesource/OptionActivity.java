@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -114,7 +116,7 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
      * inicializacion
      */
     private DrawerLayout drawerLayout;
-
+private NavigationView navigationView;
     public void menuLateral() {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -127,10 +129,12 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.navigation_view);
+        navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-/**
+
+
+/**1
  *  Tarjea de forma predeterminada un iten del menu, desactivar para no iniciar el evento del iten seleccionado
  */
 //        MenuItem menuItem = navigationView.getMenu().getItem(0);
@@ -172,6 +176,22 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
+//            ###################### Account #############################
+            case R.id.signIn:
+                Toast.makeText(this, getString(R.string.proximamente),
+                        Toast.LENGTH_SHORT).show();
+//                Intent intent1 = new Intent(OptionActivity.this.getBaseContext(),
+//                        MainActivity.class);
+//                startActivity(intent1);
+                break;
+            case R.id.signUp:
+                Toast.makeText(this, getString(R.string.proximamente),
+                        Toast.LENGTH_SHORT).show();
+//                Intent intent3 = new Intent(OptionActivity.this.getBaseContext(),
+//                        MainActivity.class);
+//                startActivity(intent3);
+                break;
+//                 ###################### Tools #############################
             case R.id.option:
                 Toast.makeText(this, getString(R.string.mismoActivity),
                         Toast.LENGTH_SHORT).show();
@@ -183,13 +203,7 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
 //                        MainActivity.class);
 //                startActivity(intent);
                 break;
-            case R.id.account:
-                Toast.makeText(this, getString(R.string.proximamente),
-                        Toast.LENGTH_SHORT).show();
-//                Intent intent1 = new Intent(OptionActivity.this.getBaseContext(),
-//                        MainActivity.class);
-//                startActivity(intent1);
-                break;
+//                          ###################### Social #############################
             case R.id.share:
                 Intent compartir = new Intent(android.content.Intent.ACTION_SEND);
                 compartir.setType("text/plain");
@@ -214,10 +228,7 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
             default:
                 throw new IllegalArgumentException("menu option not implemented!!");
         }
-        getSupportFragmentManager()
-                .beginTransaction()
-                .setCustomAnimations(R.anim.nav_enter, R.anim.nav_exit)
-                .commit();
+
 
 
         drawerLayout.closeDrawer(GravityCompat.START);

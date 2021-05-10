@@ -3,7 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <item android:title="@string/cuenta">
+        <menu>
+            <group
+                android:id="@+id/group1"
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/signIn"
+                    android:icon="@drawable/img_user_foreground"
+                    android:title="@string/signIn" />
+                <item
+                    android:id="@+id/signUp"
+                    android:icon="@drawable/img_user_foreground"
+                    android:title="@string/signUp" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="@string/tool">
+        <menu>
+    <group android:checkableBehavior="single"
+        android:id="@+id/group2">
         <item
             android:id="@+id/option"
             android:icon="@drawable/img_setting_foreground"
@@ -13,19 +33,12 @@
             android:icon="@drawable/img_notificacion_foreground"
             android:title="@string/notificaciones" />
     </group>
-
-    <group
-        android:id="@+id/group1"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/account"
-            android:icon="@drawable/img_user_foreground"
-            android:title="@string/cuenta" />
-    </group>
-
+        </menu>
+    </item>
     <item android:title="@string/social">
         <menu>
-            <group android:checkableBehavior="single">
+            <group android:checkableBehavior="single"
+                android:id="@+id/group3">
                 <item
                     android:id="@+id/share"
                     android:icon="@drawable/img_share_logo_foreground"
