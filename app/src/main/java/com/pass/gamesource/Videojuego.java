@@ -1,11 +1,14 @@
 package com.pass.gamesource;
 
+import java.util.Arrays;
+
 public class Videojuego {
     private String titulo;
     private String precio;
     private String descripcion;
-    private String uri;
-    private String fecha;
+    private String uriFoto;
+    private String uriEnlace;
+    private String[] fecha;
     private int img;
 
     public int getImg() {
@@ -23,19 +26,27 @@ public class Videojuego {
         this.img = img;
     }
 
-    public Videojuego(String titulo, String precio, String descripcion, String uri) {
+    public Videojuego(String titulo, String precio, String descripcion, String uriFoto) {
         this.titulo = titulo;
         this.precio = precio;
         this.descripcion = descripcion;
-        this.uri = uri;
+        this.uriFoto = uriFoto;
     }
 
-    public String getUri() {
-        return uri;
+    public String getUriEnlace() {
+        return uriEnlace;
     }
 
-    public void setUri(String uri) {
-        this.uri = uri;
+    public void setUriEnlace(String uriEnlace) {
+        this.uriEnlace = uriEnlace;
+    }
+
+    public String getUriFoto() {
+        return uriFoto;
+    }
+
+    public void setUriFoto(String uriFoto) {
+        this.uriFoto = uriFoto;
     }
 
     public Videojuego(String titulo) {
@@ -75,23 +86,24 @@ public class Videojuego {
         this.descripcion = descripcion;
     }
 
+    public String[] getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String[] fecha) {
+        this.fecha = fecha;
+    }
+
     @Override
     public String toString() {
         return "Videojuego{" +
                 "titulo='" + titulo + '\'' +
                 ", precio='" + precio + '\'' +
                 ", descripcion='" + descripcion + '\'' +
-                ", URI='" + uri + '\'' +
-                ", fecha='" + fecha + '\'' +
+                ", uriFoto='" + uriFoto + '\'' +
+                ", uriEnlace='" + uriEnlace + '\'' +
+                ", fecha=" + Arrays.toString(fecha) +
+                ", img=" + img +
                 '}';
     }
-
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
-
 }

@@ -1,8 +1,8 @@
 package com.pass.gamesource;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,13 +15,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Context context = this;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosGratis {
+    MainActivity context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        context = this;
+        AccesoFirebase.obtenerVideojuegosGratis(context);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView tvPrecio = view2.findViewById(R.id.precioAlert);
         ImageView imagenAlert = view2.findViewById(R.id.imagenJuego);
 
-        Glide.with(view).load(v.getUri()).centerCrop().into(imagenAlert);
+        Glide.with(view).load(v.getUriFoto()).centerCrop().into(imagenAlert);
 
         tvDescripcion.setText(v.getDescripcion());
         tvNombre.setText(v.getTitulo());
@@ -114,4 +115,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    @Override
+    public void recuperarVideojuegos(List<Videojuego> videojuegos) {
+        Log.d("MENSAJE", videojuegos.toString());
+    }
 }

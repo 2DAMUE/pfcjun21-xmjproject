@@ -47,7 +47,7 @@ public class AdaptadorSearch extends RecyclerView.Adapter<AdaptadorSearch.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolderJuegos holder, int position) {
         holder.tv_Titulo.setText(listaJuegos.get(position).getTitulo());
-        holder.tv_Fecha.setText(listaJuegos.get(position).getFecha());
+        holder.tv_Fecha.setText(listaJuegos.get(position).getFecha()[1]);
         holder.tv_Descripcion.setText(listaJuegos.get(position).getDescripcion());
         holder.img_Caratula.setImageResource(listaJuegos.get(position).getImg());
     }
