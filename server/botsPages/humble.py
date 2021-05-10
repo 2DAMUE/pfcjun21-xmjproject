@@ -17,24 +17,35 @@ from datetime import timedelta
 # Sofware = 2
 valor_section = 0
 #################################################################################
+config = {
+    "apiKey": "AIzaSyAsxaPfthuvrzCp2DCL0Sz4Fs1XzDtd7hg",
+    "authDomain": "gamesource-9bc51.firebaseapp.com",
+    "databaseURL": "https://gamesource-9bc51-default-rtdb.europe-west1.firebasedatabase.app",
+    "projectId": "gamesource-9bc51",
+    "storageBucket": "gamesource-9bc51.appspot.com"
+    }
 
+firebase = pyrebase.initialize_app(config)
 ############### clase de juegos ####################
 class Paquete():
-    def __init__(self, nombre):
+    def __init__(self, nombre, url_origen):
          self.nombre = nombre
          self.precio_tramos = []
          self.juegos_por_tramo = []
          self.fecha_expiracion = ''
+         self.url_origen = url_origen
 
     def __str__(self):
         return (""" el bundle %s con un rango de precios %s para los juegos %s"""%(self.nombre, self.precio_tramos, self.juegos_por_tramo))
 
-         
+    def __json__(self):
+        return {'nombre':self.nombre, 'precio_tramos': self.precio_tramos, 'juegos_tramo': self.juegos_por_tramo ,
+         'fecha_expiracion': self.fecha_expiracion, 'url_origen': self.url_origen }
 
 ####################################################
 ## De esta funcion obtenemos el objeto paquete de juegos de la pagina humble bundle
 def obtenerDatosPaquete(nombre,url):
-    paquete = Paquete(nombre)
+    paquete = Paquete(nombre, url)
     html = urllib.request.urlopen(url)
     soup = BeautifulSoup(html, 'lxml')
     divs = soup.find_all('div', class_= 'main-content-row dd-game-row js-nav-row')
@@ -112,40 +123,27 @@ html = driver.find_element_by_xpath("//body").get_attribute('outerHTML')
 soup = BeautifulSoup(html, "lxml")
 driver.quit()
 
-sections = soup.find_all('section', class_='landing-page-mosaic')
+div = soup.find('div', class_='landing-mosaic-section light-bg')
+h3s = div.find_all('h3')
+sections = div.find_all('section', class_='landing-page-mosaic')
+if len(h3s) == len(sections): 
+    paquetes_section = []
+    aes = sections[valor_section].find_all('a')
+    nombres = sections[valor_section].find_all('span', class_='name')
+    for i in range(0, len(aes)):
+        url_bundle = url_base + aes[i].attrs['href']
+        nombre = nombres[i].text
+        paquetes_section.append(obtenerDatosPaquete(nombre, url_bundle))
 
-paquetes_section = []
-aes = sections[valor_section].find_all('a')
-nombres = sections[valor_section].find_all('span', class_='name')
-for i in range(0, len(aes)):
-    url_bundle = url_base + aes[i].attrs['href']
-    nombre = nombres[i].text
-    paquetes_section.append(obtenerDatosPaquete(nombre, url_bundle))
 
-
-config = {
-    "apiKey": "AIzaSyAsxaPfthuvrzCp2DCL0Sz4Fs1XzDtd7hg",
-    "authDomain": "gamesource-9bc51.firebaseapp.com",
-    "databaseURL": "https://gamesource-9bc51-default-rtdb.europe-west1.firebasedatabase.app",
-    "projectId": "gamesource-9bc51",
-    "storageBucket": "gamesource-9bc51.appspot.com"
-    '''
-    # estan comentado por que da error en principio no me pide estos datos, 
-    # los comento para guardarlos a futuro
-    "messagingSenderId": "204253438311",
-    "appId": "1:204253438311:web:fb99cf095a8bee96b10fc2",
-    "measurementId": "G-NK36BG5MBP"
-    '''
-}
-
-firebase = pyrebase.initialize_app(config)
-
-db = firebase.database()
-db.child('humble').remove()
-for p in paquetes_section:
-    juego = {'nombre':p.nombre, 'precio_tramos': p.precio_tramos, 'juegos_tramo': p.juegos_por_tramo , 'fecha_expiracion': p.fecha_expiracion }
-    #print(juego)
-    db.child("humble").push(juego)
-# CAMNBIAR OBJETO PAQUETE PARA ADAPTARSE AL JSON DE FIREBASE
-    
+    db = firebase.database()
+    db.child('humble').remove()
+    for p in paquetes_section:
+        juego = p.__json__()
+        #print(juego)
+        db.child("humble").push(juego)
+    # CAMNBIAR OBJETO PAQUETE PARA ADAPTARSE AL JSON DE FIREBASE
+else:
+    db = firebase.database()
+    db.child('humble').remove() 
 

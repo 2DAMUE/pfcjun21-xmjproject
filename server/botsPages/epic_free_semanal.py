@@ -31,21 +31,22 @@ firebase = pyrebase.initialize_app(config)
 storage = firebase.storage()
 ############ CREAMOS EL OBJETO JUEGO #################
 class Juego():
-    def __init__(self, nombre, fecha, estado, descripcion, my_db_image, generos):
+    def __init__(self, nombre, fecha, descripcion, my_db_image, generos, url_origen):
         self.nombre = nombre
         self.fecha = fecha
-        self.estado = estado
         self.descripcion = descripcion
         self.my_db_image = my_db_image
         self.generos = generos
         self.plataforma = 'pc'
+        self.url_origen = url_origen
     
     def __str__(self):
         return ("""el juego %s con fechas %s estado %s"""%(self.nombre, self.fecha , self.estado))
 
     def __json__(self):
-        return {'nombre': self.nombre, 'fechas': [self.fecha[0],self.fecha[1]], 'estado': self.estado , 
-    'descripcion': self.descripcion, 'image_url': self.my_db_image, 'generos': self.generos, 'plataforma': self.plataforma}
+        return {'nombre': self.nombre, 'fechas': [self.fecha[0],self.fecha[1]], 
+    'descripcion': self.descripcion, 'image_url': self.my_db_image, 'generos': self.generos,
+    'url_origen': self.url_origen ,'plataforma': self.plataforma}
 
 def sacar_datos(datos, url, image_url):
     estado = True
@@ -61,7 +62,7 @@ def sacar_datos(datos, url, image_url):
     descripcion = obtenerDescripcion(url)
     generos = obtenerGeneros(url)
     my_db_image = guardarImagen(image_url, nombre)
-    juego = Juego(nombre, fecha, estado, descripcion,my_db_image, generos)
+    juego = Juego(nombre, fecha, descripcion,my_db_image, generos, url)
     return juego
 
 def obtenerGeneros(url):
