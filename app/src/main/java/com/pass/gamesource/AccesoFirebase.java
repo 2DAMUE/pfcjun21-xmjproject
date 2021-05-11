@@ -4,11 +4,11 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -18,23 +18,26 @@ import java.util.List;
 public class AccesoFirebase {
 
     static FirebaseDatabase database = FirebaseDatabase.getInstance();
-    static DatabaseReference myRef = database.getReference("message");
+    static DatabaseReference myRef = database.getReference().child("gratis");
 
     public static void obtenerVideojuegosGratis(ActualizarVideojuegosGratis a) {
+        Log.d("MENSAJE", "Obteniendo datos de Firebase...");
         List<Videojuego> videojuegosGratis = new ArrayList<Videojuego>();
-        myRef.child("gratis").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (DataSnapshot esnapshot : task.getResult().getChildren()) {
-                        Log.d("MENSAJE", "Obteniendo datos de Firebase...");
-                        for (DataSnapshot esnapshotDos : esnapshot.getChildren()) {
-                            videojuegosGratis.add(esnapshotDos.getValue(Videojuego.class));
-
-                        }
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for (DataSnapshot esnapshot : snapshot.getChildren()) {
+                    for (DataSnapshot eesnapshot : esnapshot.getChildren()) {
+                        Log.d("MENSAJE", eesnapshot.getValue(Videojuego.class).toString());
                     }
-                    a.recuperarVideojuegos(videojuegosGratis);
+
                 }
+                //Log.d("MENSAJE", snapshot.getValue(Videojuego.class).toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
             }
         });
 

@@ -1,14 +1,13 @@
 package com.pass.gamesource;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class Videojuego {
-    private String titulo;
-    private String precio;
+    private String nombre;
     private String descripcion;
-    private String uriFoto;
-    private String uriEnlace;
-    private String[] fecha;
+    private String image_url;
+    private String url_origen;
+    private List<String> fechas;
     private int img;
 
     public int getImg() {
@@ -19,63 +18,52 @@ public class Videojuego {
         this.img = img;
     }
 
-    public Videojuego(String titulo, String precio, String descripcion, int img) {
-        this.titulo = titulo;
-        this.precio = precio;
+    public Videojuego(String nombre, String descripcion, String fecha,int img) {
+        this.nombre = nombre;
         this.descripcion = descripcion;
         this.img = img;
     }
 
-    public Videojuego(String titulo, String precio, String descripcion, String uriFoto) {
-        this.titulo = titulo;
-        this.precio = precio;
+    public Videojuego(String nombre, String descripcion, String image_url) {
+        this.nombre = nombre;
         this.descripcion = descripcion;
-        this.uriFoto = uriFoto;
+        this.image_url = image_url;
     }
 
-    public String getUriEnlace() {
-        return uriEnlace;
+    public String getUrl_origen() {
+        return url_origen;
     }
 
-    public void setUriEnlace(String uriEnlace) {
-        this.uriEnlace = uriEnlace;
+    public void setUrl_origen(String url_origen) {
+        this.url_origen = url_origen;
     }
 
-    public String getUriFoto() {
-        return uriFoto;
+    public String getImage_url() {
+        return image_url;
     }
 
-    public void setUriFoto(String uriFoto) {
-        this.uriFoto = uriFoto;
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
     }
 
-    public Videojuego(String titulo) {
-        this.titulo = titulo;
+    public Videojuego(String nombre) {
+        this.nombre = nombre;
     }
 
     public Videojuego() {
     }
 
-    public Videojuego(String titulo, String precio, String descripcion) {
-        this.titulo = titulo;
-        this.precio = precio;
+    public Videojuego(String nombre, String descripcion) {
+        this.nombre = nombre;
         this.descripcion = descripcion;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(String precio) {
-        this.precio = precio;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDescripcion() {
@@ -86,23 +74,22 @@ public class Videojuego {
         this.descripcion = descripcion;
     }
 
-    public String[] getFecha() {
-        return fecha;
+    public List<String> getFechas() {
+        return fechas;
     }
 
-    public void setFecha(String[] fecha) {
-        this.fecha = fecha;
+    public void setFechas(List<String> fechas) {
+        this.fechas = fechas;
     }
 
     @Override
     public String toString() {
         return "Videojuego{" +
-                "titulo='" + titulo + '\'' +
-                ", precio='" + precio + '\'' +
+                "titulo='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
-                ", uriFoto='" + uriFoto + '\'' +
-                ", uriEnlace='" + uriEnlace + '\'' +
-                ", fecha=" + Arrays.toString(fecha) +
+                ", uriFoto='" + image_url + '\'' +
+                ", uriEnlace='" + url_origen + '\'' +
+                ", fecha=" + fechas.toString() +
                 ", img=" + img +
                 '}';
     }
