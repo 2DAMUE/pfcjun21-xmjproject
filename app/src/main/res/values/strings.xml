@@ -1,22 +1,21 @@
 <resources>
     <string name="app_name">GameSource</string>
-    <string name="Volver">&lt; <b>volver</b></string>
-    <string name="opciones"><b>Opciones</b></string>
-    <string name="notificaciones"><b>Notificaciones</b></string>
-    <string name="cuenta"><b>Cuenta</b></string>
-    <string name="ayuda"><b>Ayuda</b></string>
-    <string name="juego_destacado">Juego destacado</string>
-    <string name="juegoDestacado">Juego Destacado</string>
-    <string name="stringPrecioAlert">Precio</string>
+    <string name="back">&lt; <b>volver</b></string>
+    <string name="options"><b>Opciones</b></string>
+    <string name="notification"><b>Notificaciones</b></string>
+    <string name="account"><b>Cuenta</b></string>
+    <string name="help"><b>Ayuda</b></string>
+    <string name="latest_Game">Juego destacado</string>
+    <string name="priceAlert">Precio</string>
     <string name="copyright">© GameSource - GameSource.es \n Universida Europea</string>
     <string name="social">Social:</string>
     <string name="share">Comparte</string>
-    <string name="eviar">Enviar</string>
-    <string name="valoracion">Danos tu opinion</string>
-    <string name="mismoActivity">¡Ya estás aquí!</string>
-    <string name="proximamente">Próximamente</string>
-    <string name="compartir">La mejor App donde consegur todos juegos GRATIS!!! de todas las plataformas, todo en uno, a que esperas!!! \n <u><b>¡¡¡Unete YA!! \n</b> </u><p>https://play.google.com/store/apps/details?id=com.pass.communify</p></string>
-    <string name="calendario_title"><b>Calendario</b></string>
+    <string name="send">Enviar</string>
+    <string name="rate">Danos tu opinion</string>
+    <string name="sameActivity">¡Ya estás aquí!</string>
+    <string name="coming_soon">Próximamente</string>
+    <string name="share_message">La mejor App donde consegur todos juegos GRATIS!!! de todas las plataformas, todo en uno, a que esperas!!! \n <u><b>¡¡¡Unete YA!! \n</b> </u><p>https://play.google.com/store/apps/details?id=com.pass.communify</p></string>
+    <string name="calendar_title"><b>Calendario</b></string>
     <string name="signIn"><b>Entrar</b></string>
     <string name="signUp"><b>Registrarse</b></string>
     <string name="tool"><b>Herramientas</b></string>

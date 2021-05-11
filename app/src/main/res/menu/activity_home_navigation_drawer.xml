@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <item android:title="@string/cuenta">
+    <item android:title="@string/account">
         <menu>
             <group
                 android:id="@+id/group1"
@@ -27,11 +27,11 @@
         <item
             android:id="@+id/option"
             android:icon="@drawable/img_setting_foreground"
-            android:title="@string/opciones" />
+            android:title="@string/options" />
         <item
             android:id="@+id/notification"
             android:icon="@drawable/img_notificacion_foreground"
-            android:title="@string/notificaciones" />
+            android:title="@string/notification" />
     </group>
         </menu>
     </item>
@@ -47,12 +47,12 @@
                 <item
                     android:id="@+id/rate"
                     android:icon="@drawable/img_reviews_logo_foreground"
-                    android:title="@string/valoracion" />
+                    android:title="@string/rate" />
 
                 <item
                     android:id="@+id/info"
                     android:icon="@drawable/img_info_foreground"
-                    android:title="@string/ayuda" />
+                    android:title="@string/help" />
             </group>
         </menu>
     </item>

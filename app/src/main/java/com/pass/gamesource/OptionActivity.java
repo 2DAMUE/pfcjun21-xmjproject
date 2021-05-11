@@ -1,22 +1,16 @@
 package com.pass.gamesource;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -91,19 +85,19 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
              */
 
             case R.id.img_Home_Logo:
-                Intent intent8 = new Intent(OptionActivity.this, SplashScreen.class);
+                Intent intent8 = new Intent(OptionActivity.this, MainActivity.class);
                 startActivity(intent8);
                 break;
             case R.id.img_Search_Logo:
-                Intent intent9 = new Intent(OptionActivity.this, SplashScreen.class);
+                Intent intent9 = new Intent(OptionActivity.this, SearchRecycler.class);
                 startActivity(intent9);
                 break;
             case R.id.img_Historial_Logo:
-                Intent intent10 = new Intent(OptionActivity.this, SplashScreen.class);
+                Intent intent10 = new Intent(OptionActivity.this, MainActivity.class);
                 startActivity(intent10);
                 break;
             case R.id.img_Calendar_Logo:
-                Intent intent11 = new Intent(OptionActivity.this, SplashScreen.class);
+                Intent intent11 = new Intent(OptionActivity.this, CalendarActivity.class);
                 startActivity(intent11);
                 break;
         }
@@ -116,7 +110,8 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
      * inicializacion
      */
     private DrawerLayout drawerLayout;
-private NavigationView navigationView;
+    private NavigationView navigationView;
+
     public void menuLateral() {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -128,6 +123,7 @@ private NavigationView navigationView;
                 R.string.app_name);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
 
         navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -178,14 +174,14 @@ private NavigationView navigationView;
         switch (menuItem.getItemId()) {
 //            ###################### Account #############################
             case R.id.signIn:
-                Toast.makeText(this, getString(R.string.proximamente),
+                Toast.makeText(this, getString(R.string.coming_soon),
                         Toast.LENGTH_SHORT).show();
 //                Intent intent1 = new Intent(OptionActivity.this.getBaseContext(),
 //                        MainActivity.class);
 //                startActivity(intent1);
                 break;
             case R.id.signUp:
-                Toast.makeText(this, getString(R.string.proximamente),
+                Toast.makeText(this, getString(R.string.coming_soon),
                         Toast.LENGTH_SHORT).show();
 //                Intent intent3 = new Intent(OptionActivity.this.getBaseContext(),
 //                        MainActivity.class);
@@ -193,11 +189,11 @@ private NavigationView navigationView;
                 break;
 //                 ###################### Tools #############################
             case R.id.option:
-                Toast.makeText(this, getString(R.string.mismoActivity),
+                Toast.makeText(this, getString(R.string.sameActivity),
                         Toast.LENGTH_SHORT).show();
                 break;
             case R.id.notification:
-                Toast.makeText(this, getString(R.string.proximamente),
+                Toast.makeText(this, getString(R.string.coming_soon),
                         Toast.LENGTH_SHORT).show();
 //                Intent intent = new Intent(OptionActivity.this.getBaseContext(),
 //                        MainActivity.class);
@@ -208,18 +204,18 @@ private NavigationView navigationView;
                 Intent compartir = new Intent(android.content.Intent.ACTION_SEND);
                 compartir.setType("text/plain");
                 compartir.putExtra(android.content.Intent.EXTRA_SUBJECT, "GameSource App");
-                compartir.putExtra(android.content.Intent.EXTRA_TEXT, getString(R.string.compartir));
+                compartir.putExtra(android.content.Intent.EXTRA_TEXT, getString(R.string.share_message));
                 startActivity(Intent.createChooser(compartir, "Compartir vía"));
                 break;
             case R.id.rate:
-                Toast.makeText(this, getString(R.string.proximamente),
+                Toast.makeText(this, getString(R.string.coming_soon),
                         Toast.LENGTH_SHORT).show();
 //                Intent intent3 = new Intent(OptionActivity.this.getBaseContext(),
 //                        MainActivity.class);
 //                startActivity(intent3);
                 break;
             case R.id.info:
-                Toast.makeText(this, getString(R.string.proximamente),
+                Toast.makeText(this, getString(R.string.coming_soon),
                         Toast.LENGTH_SHORT).show();
 //                Intent intent3 = new Intent(OptionActivity.this.getBaseContext(),
 //                        MainActivity.class);
@@ -228,7 +224,6 @@ private NavigationView navigationView;
             default:
                 throw new IllegalArgumentException("menu option not implemented!!");
         }
-
 
 
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -243,6 +238,7 @@ private NavigationView navigationView;
      * onDrawerOpened accion cuando el menu se abre
      * onDrawerClosed accion cuando el menu se cierra
      * onDrawerStateChanged cambia de estado puede ser STATE_IDLE, STATE_DRAGGING or ST
+     *
      * @param drawerView
      * @param slideOffset
      */
@@ -253,6 +249,7 @@ private NavigationView navigationView;
 
     @Override
     public void onDrawerOpened(@NonNull @NotNull View drawerView) {
+
 
     }
 
