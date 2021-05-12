@@ -17,4 +17,13 @@
     <string name="proximamente">Próximamente</string>
     <string name="compartir">La mejor App donde consegur todos juegos GRATIS!!! de todas las plataformas, todo en uno, a que esperas!!! \n <u><b>¡¡¡Unete YA!! \n</b> </u><p>https://play.google.com/store/apps/details?id=com.pass.communify</p></string>
     <string name="calendario_title"><b>Calendario</b></string>
+    <string name="emailTV"><b>EMAIL</b></string>
+    <string name="emailHint"><b>Introduce un Email</b></string>
+    <string name="passTV"><b>CONTRASEÑA</b></string>
+    <string name="passHint"><b>Introduce una contraseña</b></string>
+    <string name="socialLogin"><b>Social</b></string>
+    <string name="dontHaveAccount"><b>¿No tienes un cuenta?¿</b></string>
+    <string name="registerBTN"><b>Registrate</b></string>
+
+
 </resources>

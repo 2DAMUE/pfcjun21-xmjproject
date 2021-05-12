@@ -8,4 +8,5 @@
     <color name="black_GameSource">#FF000000</color>
     <color name="white_GameSource">#FFFFFFFF</color>
     <color name="orange_GameSource">#FFA90A</color>
+    <color name="gray_GameSource">#707070</color>
 </resources>

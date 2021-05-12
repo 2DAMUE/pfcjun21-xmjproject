@@ -3,7 +3,7 @@
     <style name="Theme.GameSource" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/orange_GameSource</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimaryVariant">@color/gray_GameSource</item>
         <item name="colorOnPrimary">@color/white_GameSource</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -18,7 +18,7 @@
     <style name="Theme.GameSourceNoBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/orange_GameSource</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimaryVariant">@color/gray_GameSource</item>
         <item name="colorOnPrimary">@color/white_GameSource</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
