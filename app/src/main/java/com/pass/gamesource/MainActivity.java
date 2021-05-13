@@ -55,6 +55,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         recyclerView.setLayoutManager(gestor);
         recyclerView.setAdapter(adaptador);
 
+        RecyclerView recyclerViewSoftware = findViewById(R.id.recyclerMainSoftware);
+        RecyclerView.LayoutManager gestorSoftware = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        AdaptadorRecyclerMain adaptadorSoftware = new AdaptadorRecyclerMain(listaVideojuegos, this);
+        recyclerViewSoftware.setLayoutManager(gestorSoftware);
+        recyclerViewSoftware.setAdapter(adaptadorSoftware);
+
 
     }
 
