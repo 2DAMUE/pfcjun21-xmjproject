@@ -22,8 +22,8 @@
     <string name="passTV"><b>CONTRASEÑA</b></string>
     <string name="passHint"><b>Introduce una contraseña</b></string>
     <string name="socialLogin"><b>Social</b></string>
-    <string name="dontHaveAccount"><b>¿No tienes un cuenta?¿</b></string>
-    <string name="registerBTN"><b>Registrate</b></string>
+    <string name="dontHaveAccount"><b>¿No tienes una cuenta?</b></string>
+    <string name="registerBTN"><b><u>Registrate</u></b></string>
 
 
 </resources>

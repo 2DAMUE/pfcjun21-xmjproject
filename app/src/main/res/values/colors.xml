@@ -9,4 +9,5 @@
     <color name="white_GameSource">#FFFFFFFF</color>
     <color name="orange_GameSource">#FFA90A</color>
     <color name="gray_GameSource">#707070</color>
+    <color name="grayligh_GameSource">#8F8C8C</color>
 </resources>

@@ -35,17 +35,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6086aae6-afc6-41a9-b449-0a738bace972" name="Default Changelist" comment="Activity calendar mas app en todos los activitys">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/pass/gamesource/LoginActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/anim/moveleftlogin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/anim/moverightlogin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+    <list default="true" id="6086aae6-afc6-41a9-b449-0a738bace972" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,8 +75,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="VirtualDevicePath@C:\Users\Xavie\.android\avd\Pixel_4_XL_API_30.avd" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-05-05T21:41:00.660629900Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="VirtualDevicePath@C:\Users\Xavie\.android\avd\Pixel_3a_API_30_x86.avd" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-05-13T15:44:30.362817700Z" />
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -532,7 +526,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620246996802</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Activity login">
+      <created>1620852402159</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1620852402159</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -559,7 +560,8 @@
     <MESSAGE value="Retoques Calendar activity, refactorizada la barra de menu.&#10;reajustado todos los botones" />
     <MESSAGE value="Creado nuevo Menu deplegable, con mas funcionabilidad" />
     <MESSAGE value="Añadido imagenes colores y funcionabilidad." />
-    <option name="LAST_COMMIT_MESSAGE" value="Añadido imagenes colores y funcionabilidad." />
+    <MESSAGE value="Activity login" />
+    <option name="LAST_COMMIT_MESSAGE" value="Activity login" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2536" y="233" key="#PSD" timestamp="1618161947478">
@@ -590,10 +592,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="540" y="262" key="AndroidCreateResourceFileDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1619202319677" />
-    <state x="571" y="95" key="CommitChangelistDialog2" timestamp="1620246996141">
+    <state x="571" y="40" key="CommitChangelistDialog2" timestamp="1620852401498">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="571" y="95" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1620246996141" />
+    <state x="571" y="40" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1620852401498" />
     <state width="430" height="466" key="DebuggerActiveHint" timestamp="1619199694031">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

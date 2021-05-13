@@ -67,30 +67,15 @@
     <ImageView
         android:id="@+id/iv_gameSource2"
         android:layout_width="wrap_content"
-        android:layout_height="339dp"
+        android:layout_height="276dp"
         android:alpha="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/logorelleno" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="151dp"
-        android:layout_marginEnd="172dp"
-        android:text="@string/cuenta"
-        android:textColor="@color/black_GameSource"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.643" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_googgle"
@@ -120,7 +105,7 @@
         app:layout_constraintHorizontal_bias="0.091"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.419" />
+        app:layout_constraintVertical_bias="0.401" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_email"
@@ -136,29 +121,14 @@
         android:padding="7dp"
         android:pointerIcon="text"
         android:textColor="@color/orange_GameSource"
-        android:textColorHint="@color/white_GameSource"
+        android:textColorHint="@android:color/darker_gray"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.459" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_pass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text="@string/passTV"
-        android:textColor="@color/white_GameSource"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.106"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.516" />
+        app:layout_constraintVertical_bias="0.44" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_Password"
@@ -175,7 +145,7 @@
         android:padding="7dp"
         android:pointerIcon="text"
         android:textColor="@color/orange_GameSource"
-        android:textColorHint="@color/white_GameSource"
+        android:textColorHint="@android:color/darker_gray"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -183,6 +153,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.557" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="@string/passTV"
+        android:textColor="@color/white_GameSource"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.515" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_login"
+        android:layout_width="179dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="151dp"
+        android:layout_marginEnd="172dp"
+        android:text="@string/cuenta"
+        android:textColor="@color/black_GameSource"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.395"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.66" />
 
     <View
         android:id="@+id/divider"
@@ -230,10 +230,10 @@
         android:textColor="@color/gray_GameSource"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.911" />
+        app:layout_constraintVertical_bias="0.885" />
 
     <TextView
         android:id="@+id/tv_Registrate"
@@ -241,12 +241,13 @@
         android:layout_height="wrap_content"
         android:text="@string/registerBTN"
         android:textColor="@color/white_GameSource"
-        android:textStyle="bold"
         android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.934" />
+        app:layout_constraintVertical_bias="0.919" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
