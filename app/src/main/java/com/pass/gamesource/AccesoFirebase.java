@@ -13,7 +13,6 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AccesoFirebase {
 
@@ -22,17 +21,19 @@ public class AccesoFirebase {
 
     public static void obtenerVideojuegosGratis(ActualizarVideojuegosGratis a) {
         Log.d("MENSAJE", "Obteniendo datos de Firebase...");
-        List<Videojuego> videojuegosGratis = new ArrayList<Videojuego>();
+        ArrayList<Videojuego> videojuegosGratis = new ArrayList<Videojuego>();
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for (DataSnapshot esnapshot : snapshot.getChildren()) {
                     for (DataSnapshot eesnapshot : esnapshot.getChildren()) {
-                        Log.d("MENSAJE", eesnapshot.getValue(Videojuego.class).toString());
+
+                        videojuegosGratis.add(eesnapshot.getValue(Videojuego.class));
                     }
 
                 }
                 //Log.d("MENSAJE", snapshot.getValue(Videojuego.class).toString());
+                a.recuperarVideojuegos(videojuegosGratis);
             }
 
             @Override

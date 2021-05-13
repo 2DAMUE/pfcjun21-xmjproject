@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosGratis {
     MainActivity context = this;
@@ -33,8 +32,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.img_Calendar_Logo).setOnClickListener(this);
 
         //Creamos el ArrayList con todos los videojuegos para que se muestren en el Recycler
-        ArrayList<Videojuego> listaVideojuegos = new ArrayList<Videojuego>();
 
+/*
         listaVideojuegos.add(new Videojuego("No man's Sky", "Exploración y aventura a saco paco", "https://store-images.s-microsoft.com/image/apps.15909.68818099466568894.ac2f77eb-933c-43dd-9097-146a94c389a9.2490b939-a2cb-41b7-8816-8792d37a5338"));
         listaVideojuegos.add(new Videojuego("Albion Online", "MMORPG", "https://videoguejos.com/wp-content/uploads/2018/05/Albion-Online.png"));
         listaVideojuegos.add(new Videojuego("Call of duty", "FPS", "https://image.api.playstation.com/vulcan/img/cfn/11307CjjUZ9rA_whmJUghJsG9Hl1-rmnOUTk3-nccj01ZpYMCHrJ8k8kzBrVyp-p-iCPej73TEJAs88ZBeiZ1uirtj0fsa16.png"));
@@ -44,17 +43,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         listaVideojuegos.add(new Videojuego("cities Skylines", "Juego de contrucción de ciudades", "https://cdn2.unrealengine.com/egs-citiesskylines-colossalorder-s5-1920x1080-689706625.jpg?h=1080&resize=1&w=1920"));
         listaVideojuegos.add(new Videojuego("Asseto Corsa", "Juego de simulación de conducción", "https://image.api.playstation.com/cdn/EP4040/CUSA01797_00/NMcAucyANMnYMNkz6V5vk9f5YXty2mCz.png"));
         listaVideojuegos.add(new Videojuego("Euro Truck Simulator", "Juego de simulación de conducción de camiones", "https://s1.gaming-cdn.com/images/products/309/orig/euro-truck-simulator-2-cover.jpg"));
-
+*/
         ImageView ivMain = findViewById(R.id.JuegoPrincipal);
         Glide.with(this)
                 .load("https://firebasestorage.googleapis.com/v0/b/gamesource-9bc51.appspot.com/o/epic_free%2FAlien%3A%20Isolation%20.JPEG?alt=media")
                 .centerCrop().into(ivMain);
-
-        RecyclerView recyclerView = findViewById(R.id.recyclerMain);
-        RecyclerView.LayoutManager gestor = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-        AdaptadorRecyclerMain adaptador = new AdaptadorRecyclerMain(listaVideojuegos, this);
-        recyclerView.setLayoutManager(gestor);
-        recyclerView.setAdapter(adaptador);
 
 
     }
@@ -115,7 +108,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     @Override
-    public void recuperarVideojuegos(List<Videojuego> videojuegos) {
+    public void recuperarVideojuegos(ArrayList<Videojuego> videojuegos) {
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerMain);
+        RecyclerView.LayoutManager gestor = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        AdaptadorRecyclerMain adaptador = new AdaptadorRecyclerMain(videojuegos, this);
+        recyclerView.setLayoutManager(gestor);
+        recyclerView.setAdapter(adaptador);
         Log.d("MENSAJE", videojuegos.toString());
     }
 }
