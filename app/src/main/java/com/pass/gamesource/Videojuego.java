@@ -6,6 +6,7 @@ public class Videojuego {
     private String nombre;
     private String descripcion;
     private String image_url;
+    private String plataforma;
     private String url_origen;
     private List<String> fechas;
     private int img;
@@ -18,7 +19,7 @@ public class Videojuego {
         this.img = img;
     }
 
-    public Videojuego(String nombre, String descripcion, String fecha,int img) {
+    public Videojuego(String nombre, String descripcion, String fecha, int img) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.img = img;
@@ -58,6 +59,14 @@ public class Videojuego {
         this.descripcion = descripcion;
     }
 
+    public String getPlataforma() {
+        return plataforma;
+    }
+
+    public void setPlataforma(String plataforma) {
+        this.plataforma = plataforma;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -85,11 +94,12 @@ public class Videojuego {
     @Override
     public String toString() {
         return "Videojuego{" +
-                "titulo='" + nombre + '\'' +
+                "nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
-                ", uriFoto='" + image_url + '\'' +
-                ", uriEnlace='" + url_origen + '\'' +
-                ", fecha=" + fechas.toString() +
+                ", image_url='" + image_url + '\'' +
+                ", plataforma='" + plataforma + '\'' +
+                ", url_origen='" + url_origen + '\'' +
+                ", fechas=" + fechas +
                 ", img=" + img +
                 '}';
     }
