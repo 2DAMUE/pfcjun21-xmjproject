@@ -1,15 +1,25 @@
 <resources>
     <string name="app_name">GameSource</string>
-    <string name="back">&lt; <b>volver</b></string>
-    <string name="options"><b>Opciones</b></string>
-    <string name="notification"><b>Notificaciones</b></string>
-    <string name="account"><b>Cuenta</b></string>
-    <string name="help"><b>Ayuda</b></string>
-    <string name="latest_Game">Juego destacado</string>
-    <string name="priceAlert">Precio</string>
+    <string name="Volver">&lt; <b>volver</b></string>
+    <string name="opciones"><b>Opciones</b></string>
+    <string name="notificaciones"><b>Notificaciones</b></string>
+    <string name="cuenta"><b>Cuenta</b></string>
+    <string name="ayuda"><b>Ayuda</b></string>
+    <string name="juego_destacado">Juego destacado</string>
+    <string name="juegoDestacado">Juego Destacado</string>
+    <string name="stringPrecioAlert">Precio</string>
     <string name="copyright">© GameSource - GameSource.es \n Universida Europea</string>
     <string name="social">Social:</string>
     <string name="share">Comparte</string>
+    <string name="emailTV"><b>EMAIL</b></string>
+    <string name="emailHint"><b>Introduce un Email</b></string>
+    <string name="passTV"><b>CONTRASEÑA</b></string>
+    <string name="passHint"><b>Introduce una contraseña</b></string>
+    <string name="socialLogin"><b>Social</b></string>
+    <string name="dontHaveAccount"><b>¿No tienes una cuenta?</b></string>
+    <string name="registerBTN"><b><u>Registrate</u></b></string>
+
+
     <string name="send">Enviar</string>
     <string name="rate">Danos tu opinion</string>
     <string name="sameActivity">¡Ya estás aquí!</string>

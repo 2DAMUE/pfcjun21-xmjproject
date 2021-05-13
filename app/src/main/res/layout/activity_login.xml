@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="@color/black_GameSource">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="-500dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="879dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="-20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="999dp" />
+
+    <ImageView
+        android:id="@+id/iv_fondo_logoG"
+        android:layout_width="2159dp"
+        android:layout_height="510dp"
+        android:layout_marginStart="390dp"
+        android:layout_marginTop="200dp"
+        android:alpha="0.1"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHDown"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVRight"
+        app:layout_constraintHorizontal_bias="0.012"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVLeft"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHUp"
+        app:layout_constraintVertical_bias="0.537"
+        app:srcCompat="@drawable/gamesinfondo" />
+
+    <ImageView
+        android:id="@+id/iv_fondo_logoS"
+        android:layout_width="1210dp"
+        android:layout_height="1550dp"
+        android:layout_marginTop="1200dp"
+        android:layout_marginEnd="880dp"
+        android:alpha="0.1"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHDown"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVRight"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHUp"
+        app:layout_constraintVertical_bias="0.767"
+        app:srcCompat="@drawable/sourcesinfondo" />
+
+    <ImageView
+        android:id="@+id/iv_gameSource2"
+        android:layout_width="wrap_content"
+        android:layout_height="276dp"
+        android:alpha="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/logorelleno" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_googgle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="151dp"
+        android:layout_marginEnd="172dp"
+        android:text="Google temporal"
+        android:textColor="@color/black_GameSource"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.393"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.789" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="@string/emailTV"
+        android:textColor="@color/white_GameSource"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.091"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.401" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:autoLink="email"
+        android:background="@drawable/round"
+        android:backgroundTint="@color/gray_GameSource"
+        android:hint="@string/emailHint"
+        android:inputType="textEmailAddress"
+        android:padding="7dp"
+        android:pointerIcon="text"
+        android:textColor="@color/orange_GameSource"
+        android:textColorHint="@android:color/darker_gray"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.44" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_Password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:autoLink="email"
+        android:background="@drawable/round"
+        android:backgroundTint="@color/gray_GameSource"
+        android:ems="12"
+        android:hint="@string/passHint"
+        android:inputType="textPassword"
+        android:padding="7dp"
+        android:pointerIcon="text"
+        android:textColor="@color/orange_GameSource"
+        android:textColorHint="@android:color/darker_gray"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.557" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="@string/passTV"
+        android:textColor="@color/white_GameSource"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.515" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_login"
+        android:layout_width="179dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="151dp"
+        android:layout_marginEnd="172dp"
+        android:text="@string/cuenta"
+        android:textColor="@color/black_GameSource"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.395"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.66" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="@color/white_GameSource"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.702" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="@color/white_GameSource"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.723" />
+
+    <TextView
+        android:id="@+id/tv_socialLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/socialLogin"
+        android:textColor="@color/gray_GameSource"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.717" />
+
+    <TextView
+        android:id="@+id/tv_dontHaveAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dontHaveAccount"
+        android:textColor="@color/gray_GameSource"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.885" />
+
+    <TextView
+        android:id="@+id/tv_Registrate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/registerBTN"
+        android:textColor="@color/white_GameSource"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.919" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
