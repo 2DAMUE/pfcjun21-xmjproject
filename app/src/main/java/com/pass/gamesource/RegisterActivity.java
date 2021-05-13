@@ -9,14 +9,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView iv_fondo_logoG, iv_fondo_logoS;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
+        setContentView(R.layout.activity_register);
         /**
          * implements and starts animations
          */
@@ -27,25 +25,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         iv_fondo_logoG.startAnimation(animLeftlogoG);
         iv_fondo_logoS.startAnimation(animRightlogoS);
 
-        findViewById(R.id.btn_login).setOnClickListener(this);
-        findViewById(R.id.tv_Register).setOnClickListener(this);
-
+        findViewById(R.id.btn_registrarse).setOnClickListener(this);
+        findViewById(R.id.tv_back).setOnClickListener(this);
 
     }
-
-
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_login:
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.tv_Register:
-                Intent intent1 = new Intent(LoginActivity.this, RegisterActivity.class);
+            case R.id.btn_registrarse:
+                Intent intent1 = new Intent(RegisterActivity.this, MainActivity.class);
                 startActivity(intent1);
+                break;
+            case R.id.tv_back:
+                Intent intent2 = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent2);
                 break;
         }
     }

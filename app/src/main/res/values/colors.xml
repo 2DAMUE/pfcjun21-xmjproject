@@ -8,6 +8,6 @@
     <color name="black_GameSource">#FF000000</color>
     <color name="white_GameSource">#FFFFFFFF</color>
     <color name="orange_GameSource">#FFA90A</color>
-    <color name="gray_GameSource">#707070</color>
-    <color name="grayligh_GameSource">#8F8C8C</color>
+    <color name="gray_GameSource">#2B2A2A</color>
+    <color name="grayligh_GameSource">#3A3939</color>
 </resources>
