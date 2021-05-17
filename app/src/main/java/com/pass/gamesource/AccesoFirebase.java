@@ -44,4 +44,44 @@ public class AccesoFirebase {
 
     }
 
+    public static void obtenerVideojuegosPS(ActualizarVideojuegosEpic a) {
+        ArrayList<Videojuego> videojuegosEpic = new ArrayList<Videojuego>();
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for (DataSnapshot esnapshot : snapshot.child("ps_store_free").getChildren()) {
+                    videojuegosEpic.add(esnapshot.getValue(Videojuego.class));
+                }
+
+                //Log.d("MENSAJE", snapshot.getValue(Videojuego.class).toString());
+                a.recuperarVideojuegosEpic(videojuegosEpic);
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    public static void obtenerVideojuegosSteam(ActualizarVideojuegosEpic a) {
+        ArrayList<Videojuego> videojuegosEpic = new ArrayList<Videojuego>();
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for (DataSnapshot esnapshot : snapshot.child("steam_free").getChildren()) {
+                    videojuegosEpic.add(esnapshot.getValue(Videojuego.class));
+                }
+
+                //Log.d("MENSAJE", snapshot.getValue(Videojuego.class).toString());
+                a.recuperarVideojuegosEpic(videojuegosEpic);
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+    }
+
 }
