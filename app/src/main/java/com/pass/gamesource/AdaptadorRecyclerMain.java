@@ -38,16 +38,16 @@ public class AdaptadorRecyclerMain extends RecyclerView.Adapter<AdaptadorRecycle
     @Override
     public void onBindViewHolder(@NonNull MiContenedorDeVistas holder, int position) {
         Videojuego juego = listaVideojuegos.get(position);
-        Log.d("mensaje", juego.toString());
-        Glide.with(holder.vista).load(juego.getUri()).centerCrop().into(holder.ivJuego);
+        //Log.d("mensaje", juego.toString());
+        Glide.with(holder.vista).load(juego.getImage_url()).centerCrop().into(holder.ivJuego);
         holder.ivJuego.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 main.mostrarAlertDialog(juego, main);
             }
         });
-        holder.tvTitulo.setText(juego.getTitulo());
-        Log.d("Contenedor", "Vinculando position " + position);
+        holder.tvTitulo.setText(juego.getNombre());
+        //Log.d("Contenedor", "Vinculando position " + position);
     }
 
     @Override

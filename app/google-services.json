@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "204253438311",
+    "firebase_url": "https://gamesource-9bc51-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "gamesource-9bc51",
+    "storage_bucket": "gamesource-9bc51.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204253438311:android:123f3c07b8615fc9b10fc2",
+        "android_client_info": {
+          "package_name": "com.pass.gamesource"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "204253438311-f18jkgnbq47rlc0i1t03tfpgmff591jt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGGgUA9uMHrhXDPzwTYEYmVD7N6CcOh_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "204253438311-f18jkgnbq47rlc0i1t03tfpgmff591jt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
