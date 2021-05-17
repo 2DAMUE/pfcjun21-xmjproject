@@ -4,6 +4,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,8 +48,15 @@ public class AdaptadorRecyclerMain extends RecyclerView.Adapter<AdaptadorRecycle
                 main.mostrarAlertDialog(juego, main);
             }
         });
+        /**
+         * Animacion Recycler
+         */
+        Animation animation = AnimationUtils.loadAnimation(main, R.anim.item_fall_down);
+        holder.vista.startAnimation(animation);
         holder.tvTitulo.setText(juego.getNombre());
         //Log.d("Contenedor", "Vinculando position " + position);
+
+
     }
 
     @Override
@@ -65,9 +74,15 @@ public class AdaptadorRecyclerMain extends RecyclerView.Adapter<AdaptadorRecycle
             this.ivJuego = vista.findViewById(R.id.imagenJuegoRecyclerMain);
             this.tvTitulo = vista.findViewById(R.id.tvTituloJuegoRecycler);
             this.vista = vista;
+
+
+
+
+        }
         }
 
     }
 
 
-}
+
+

@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .load("https://firebasestorage.googleapis.com/v0/b/gamesource-9bc51.appspot.com/o/epic_free%2FAlien%3A%20Isolation%20.JPEG?alt=media")
                 .centerCrop().into(ivMain);
 
-
     }
 
     public void mostrarAlertDialog(Videojuego v, MainActivity view) {
@@ -103,9 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
 
-
     }
-
 
     @Override
     public void recuperarVideojuegos(ArrayList<Videojuego> videojuegos) {

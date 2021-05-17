@@ -23,7 +23,6 @@ public class AdaptadorSearch extends RecyclerView.Adapter<AdaptadorSearch.ViewHo
         this.activity = activity;
         this.listaJuegos = listaJuegos;
     }
-
     /**
      * Creamos la vista
      *

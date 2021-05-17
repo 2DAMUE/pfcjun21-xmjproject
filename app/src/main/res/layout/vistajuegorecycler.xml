@@ -10,6 +10,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTituloJuegoRecycler"
+        android:layoutAnimation="@anim/top_down"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
