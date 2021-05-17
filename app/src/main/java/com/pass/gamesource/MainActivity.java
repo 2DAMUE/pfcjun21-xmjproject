@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         AccesoFirebase.obtenerVideojuegosGratis(this);
         AccesoFirebase.obtenerVideojuegosPS(this);
+        AccesoFirebase.obtenerVideojuegosSteam(this);
         context = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -129,11 +130,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void recuperarVideojuegosSteam(ArrayList<Videojuego> videojuegos) {
 
 
-        RecyclerView recyclerViewSteam = findViewById(R.id.recyclerMainSoftware);
+        RecyclerView recyclerViewSteam = findViewById(R.id.recyclerMainSteam);
         RecyclerView.LayoutManager gestorSteam = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         AdaptadorRecyclerMain adaptadorSteam = new AdaptadorRecyclerMain(videojuegos, this);
         recyclerViewSteam.setLayoutManager(gestorSteam);
         recyclerViewSteam.setAdapter(adaptadorSteam);
+
+        Log.d("MENSAJE EPIC", videojuegos.toString());
 
     }
 }

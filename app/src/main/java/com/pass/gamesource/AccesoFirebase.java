@@ -64,17 +64,17 @@ public class AccesoFirebase {
         });
     }
 
-    public static void obtenerVideojuegosSteam(ActualizarVideojuegosEpic a) {
-        ArrayList<Videojuego> videojuegosEpic = new ArrayList<Videojuego>();
+    public static void obtenerVideojuegosSteam(ActualizarVideojuegosSteam a) {
+        ArrayList<Videojuego> videojuegosSteam = new ArrayList<Videojuego>();
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for (DataSnapshot esnapshot : snapshot.child("steam_free").getChildren()) {
-                    videojuegosEpic.add(esnapshot.getValue(Videojuego.class));
+                    videojuegosSteam.add(esnapshot.getValue(Videojuego.class));
                 }
 
                 //Log.d("MENSAJE", snapshot.getValue(Videojuego.class).toString());
-                a.recuperarVideojuegosEpic(videojuegosEpic);
+                a.recuperarVideojuegosSteam(videojuegosSteam);
             }
 
             @Override
