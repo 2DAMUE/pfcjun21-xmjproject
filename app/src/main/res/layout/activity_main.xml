@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainActivityContex"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black_GameSource"
@@ -12,11 +13,28 @@
         android:layout_width="410dp"
         android:layout_height="0dp"
         android:contentDescription="@string/latestGame"
+        app:layout_constraintBottom_toTopOf="@id/recyclerMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/recyclerMain"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/gamesuelto" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/myswipe"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <View
         android:id="@+id/view"
@@ -132,6 +150,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent=".75" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

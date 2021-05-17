@@ -27,7 +27,7 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_option);
-        menuLateral();
+
 
         /**
          * Declaracion de los botones
@@ -47,7 +47,7 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
         findViewById(R.id.img_Historial_Logo).setOnClickListener(this);
         findViewById(R.id.img_Calendar_Logo).setOnClickListener(this);
 
-
+        menuLateral();
     }
 
 

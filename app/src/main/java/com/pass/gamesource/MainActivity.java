@@ -6,24 +6,32 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosGratis {
     MainActivity context = this;
-
+private SwipeRefreshLayout swipeLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AccesoFirebase.obtenerVideojuegosGratis(context);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        swipeLayout = findViewById(R.id.myswipe);
+        swipeLayout.setOnRefreshListener(mOnRefreshListener);
+
 
 
         findViewById(R.id.img_Home_Logo).setOnClickListener(this);
@@ -73,6 +81,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         alert.show();
     }
 
+    @Override
+    public void recuperarVideojuegos(ArrayList<Videojuego> videojuegos) {
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerMain);
+        RecyclerView.LayoutManager gestor = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        AdaptadorRecyclerMain adaptador = new AdaptadorRecyclerMain(videojuegos, this);
+        recyclerView.setLayoutManager(gestor);
+        recyclerView.setAdapter(adaptador);
+        Log.d("MENSAJE", videojuegos.toString());
+    }
+
+    protected SwipeRefreshLayout.OnRefreshListener mOnRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
+
+        @Override
+        public void onRefresh() {
+            AccesoFirebase.obtenerVideojuegosGratis(context);
+            Toast.makeText(MainActivity.this, "Actualizado", Toast.LENGTH_SHORT).show();
+
+            swipeLayout.setRefreshing(false);
+
+
+        }
+
+    };
     /**
      * navigation Bar
      */
@@ -104,14 +136,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    @Override
-    public void recuperarVideojuegos(ArrayList<Videojuego> videojuegos) {
-
-        RecyclerView recyclerView = findViewById(R.id.recyclerMain);
-        RecyclerView.LayoutManager gestor = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-        AdaptadorRecyclerMain adaptador = new AdaptadorRecyclerMain(videojuegos, this);
-        recyclerView.setLayoutManager(gestor);
-        recyclerView.setAdapter(adaptador);
-        Log.d("MENSAJE", videojuegos.toString());
-    }
 }
+
+
+

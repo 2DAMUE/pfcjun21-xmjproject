@@ -31,8 +31,6 @@ public class AdaptadorRecyclerMain extends RecyclerView.Adapter<AdaptadorRecycle
     public MiContenedorDeVistas onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.vistajuegorecycler, parent, false);
         MiContenedorDeVistas contenedor = new MiContenedorDeVistas(vista);
-        ImageView ivJuego = vista.findViewById(R.id.imagenJuegoRecyclerMain);
-        TextView tvTitulo = vista.findViewById(R.id.tvTituloJuegoRecycler);
         Log.d("Contenedor", "Creando contenedor de vistas...");
         return contenedor;
     }
@@ -55,7 +53,6 @@ public class AdaptadorRecyclerMain extends RecyclerView.Adapter<AdaptadorRecycle
         holder.vista.startAnimation(animation);
         holder.tvTitulo.setText(juego.getNombre());
         //Log.d("Contenedor", "Vinculando position " + position);
-
 
     }
 

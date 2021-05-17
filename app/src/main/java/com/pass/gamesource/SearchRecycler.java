@@ -2,6 +2,7 @@ package com.pass.gamesource;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -13,12 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 
 import org.jetbrains.annotations.NotNull;
@@ -26,32 +29,16 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 public class SearchRecycler extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener,
-        DrawerLayout.DrawerListener {
+        DrawerLayout.DrawerListener, ActualizarVideojuegosGratis {
 
-    private ArrayList<Videojuego> listaJuegos;
-    private RecyclerView recyclerViewJuegos;
+    SearchRecycler context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AccesoFirebase.obtenerVideojuegosGratis(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_recycler);
-        menuLateral();
-
-
-/**
- * Declaracion del array y el Recycler
- */
-        listaJuegos = new ArrayList<>();
-        recyclerViewJuegos = findViewById(R.id.recyclerJuegosActivity);
-        recyclerViewJuegos.setLayoutManager(new LinearLayoutManager(this));
-
-        loadGames();
-        /**
-         * Pasamos el array con los datos al adaptador del Recycler
-         */
-        AdaptadorSearch adapter = new AdaptadorSearch(this, listaJuegos);
-        recyclerViewJuegos.setAdapter(adapter);
-
+        //menuLateral();
         /**
          * Declaracion de los botones
          */
@@ -65,29 +52,29 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
     /**
      * Cargamos el array de donde el Recycler leera los datos
      */
-    private void loadGames() {
-        listaJuegos.add(new Videojuego("Final Fantasy VII", "Juego de fantasya VII RPG", "3/04/1985", R.drawable.finalfantasyvii));
-        listaJuegos.add(new Videojuego("RocketLeague", "RocketLeague", "3/04/1985", R.drawable.rocketleague));
-        listaJuegos.add(new Videojuego("Kena", "Kena", "3/04/1985", R.drawable.kena));
-        listaJuegos.add(new Videojuego("GTAV", "GTAV", "3/04/1985", R.drawable.gtav));
-        listaJuegos.add(new Videojuego("HoodOutlaws", "HoodOutlaws", "3/04/1985", R.drawable.hoodoutlaws));
-        listaJuegos.add(new Videojuego("Final Fantasy VII", "Juego de fantasya VII RPG", "3/04/1985", R.drawable.finalfantasyvii));
-        listaJuegos.add(new Videojuego("LostWords", "LostWords", "3/04/1985", R.drawable.lostwords));
-        listaJuegos.add(new Videojuego("RocketLeague", "RocketLeague", "3/04/1985", R.drawable.rocketleague));
-        listaJuegos.add(new Videojuego("Kena", "Kena", "3/04/1985", R.drawable.kena));
-        listaJuegos.add(new Videojuego("GTAV", "GTAV", "3/04/1985", R.drawable.gtav));
-        listaJuegos.add(new Videojuego("Final Fantasy VII", "Juego de fantasya VII RPG", "3/04/1985", R.drawable.finalfantasyvii));
-        listaJuegos.add(new Videojuego("RocketLeague", "RocketLeague", "3/04/1985", R.drawable.rocketleague));
-        listaJuegos.add(new Videojuego("Kena", "Kena", "3/04/1985", R.drawable.kena));
-        listaJuegos.add(new Videojuego("GTAV", "GTAV", "3/04/1985", R.drawable.gtav));
-        listaJuegos.add(new Videojuego("HoodOutlaws", "HoodOutlaws", "3/04/1985", R.drawable.hoodoutlaws));
-        listaJuegos.add(new Videojuego("Final Fantasy VII", "Juego de fantasya VII RPG", "3/04/1985", R.drawable.finalfantasyvii));
-        listaJuegos.add(new Videojuego("LostWords", "LostWords", "3/04/1985", R.drawable.lostwords));
-        listaJuegos.add(new Videojuego("RocketLeague", "RocketLeague", "3/04/1985", R.drawable.rocketleague));
-        listaJuegos.add(new Videojuego("Kena", "Kena", "3/04/1985", R.drawable.kena));
-        listaJuegos.add(new Videojuego("GTAV", "GTAV", "3/04/1985", R.drawable.gtav));
-
-    }
+//    private void loadGames() {
+//        listaJuegos.add(new Videojuego("Final Fantasy VII", "Juego de fantasya VII RPG", "3/04/1985", R.drawable.finalfantasyvii));
+//        listaJuegos.add(new Videojuego("RocketLeague", "RocketLeague", "3/04/1985", R.drawable.rocketleague));
+//        listaJuegos.add(new Videojuego("Kena", "Kena", "3/04/1985", R.drawable.kena));
+//        listaJuegos.add(new Videojuego("GTAV", "GTAV", "3/04/1985", R.drawable.gtav));
+//        listaJuegos.add(new Videojuego("HoodOutlaws", "HoodOutlaws", "3/04/1985", R.drawable.hoodoutlaws));
+//        listaJuegos.add(new Videojuego("Final Fantasy VII", "Juego de fantasya VII RPG", "3/04/1985", R.drawable.finalfantasyvii));
+//        listaJuegos.add(new Videojuego("LostWords", "LostWords", "3/04/1985", R.drawable.lostwords));
+//        listaJuegos.add(new Videojuego("RocketLeague", "RocketLeague", "3/04/1985", R.drawable.rocketleague));
+//        listaJuegos.add(new Videojuego("Kena", "Kena", "3/04/1985", R.drawable.kena));
+//        listaJuegos.add(new Videojuego("GTAV", "GTAV", "3/04/1985", R.drawable.gtav));
+//        listaJuegos.add(new Videojuego("Final Fantasy VII", "Juego de fantasya VII RPG", "3/04/1985", R.drawable.finalfantasyvii));
+//        listaJuegos.add(new Videojuego("RocketLeague", "RocketLeague", "3/04/1985", R.drawable.rocketleague));
+//        listaJuegos.add(new Videojuego("Kena", "Kena", "3/04/1985", R.drawable.kena));
+//        listaJuegos.add(new Videojuego("GTAV", "GTAV", "3/04/1985", R.drawable.gtav));
+//        listaJuegos.add(new Videojuego("HoodOutlaws", "HoodOutlaws", "3/04/1985", R.drawable.hoodoutlaws));
+//        listaJuegos.add(new Videojuego("Final Fantasy VII", "Juego de fantasya VII RPG", "3/04/1985", R.drawable.finalfantasyvii));
+//        listaJuegos.add(new Videojuego("LostWords", "LostWords", "3/04/1985", R.drawable.lostwords));
+//        listaJuegos.add(new Videojuego("RocketLeague", "RocketLeague", "3/04/1985", R.drawable.rocketleague));
+//        listaJuegos.add(new Videojuego("Kena", "Kena", "3/04/1985", R.drawable.kena));
+//        listaJuegos.add(new Videojuego("GTAV", "GTAV", "3/04/1985", R.drawable.gtav));
+//
+//    }
 
     /**
      * Oyente de botones
@@ -119,6 +106,37 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
                 break;
         }
     }
+    @Override
+    public void recuperarVideojuegos(ArrayList<Videojuego> videojuegos) {
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerJuegosActivity);
+        RecyclerView.LayoutManager gestor = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+        AdaptadorSearch adaptador = new AdaptadorSearch(videojuegos, this);
+        recyclerView.setLayoutManager(gestor);
+        recyclerView.setAdapter(adaptador);
+        Log.d("MENSAJE", videojuegos.toString());
+    }
+    public void mostrarAlertDialog(Videojuego v, SearchRecycler view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(view);
+        AlertDialog alert = builder.create();
+        View view2 = getLayoutInflater().inflate(R.layout.alertdialogmain, null, false);
+
+        alert.setView(view2);
+        builder.setView(view2);
+
+        TextView tvNombre = view2.findViewById(R.id.nombreAlert);
+        TextView tvDescripcion = view2.findViewById(R.id.descripcionAlert);
+        TextView tvPrecio = view2.findViewById(R.id.precioAlert);
+        ImageView imagenAlert = view2.findViewById(R.id.imagenJuego);
+
+        Glide.with(view).load(v.getImage_url()).centerCrop().into(imagenAlert);
+
+        tvDescripcion.setText(v.getDescripcion());
+        tvNombre.setText(v.getNombre());
+
+        //builder.show();
+        alert.show();
+    }
     /**
      * Menu lateral
      * inicializacion
@@ -126,21 +144,21 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
 
-    public void menuLateral() {
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-
-        drawerLayout = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawerLayout, toolbar, R.string.app_name,
-                R.string.app_name);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-
-
-        navigationView = findViewById(R.id.navigation_view);
-        navigationView.setNavigationItemSelectedListener(this);
+//    public void menuLateral() {
+//
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+//
+//        drawerLayout = findViewById(R.id.drawer_layout);
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+//                this, drawerLayout, toolbar, R.string.app_name,
+//                R.string.app_name);
+//        drawerLayout.addDrawerListener(toggle);
+//        toggle.syncState();
+//
+//
+//        navigationView = findViewById(R.id.navigation_view);
+//        navigationView.setNavigationItemSelectedListener(this);
 
 
 
@@ -151,38 +169,38 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
 //        onNavigationItemSelected(menuItem);
 //        menuItem.setChecked(true);
 
-        drawerLayout.addDrawerListener(this);
+//        drawerLayout.addDrawerListener(this);
 /**
  *  mensaje al clickear en el copyright
  */
-        View header = navigationView.getHeaderView(0);
-        header.findViewById(R.id.copyright).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(SearchRecycler.this, getString(R.string.copyright),
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+//        View header = navigationView.getHeaderView(0);
+//        header.findViewById(R.id.copyright).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(SearchRecycler.this, getString(R.string.copyright),
+//                        Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
 
     /**
      * Comportamiento al abrir o cerrar el menu
      */
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    /**
-     * Botones de navegacion y sus funciones
-     *
-     * @param menuItem
-     * @return
-     */
+//    @Override
+//    public void onBackPressed() {
+//        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+//            drawerLayout.closeDrawer(GravityCompat.START);
+//        } else {
+//            super.onBackPressed();
+//        }
+//    }
+//
+//    /**
+//     * Botones de navegacion y sus funciones
+//     *
+//     * @param menuItem
+//     * @return
+//     */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
