@@ -37,4 +37,5 @@
     <string name="signIn"><b>Entrar</b></string>
     <string name="signUp"><b>Registrarse</b></string>
     <string name="tool"><b>Herramientas</b></string>
+    <string name="updateToast"><b>Actualizado</b></string>
 </resources>

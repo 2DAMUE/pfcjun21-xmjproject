@@ -7,25 +7,33 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosGratis {
-    Context context = this;
-
+    MainActivity context = this;
+private SwipeRefreshLayout swipeLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AccesoFirebase.obtenerVideojuegosGratis(this);
         context = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        swipeLayout = findViewById(R.id.myswipe);
+        swipeLayout.setOnRefreshListener(mOnRefreshListener);
+
 
 
         findViewById(R.id.img_Home_Logo).setOnClickListener(this);
@@ -40,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Glide.with(this)
                 .load("https://firebasestorage.googleapis.com/v0/b/gamesource-9bc51.appspot.com/o/epic_free%2FAlien%3A%20Isolation%20.JPEG?alt=media")
                 .centerCrop().into(ivMain);
-
 
     }
 
@@ -66,6 +73,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         alert.show();
     }
 
+    protected SwipeRefreshLayout.OnRefreshListener mOnRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
+
+        @Override
+        public void onRefresh() {
+            AccesoFirebase.obtenerVideojuegosGratis(context);
+            Toast.makeText(MainActivity.this, "Actualizado", Toast.LENGTH_SHORT).show();
+
+            swipeLayout.setRefreshing(false);
+
+
+        }
+
+    };
     /**
      * navigation Bar
      */
@@ -95,8 +115,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
 
-
     }
+
+}
 
 
     @Override

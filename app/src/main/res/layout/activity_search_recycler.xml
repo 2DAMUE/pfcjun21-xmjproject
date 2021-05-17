@@ -28,7 +28,7 @@
         android:id="@+id/view_search"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/recyclerJuegosActivity"
+        android:layout_above="@id/recyclerJuegosActivity"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="15dp"
         android:layout_marginTop="95dp"
@@ -40,45 +40,6 @@
         app:layout_constraintTop_toTopOf="parent" >
 
     </SearchView>
-
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawer_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        tools:layout_editor_absoluteX="396dp"
-        tools:layout_editor_absoluteY="90dp"
-        tools:openDrawer="start">
-
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navigation_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:fitsSystemWindows="false"
-            app:headerLayout="@layout/nav_header"
-            app:itemBackground="@drawable/drawer_background_selector"
-            app:itemIconTint="@drawable/drawer_selector"
-            app:itemTextColor="@drawable/drawer_selector"
-            app:menu="@menu/activity_home_navigation_drawer" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/home_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.drawerlayout.widget.DrawerLayout>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
