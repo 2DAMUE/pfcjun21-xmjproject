@@ -31,6 +31,8 @@ public class Videojuego {
         this.image_url = image_url;
     }
 
+
+
     public String getUrl_origen() {
         return url_origen;
     }
