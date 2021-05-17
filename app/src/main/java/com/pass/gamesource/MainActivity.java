@@ -76,6 +76,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onRefresh() {
             AccesoFirebase.obtenerVideojuegosGratis(context);
+            AccesoFirebase.obtenerVideojuegosPS(context);
+            AccesoFirebase.obtenerVideojuegosSteam(context);
             Toast.makeText(MainActivity.this, "Actualizado", Toast.LENGTH_SHORT).show();
 
             swipeLayout.setRefreshing(false);
