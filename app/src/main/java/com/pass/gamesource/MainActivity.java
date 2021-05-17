@@ -1,6 +1,5 @@
 package com.pass.gamesource;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,22 +8,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosGratis {
     MainActivity context = this;
-private SwipeRefreshLayout swipeLayout;
+    private SwipeRefreshLayout swipeLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AccesoFirebase.obtenerVideojuegosGratis(this);
@@ -33,7 +30,6 @@ private SwipeRefreshLayout swipeLayout;
         setContentView(R.layout.activity_main);
         swipeLayout = findViewById(R.id.myswipe);
         swipeLayout.setOnRefreshListener(mOnRefreshListener);
-
 
 
         findViewById(R.id.img_Home_Logo).setOnClickListener(this);
@@ -86,6 +82,7 @@ private SwipeRefreshLayout swipeLayout;
         }
 
     };
+
     /**
      * navigation Bar
      */
@@ -116,8 +113,6 @@ private SwipeRefreshLayout swipeLayout;
         }
 
     }
-
-}
 
 
     @Override
