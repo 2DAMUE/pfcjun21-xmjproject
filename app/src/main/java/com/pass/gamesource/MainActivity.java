@@ -18,13 +18,15 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosGratis {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosGratis, ActualizarVideojuegosSteam, ActualizarVideojuegosEpic {
     MainActivity context = this;
     private SwipeRefreshLayout swipeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AccesoFirebase.obtenerVideojuegosGratis(this);
+        AccesoFirebase.obtenerVideojuegosPS(this);
+        AccesoFirebase.obtenerVideojuegosSteam(this);
         context = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -112,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
 
+
     }
 
 
@@ -125,12 +128,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         recyclerView.setAdapter(adaptador);
 
 
-        RecyclerView recyclerViewSoftware = findViewById(R.id.recyclerMainSoftware);
-        RecyclerView.LayoutManager gestorSoftware = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-        AdaptadorRecyclerMain adaptadorSoftware = new AdaptadorRecyclerMain(videojuegos, this);
-        recyclerViewSoftware.setLayoutManager(gestorSoftware);
-        recyclerViewSoftware.setAdapter(adaptadorSoftware);
+        Log.d("MENSAJE NORMAL", videojuegos.toString());
+    }
 
-        Log.d("MENSAJE", videojuegos.toString());
+    @Override
+    public void recuperarVideojuegosEpic(ArrayList<Videojuego> videojuegos) {
+
+        RecyclerView recyclerViewEpic = findViewById(R.id.recyclerMainSoftware);
+        RecyclerView.LayoutManager gestorEpic = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        AdaptadorRecyclerMain adaptadorEpic = new AdaptadorRecyclerMain(videojuegos, this);
+        recyclerViewEpic.setLayoutManager(gestorEpic);
+        recyclerViewEpic.setAdapter(adaptadorEpic);
+
+        Log.d("MENSAJE EPIC", videojuegos.toString());
+    }
+
+    @Override
+    public void recuperarVideojuegosSteam(ArrayList<Videojuego> videojuegos) {
+
+
+        RecyclerView recyclerViewSteam = findViewById(R.id.recyclerMainSteam);
+        RecyclerView.LayoutManager gestorSteam = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        AdaptadorRecyclerMain adaptadorSteam = new AdaptadorRecyclerMain(videojuegos, this);
+        recyclerViewSteam.setLayoutManager(gestorSteam);
+        recyclerViewSteam.setAdapter(adaptadorSteam);
+
+        Log.d("MENSAJE STEAM", videojuegos.toString());
+
     }
 }
