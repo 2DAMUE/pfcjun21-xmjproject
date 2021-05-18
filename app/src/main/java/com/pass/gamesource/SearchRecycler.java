@@ -38,7 +38,7 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
         AccesoFirebase.obtenerVideojuegosGratis(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_recycler);
-        //menuLateral();
+        menuLateral();
         /**
          * Declaracion de los botones
          */
@@ -144,21 +144,21 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
 
-//    public void menuLateral() {
-//
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-//
-//        drawerLayout = findViewById(R.id.drawer_layout);
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-//                this, drawerLayout, toolbar, R.string.app_name,
-//                R.string.app_name);
-//        drawerLayout.addDrawerListener(toggle);
-//        toggle.syncState();
-//
-//
-//        navigationView = findViewById(R.id.navigation_view);
-//        navigationView.setNavigationItemSelectedListener(this);
+    public void menuLateral() {
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawerLayout, toolbar, R.string.app_name,
+                R.string.app_name);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+
+        navigationView = findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
 
 
@@ -169,38 +169,38 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
 //        onNavigationItemSelected(menuItem);
 //        menuItem.setChecked(true);
 
-//        drawerLayout.addDrawerListener(this);
+        drawerLayout.addDrawerListener(this);
 /**
  *  mensaje al clickear en el copyright
  */
-//        View header = navigationView.getHeaderView(0);
-//        header.findViewById(R.id.copyright).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(SearchRecycler.this, getString(R.string.copyright),
-//                        Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
+        View header = navigationView.getHeaderView(0);
+        header.findViewById(R.id.copyright).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(SearchRecycler.this, getString(R.string.copyright),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     /**
      * Comportamiento al abrir o cerrar el menu
      */
-//    @Override
-//    public void onBackPressed() {
-//        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-//            drawerLayout.closeDrawer(GravityCompat.START);
-//        } else {
-//            super.onBackPressed();
-//        }
-//    }
-//
-//    /**
-//     * Botones de navegacion y sus funciones
-//     *
-//     * @param menuItem
-//     * @return
-//     */
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    /**
+     * Botones de navegacion y sus funciones
+     *
+     * @param menuItem
+     * @return
+     */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
@@ -294,4 +294,5 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
     public void onDrawerStateChanged(int newState) {
 
     }
+
 }
