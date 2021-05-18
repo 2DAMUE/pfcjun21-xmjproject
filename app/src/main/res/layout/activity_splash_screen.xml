@@ -70,10 +70,10 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHDown"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVRight"
-        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintHorizontal_bias="0.447"
         app:layout_constraintStart_toStartOf="@+id/guidelineVLeft"
         app:layout_constraintTop_toTopOf="@+id/guidelineHUp"
-        app:layout_constraintVertical_bias="0.541"
+        app:layout_constraintVertical_bias="0.539"
         app:srcCompat="@drawable/g" />
 
     <ImageView
@@ -84,10 +84,10 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHDown"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVRight"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="@+id/guidelineVLeft"
         app:layout_constraintTop_toTopOf="@+id/guidelineHUp"
-        app:layout_constraintVertical_bias="0.629"
+        app:layout_constraintVertical_bias="0.622"
         app:srcCompat="@drawable/s" />
 
     <ImageView
@@ -97,10 +97,10 @@
         android:alpha="1"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHDown"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVRight"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="@+id/guidelineVLeft"
         app:layout_constraintTop_toTopOf="@+id/guidelineHUp"
-        app:layout_constraintVertical_bias="0.592"
+        app:layout_constraintVertical_bias="0.584"
         app:srcCompat="@drawable/letrasencadenadas" />
 
     <ImageView

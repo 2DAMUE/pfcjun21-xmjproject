@@ -28,8 +28,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class SearchRecycler extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener,
-        DrawerLayout.DrawerListener, ActualizarVideojuegosGratis {
+public class SearchRecycler extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosGratis {
 
     SearchRecycler context = this;
 
@@ -38,7 +37,7 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
         AccesoFirebase.obtenerVideojuegosGratis(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_recycler);
-        menuLateral();
+        //menuLateral();
         /**
          * Declaracion de los botones
          */
@@ -144,155 +143,155 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
 
-    public void menuLateral() {
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-
-        drawerLayout = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawerLayout, toolbar, R.string.app_name,
-                R.string.app_name);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-
-
-        navigationView = findViewById(R.id.navigation_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-
-
-/**1
- *  Tarjea de forma predeterminada un iten del menu, desactivar para no iniciar el evento del iten seleccionado
- */
-//        MenuItem menuItem = navigationView.getMenu().getItem(0);
-//        onNavigationItemSelected(menuItem);
-//        menuItem.setChecked(true);
-
-        drawerLayout.addDrawerListener(this);
-/**
- *  mensaje al clickear en el copyright
- */
-        View header = navigationView.getHeaderView(0);
-        header.findViewById(R.id.copyright).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(SearchRecycler.this, getString(R.string.copyright),
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    /**
-     * Comportamiento al abrir o cerrar el menu
-     */
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    /**
-     * Botones de navegacion y sus funciones
-     *
-     * @param menuItem
-     * @return
-     */
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        switch (menuItem.getItemId()) {
-//            ###################### Account #############################
-            case R.id.signIn:
-                Toast.makeText(this, getString(R.string.coming_soon),
-                        Toast.LENGTH_SHORT).show();
-//                Intent intent1 = new Intent(OptionActivity.this.getBaseContext(),
-//                        MainActivity.class);
-//                startActivity(intent1);
-                break;
-            case R.id.signUp:
-                Toast.makeText(this, getString(R.string.coming_soon),
-                        Toast.LENGTH_SHORT).show();
-//                Intent intent3 = new Intent(OptionActivity.this.getBaseContext(),
-//                        MainActivity.class);
-//                startActivity(intent3);
-                break;
-//                 ###################### Tools #############################
-            case R.id.option:
-                Toast.makeText(this, getString(R.string.sameActivity),
-                        Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.notification:
-                Toast.makeText(this, getString(R.string.coming_soon),
-                        Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(OptionActivity.this.getBaseContext(),
-//                        MainActivity.class);
-//                startActivity(intent);
-                break;
-//                          ###################### Social #############################
-            case R.id.share:
-                Intent compartir = new Intent(android.content.Intent.ACTION_SEND);
-                compartir.setType("text/plain");
-                compartir.putExtra(android.content.Intent.EXTRA_SUBJECT, "GameSource App");
-                compartir.putExtra(android.content.Intent.EXTRA_TEXT, getString(R.string.share_message));
-                startActivity(Intent.createChooser(compartir, "Compartir vía"));
-                break;
-            case R.id.rate:
-                Toast.makeText(this, getString(R.string.coming_soon),
-                        Toast.LENGTH_SHORT).show();
-//                Intent intent3 = new Intent(OptionActivity.this.getBaseContext(),
-//                        MainActivity.class);
-//                startActivity(intent3);
-                break;
-            case R.id.info:
-                Toast.makeText(this, getString(R.string.coming_soon),
-                        Toast.LENGTH_SHORT).show();
-//                Intent intent3 = new Intent(OptionActivity.this.getBaseContext(),
-//                        MainActivity.class);
-//                startActivity(intent3);
-                break;
-            default:
-                throw new IllegalArgumentException("menu option not implemented!!");
-        }
-
-
-        drawerLayout.closeDrawer(GravityCompat.START);
-
-        return true;
-
-    }
-
-    /**
-     * Metodos auto implementados
-     * onDrawerSlide cambia la posocion del menu
-     * onDrawerOpened accion cuando el menu se abre
-     * onDrawerClosed accion cuando el menu se cierra
-     * onDrawerStateChanged cambia de estado puede ser STATE_IDLE, STATE_DRAGGING or ST
-     *
-     * @param drawerView
-     * @param slideOffset
-     */
-    @Override
-    public void onDrawerSlide(@NonNull @NotNull View drawerView, float slideOffset) {
-
-    }
-
-    @Override
-    public void onDrawerOpened(@NonNull @NotNull View drawerView) {
-
-
-    }
-
-    @Override
-    public void onDrawerClosed(@NonNull @NotNull View drawerView) {
-
-    }
-
-    @Override
-    public void onDrawerStateChanged(int newState) {
-
-    }
+//    public void menuLateral() {
+//
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+//
+//        drawerLayout = findViewById(R.id.drawer_layout);
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+//                this, drawerLayout, toolbar, R.string.app_name,
+//                R.string.app_name);
+//        drawerLayout.addDrawerListener(toggle);
+//        toggle.syncState();
+//
+//
+//        navigationView = findViewById(R.id.navigation_view);
+//        navigationView.setNavigationItemSelectedListener(this);
+//
+//
+//
+///**1
+// *  Tarjea de forma predeterminada un iten del menu, desactivar para no iniciar el evento del iten seleccionado
+// */
+////        MenuItem menuItem = navigationView.getMenu().getItem(0);
+////        onNavigationItemSelected(menuItem);
+////        menuItem.setChecked(true);
+//
+//        drawerLayout.addDrawerListener(this);
+///**
+// *  mensaje al clickear en el copyright
+// */
+//        View header = navigationView.getHeaderView(0);
+//        header.findViewById(R.id.copyright).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(SearchRecycler.this, getString(R.string.copyright),
+//                        Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
+//
+//    /**
+//     * Comportamiento al abrir o cerrar el menu
+//     */
+//    @Override
+//    public void onBackPressed() {
+//        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+//            drawerLayout.closeDrawer(GravityCompat.START);
+//        } else {
+//            super.onBackPressed();
+//        }
+//    }
+//
+//    /**
+//     * Botones de navegacion y sus funciones
+//     *
+//     * @param menuItem
+//     * @return
+//     */
+//    @Override
+//    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+//        switch (menuItem.getItemId()) {
+////            ###################### Account #############################
+//            case R.id.signIn:
+//                Toast.makeText(this, getString(R.string.coming_soon),
+//                        Toast.LENGTH_SHORT).show();
+////                Intent intent1 = new Intent(OptionActivity.this.getBaseContext(),
+////                        MainActivity.class);
+////                startActivity(intent1);
+//                break;
+//            case R.id.signUp:
+//                Toast.makeText(this, getString(R.string.coming_soon),
+//                        Toast.LENGTH_SHORT).show();
+////                Intent intent3 = new Intent(OptionActivity.this.getBaseContext(),
+////                        MainActivity.class);
+////                startActivity(intent3);
+//                break;
+////                 ###################### Tools #############################
+//            case R.id.option:
+//                Toast.makeText(this, getString(R.string.sameActivity),
+//                        Toast.LENGTH_SHORT).show();
+//                break;
+//            case R.id.notification:
+//                Toast.makeText(this, getString(R.string.coming_soon),
+//                        Toast.LENGTH_SHORT).show();
+////                Intent intent = new Intent(OptionActivity.this.getBaseContext(),
+////                        MainActivity.class);
+////                startActivity(intent);
+//                break;
+////                          ###################### Social #############################
+//            case R.id.share:
+//                Intent compartir = new Intent(android.content.Intent.ACTION_SEND);
+//                compartir.setType("text/plain");
+//                compartir.putExtra(android.content.Intent.EXTRA_SUBJECT, "GameSource App");
+//                compartir.putExtra(android.content.Intent.EXTRA_TEXT, getString(R.string.share_message));
+//                startActivity(Intent.createChooser(compartir, "Compartir vía"));
+//                break;
+//            case R.id.rate:
+//                Toast.makeText(this, getString(R.string.coming_soon),
+//                        Toast.LENGTH_SHORT).show();
+////                Intent intent3 = new Intent(OptionActivity.this.getBaseContext(),
+////                        MainActivity.class);
+////                startActivity(intent3);
+//                break;
+//            case R.id.info:
+//                Toast.makeText(this, getString(R.string.coming_soon),
+//                        Toast.LENGTH_SHORT).show();
+////                Intent intent3 = new Intent(OptionActivity.this.getBaseContext(),
+////                        MainActivity.class);
+////                startActivity(intent3);
+//                break;
+//            default:
+//                throw new IllegalArgumentException("menu option not implemented!!");
+//        }
+//
+//
+//        drawerLayout.closeDrawer(GravityCompat.START);
+//
+//        return true;
+//
+//    }
+//
+//    /**
+//     * Metodos auto implementados
+//     * onDrawerSlide cambia la posocion del menu
+//     * onDrawerOpened accion cuando el menu se abre
+//     * onDrawerClosed accion cuando el menu se cierra
+//     * onDrawerStateChanged cambia de estado puede ser STATE_IDLE, STATE_DRAGGING or ST
+//     *
+//     * @param drawerView
+//     * @param slideOffset
+//     */
+//    @Override
+//    public void onDrawerSlide(@NonNull @NotNull View drawerView, float slideOffset) {
+//
+//    }
+//
+//    @Override
+//    public void onDrawerOpened(@NonNull @NotNull View drawerView) {
+//
+//
+//    }
+//
+//    @Override
+//    public void onDrawerClosed(@NonNull @NotNull View drawerView) {
+//
+//    }
+//
+//    @Override
+//    public void onDrawerStateChanged(int newState) {
+//
+//    }
 
 }
