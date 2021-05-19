@@ -3,9 +3,9 @@ package com.pass.gamesource;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,22 +17,29 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
 public class SearchRecycler extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener,
-        DrawerLayout.DrawerListener, ActualizarVideojuegosGratis {
+        DrawerLayout.DrawerListener {
+
+    private final SearchRecycler context = this;
+
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private final DatabaseReference myRef = database.getReference().child("gratis").child("ps_store_free");
+    private ArrayList<Videojuego> videojuegosGratis;
+    private EditText busqueda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        AccesoFirebase.obtenerVideojuegosGratis(this);
+        //AccesoFirebase.obtenerVideojuegosGratis(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_recycler);
         menuLateral();
@@ -44,7 +51,10 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
         findViewById(R.id.img_Search_Logo).setOnClickListener(this);
         findViewById(R.id.img_Historial_Logo).setOnClickListener(this);
         findViewById(R.id.img_Calendar_Logo).setOnClickListener(this);
+
+
     }
+
 
     /**
      * Oyente de botones
@@ -76,17 +86,6 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
                 startActivity(intent6);
                 break;
         }
-    }
-
-    @Override
-    public void recuperarVideojuegos(ArrayList<Videojuego> videojuegos) {
-
-        RecyclerView recyclerView = findViewById(R.id.recyclerJuegosActivity);
-        RecyclerView.LayoutManager gestor = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
-        AdaptadorSearch adaptador = new AdaptadorSearch(videojuegos, this);
-        recyclerView.setLayoutManager(gestor);
-        recyclerView.setAdapter(adaptador);
-        Log.d("MENSAJE", videojuegos.toString());
     }
 
     public void mostrarAlertDialog(Videojuego v, SearchRecycler view) {

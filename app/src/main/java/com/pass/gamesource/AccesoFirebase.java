@@ -18,6 +18,7 @@ public class AccesoFirebase {
 
     static FirebaseDatabase database = FirebaseDatabase.getInstance();
     static DatabaseReference myRef = database.getReference().child("gratis");
+    static DatabaseReference myRefFiltrar = database.getReference().child("gratis").child("ps_store");
 
     public static void obtenerVideojuegosGratis(ActualizarVideojuegosGratis a) {
         Log.d("MENSAJE", "Obteniendo datos de Firebase...");
