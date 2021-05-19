@@ -1,16 +1,5 @@
 package com.pass.gamesource;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +9,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
@@ -31,15 +30,13 @@ import java.util.ArrayList;
 public class SearchRecycler extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener,
         DrawerLayout.DrawerListener, ActualizarVideojuegosGratis {
 
-    SearchRecycler context = this;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AccesoFirebase.obtenerVideojuegosGratis(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_recycler);
         menuLateral();
-        /**
+        /*
          * Declaracion de los botones
          */
 
@@ -50,41 +47,15 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
     }
 
     /**
-     * Cargamos el array de donde el Recycler leera los datos
-     */
-//    private void loadGames() {
-//        listaJuegos.add(new Videojuego("Final Fantasy VII", "Juego de fantasya VII RPG", "3/04/1985", R.drawable.finalfantasyvii));
-//        listaJuegos.add(new Videojuego("RocketLeague", "RocketLeague", "3/04/1985", R.drawable.rocketleague));
-//        listaJuegos.add(new Videojuego("Kena", "Kena", "3/04/1985", R.drawable.kena));
-//        listaJuegos.add(new Videojuego("GTAV", "GTAV", "3/04/1985", R.drawable.gtav));
-//        listaJuegos.add(new Videojuego("HoodOutlaws", "HoodOutlaws", "3/04/1985", R.drawable.hoodoutlaws));
-//        listaJuegos.add(new Videojuego("Final Fantasy VII", "Juego de fantasya VII RPG", "3/04/1985", R.drawable.finalfantasyvii));
-//        listaJuegos.add(new Videojuego("LostWords", "LostWords", "3/04/1985", R.drawable.lostwords));
-//        listaJuegos.add(new Videojuego("RocketLeague", "RocketLeague", "3/04/1985", R.drawable.rocketleague));
-//        listaJuegos.add(new Videojuego("Kena", "Kena", "3/04/1985", R.drawable.kena));
-//        listaJuegos.add(new Videojuego("GTAV", "GTAV", "3/04/1985", R.drawable.gtav));
-//        listaJuegos.add(new Videojuego("Final Fantasy VII", "Juego de fantasya VII RPG", "3/04/1985", R.drawable.finalfantasyvii));
-//        listaJuegos.add(new Videojuego("RocketLeague", "RocketLeague", "3/04/1985", R.drawable.rocketleague));
-//        listaJuegos.add(new Videojuego("Kena", "Kena", "3/04/1985", R.drawable.kena));
-//        listaJuegos.add(new Videojuego("GTAV", "GTAV", "3/04/1985", R.drawable.gtav));
-//        listaJuegos.add(new Videojuego("HoodOutlaws", "HoodOutlaws", "3/04/1985", R.drawable.hoodoutlaws));
-//        listaJuegos.add(new Videojuego("Final Fantasy VII", "Juego de fantasya VII RPG", "3/04/1985", R.drawable.finalfantasyvii));
-//        listaJuegos.add(new Videojuego("LostWords", "LostWords", "3/04/1985", R.drawable.lostwords));
-//        listaJuegos.add(new Videojuego("RocketLeague", "RocketLeague", "3/04/1985", R.drawable.rocketleague));
-//        listaJuegos.add(new Videojuego("Kena", "Kena", "3/04/1985", R.drawable.kena));
-//        listaJuegos.add(new Videojuego("GTAV", "GTAV", "3/04/1985", R.drawable.gtav));
-//
-//    }
-
-    /**
      * Oyente de botones
      *
      * @param v coger el parametro del botn especificado arriba.
      */
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            /**
+            /*
              *navigation Bar
              */
 
@@ -106,6 +77,7 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
                 break;
         }
     }
+
     @Override
     public void recuperarVideojuegos(ArrayList<Videojuego> videojuegos) {
 
@@ -116,6 +88,7 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
         recyclerView.setAdapter(adaptador);
         Log.d("MENSAJE", videojuegos.toString());
     }
+
     public void mostrarAlertDialog(Videojuego v, SearchRecycler view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(view);
         AlertDialog alert = builder.create();
@@ -126,7 +99,6 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
 
         TextView tvNombre = view2.findViewById(R.id.nombreAlert);
         TextView tvDescripcion = view2.findViewById(R.id.descripcionAlert);
-        TextView tvPrecio = view2.findViewById(R.id.precioAlert);
         ImageView imagenAlert = view2.findViewById(R.id.imagenJuego);
 
         Glide.with(view).load(v.getImage_url()).centerCrop().into(imagenAlert);
@@ -137,12 +109,12 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
         //builder.show();
         alert.show();
     }
+
     /**
      * Menu lateral
      * inicializacion
      */
     private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
 
     public void menuLateral() {
 
@@ -157,22 +129,21 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
         toggle.syncState();
 
 
-        navigationView = findViewById(R.id.navigation_view);
+        NavigationView navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
 
 
-
-/**1
- *  Tarjea de forma predeterminada un iten del menu, desactivar para no iniciar el evento del iten seleccionado
- */
+        /*
+         *  Tarjea de forma predeterminada un iten del menu, desactivar para no iniciar el evento del iten seleccionado
+         */
 //        MenuItem menuItem = navigationView.getMenu().getItem(0);
 //        onNavigationItemSelected(menuItem);
 //        menuItem.setChecked(true);
 
         drawerLayout.addDrawerListener(this);
-/**
- *  mensaje al clickear en el copyright
- */
+        /*
+         *  mensaje al clickear en el copyright
+         */
         View header = navigationView.getHeaderView(0);
         header.findViewById(R.id.copyright).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -198,9 +169,10 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
     /**
      * Botones de navegacion y sus funciones
      *
-     * @param menuItem
-     * @return
+     * @param menuItem el objeto del menú
+     * @return true en caso de que se haya seleccionado un item del menú
      */
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
@@ -271,8 +243,8 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
      * onDrawerClosed accion cuando el menu se cierra
      * onDrawerStateChanged cambia de estado puede ser STATE_IDLE, STATE_DRAGGING or ST
      *
-     * @param drawerView
-     * @param slideOffset
+     * @param drawerView  object
+     * @param slideOffset object
      */
     @Override
     public void onDrawerSlide(@NonNull @NotNull View drawerView, float slideOffset) {
