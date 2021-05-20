@@ -18,7 +18,6 @@ public class AccesoFirebase {
 
     static FirebaseDatabase database = FirebaseDatabase.getInstance();
     static DatabaseReference myRef = database.getReference().child("gratis");
-    static DatabaseReference myRefFiltrar = database.getReference().child("gratis").child("ps_store");
 
     public static void obtenerVideojuegosGratis(ActualizarVideojuegosGratis a) {
         Log.d("MENSAJE", "Obteniendo datos de Firebase...");
@@ -85,4 +84,49 @@ public class AccesoFirebase {
         });
     }
 
+    public static void obtenerVideojuegosFiltrado(ActualizarVideojuegosGratis a, String nombre) {
+
+        FirebaseDatabase databaseF = FirebaseDatabase.getInstance();
+        DatabaseReference myRefFiltrar = databaseF.getReference().child("gratis").child("ps_store_free");
+
+        Log.d("MENSAJE", "Obteniendo datos de Firebase...");
+        ArrayList<Videojuego> videojuegosGratis = new ArrayList<Videojuego>();
+        myRefFiltrar.orderByChild("nombre").startAt(nombre).endAt(nombre + "\uf8ff").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for (DataSnapshot esnapshot : snapshot.getChildren()) {
+                    if (!videojuegosGratis.contains(esnapshot.getValue(Videojuego.class)))
+                        videojuegosGratis.add(esnapshot.getValue(Videojuego.class));
+
+                }
+
+                DatabaseReference myRefFiltrarSteam = databaseF.getReference().child("gratis").child("steam_free");
+                myRefFiltrarSteam.orderByChild("nombre").startAt(nombre).endAt(nombre + "\uf8ff").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                        for (DataSnapshot esnapshot : snapshot.getChildren()) {
+                            if (!videojuegosGratis.contains(esnapshot.getValue(Videojuego.class)))
+                                videojuegosGratis.add(esnapshot.getValue(Videojuego.class));
+
+                        }
+
+                        Log.d("MENSAJE", videojuegosGratis.toString());
+                        a.recuperarVideojuegos(videojuegosGratis);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                    }
+
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+
+    }
 }
