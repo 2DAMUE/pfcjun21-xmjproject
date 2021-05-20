@@ -13,6 +13,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class AccesoFirebase {
 
@@ -85,7 +86,7 @@ public class AccesoFirebase {
     }
 
     public static void obtenerVideojuegosFiltrado(ActualizarVideojuegosGratis a, String nombre) {
-
+        HashSet<String> nombres = new HashSet<>();
         FirebaseDatabase databaseF = FirebaseDatabase.getInstance();
         DatabaseReference myRefFiltrar = databaseF.getReference().child("gratis").child("ps_store_free");
 
@@ -95,7 +96,7 @@ public class AccesoFirebase {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for (DataSnapshot esnapshot : snapshot.getChildren()) {
-                    if (!videojuegosGratis.contains(esnapshot.getValue(Videojuego.class)))
+                    if (nombres.add(esnapshot.getValue(Videojuego.class).getNombre()))
                         videojuegosGratis.add(esnapshot.getValue(Videojuego.class));
 
                 }
@@ -105,7 +106,7 @@ public class AccesoFirebase {
                     @Override
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                         for (DataSnapshot esnapshot : snapshot.getChildren()) {
-                            if (!videojuegosGratis.contains(esnapshot.getValue(Videojuego.class)))
+                            if (nombres.add(esnapshot.getValue(Videojuego.class).getNombre()))
                                 videojuegosGratis.add(esnapshot.getValue(Videojuego.class));
 
                         }
