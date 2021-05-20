@@ -1,14 +1,8 @@
 package com.pass.gamesource;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,6 +11,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
@@ -100,6 +100,7 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
                 break;
         }
     }
+
     public void mostrarAlertDialog(Videojuego v, SearchRecycler view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(view);
         AlertDialog alert = builder.create();
@@ -115,8 +116,10 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onClick(View vista) {
 
-                Intent intent = new Intent(context, VistaWebVideojuego.class);
-                intent.putExtra("URL", v.getUrl_origen());
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(v.getUrl_origen()));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setPackage("com.android.chrome");
+                // intent.putExtra("URL", v.getUrl_origen());
                 startActivity(intent);
             }
         });

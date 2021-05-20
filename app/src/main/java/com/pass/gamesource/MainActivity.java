@@ -1,6 +1,7 @@
 package com.pass.gamesource;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,15 +19,18 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosGratis, ActualizarVideojuegosSteam, ActualizarVideojuegosEpic {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegoDestacado, ActualizarVideojuegosGratis, ActualizarVideojuegosSteam, ActualizarVideojuegosEpic {
     MainActivity context = this;
     private SwipeRefreshLayout swipeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         AccesoFirebase.obtenerVideojuegosGratis(this);
         AccesoFirebase.obtenerVideojuegosPS(this);
         AccesoFirebase.obtenerVideojuegosSteam(this);
+        AccesoFirebase.obtenerVideojuegoDestacado(this);
+
         context = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -42,10 +46,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Creamos el ArrayList con todos los videojuegos para que se muestren en el Recycler
         ArrayList<Videojuego> listaVideojuegos = new ArrayList<Videojuego>();
 
-        ImageView ivMain = findViewById(R.id.JuegoPrincipal);
-        Glide.with(this)
-                .load("https://firebasestorage.googleapis.com/v0/b/gamesource-9bc51.appspot.com/o/epic_free%2FAlien%3A%20Isolation%20.JPEG?alt=media")
-                .centerCrop().into(ivMain);
 
     }
 
@@ -65,8 +65,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View vista) {
 
-                Intent intent = new Intent(context, VistaWebVideojuego.class);
-                intent.putExtra("URL", v.getUrl_origen());
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(v.getUrl_origen()));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setPackage("com.android.chrome");
+                // intent.putExtra("URL", v.getUrl_origen());
                 startActivity(intent);
             }
         });
@@ -166,5 +168,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Log.d("MENSAJE STEAM", videojuegos.toString());
 
+    }
+
+    @Override
+    public void recuperarVideojuego(Videojuego v) {
+        ImageView ivMain = findViewById(R.id.JuegoPrincipal);
+        Glide.with(this)
+                .load(v.getImage_url())
+                .centerCrop().into(ivMain);
     }
 }

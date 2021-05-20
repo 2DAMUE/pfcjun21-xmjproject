@@ -8,8 +8,17 @@ public class Videojuego {
     private String image_url;
     private String plataforma;
     private String url_origen;
+    private String nombreMin;
     private List<String> fechas;
     private int img;
+
+    public String getNombreMin() {
+        return nombreMin;
+    }
+
+    public void setNombreMin(String nombreMin) {
+        this.nombreMin = nombreMin;
+    }
 
     public int getImg() {
         return img;
@@ -19,18 +28,11 @@ public class Videojuego {
         this.img = img;
     }
 
-    public Videojuego(String nombre, String descripcion, String fecha, int img) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.img = img;
-    }
-
     public Videojuego(String nombre, String descripcion, String image_url) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.image_url = image_url;
     }
-
 
 
     public String getUrl_origen() {
@@ -49,17 +51,9 @@ public class Videojuego {
         this.image_url = image_url;
     }
 
-    public Videojuego(String nombre) {
-        this.nombre = nombre;
-    }
-
     public Videojuego() {
     }
 
-    public Videojuego(String nombre, String descripcion) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-    }
 
     public String getPlataforma() {
         return plataforma;

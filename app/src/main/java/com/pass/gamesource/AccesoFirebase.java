@@ -19,6 +19,7 @@ public class AccesoFirebase {
 
     static FirebaseDatabase database = FirebaseDatabase.getInstance();
     static DatabaseReference myRef = database.getReference().child("gratis");
+    static DatabaseReference myRefDestacado = database.getReference().child("epic_semanal");
 
     public static void obtenerVideojuegosGratis(ActualizarVideojuegosGratis a) {
         Log.d("MENSAJE", "Obteniendo datos de Firebase...");
@@ -65,6 +66,25 @@ public class AccesoFirebase {
         });
     }
 
+    public static void obtenerVideojuegoDestacado(ActualizarVideojuegoDestacado a) {
+
+        myRefDestacado.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for (DataSnapshot esnapshot : snapshot.getChildren()) {
+
+                    a.recuperarVideojuego(esnapshot.getValue(Videojuego.class));
+                    break;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+    }
+
     public static void obtenerVideojuegosSteam(ActualizarVideojuegosSteam a) {
         ArrayList<Videojuego> videojuegosSteam = new ArrayList<Videojuego>();
         myRef.addValueEventListener(new ValueEventListener() {
@@ -92,7 +112,7 @@ public class AccesoFirebase {
 
         Log.d("MENSAJE", "Obteniendo datos de Firebase...");
         ArrayList<Videojuego> videojuegosGratis = new ArrayList<Videojuego>();
-        myRefFiltrar.orderByChild("nombre").startAt(nombre).endAt(nombre + "\uf8ff").addValueEventListener(new ValueEventListener() {
+        myRefFiltrar.orderByChild("nombreMin").startAt(nombre.toLowerCase()).endAt(nombre.toLowerCase() + "\uf8ff").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for (DataSnapshot esnapshot : snapshot.getChildren()) {
@@ -102,7 +122,7 @@ public class AccesoFirebase {
                 }
 
                 DatabaseReference myRefFiltrarSteam = databaseF.getReference().child("gratis").child("steam_free");
-                myRefFiltrarSteam.orderByChild("nombre").startAt(nombre).endAt(nombre + "\uf8ff").addValueEventListener(new ValueEventListener() {
+                myRefFiltrarSteam.orderByChild("nombreMin").startAt(nombre.toLowerCase()).endAt(nombre.toLowerCase() + "\uf8ff").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                         for (DataSnapshot esnapshot : snapshot.getChildren()) {
