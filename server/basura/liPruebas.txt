@@ -1,0 +1,15 @@
+li class="searchresult_row page-list-group-item col-xs-12">
+<div class="row">
+<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-lg-8 col-lg-offset-2">
+<a style="color: black;" v-bind:href="'https://www.nintendo.es' + banner.url" v-bind:title="banner.title">
+<div v-bind:class="{'col-xs-12 col-sm-6' : bannerImage.type === 'h2x1', 'col-xs-3 col-sm-2' : bannerImage.type !== 'h2x1'}">
+<img class="img-responsive" v-bind:alt="banner.title" v-bind:src="bannerImage.src"/>
+</div>
+<div class="search-result-txt" v-bind:class="{'col-xs-12 col-sm-6' : bannerImage.type === 'h2x1', 'col-xs-9 col-sm-10' : bannerImage.type !== 'h2x1'}">
+<p class="page-title">{{banner.title}}</p>
+<p>{{banner.excerpt}}</p>
+</div>
+</a>
+</div>
+</div>
+</li>
