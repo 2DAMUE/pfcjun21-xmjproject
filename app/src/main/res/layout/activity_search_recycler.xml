@@ -8,42 +8,42 @@
     android:background="@color/white_GameSource">
 
 
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawer_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        tools:layout_editor_absoluteX="396dp"
-        tools:layout_editor_absoluteY="95dp"
-        tools:openDrawer="start">
+<!--    <androidx.drawerlayout.widget.DrawerLayout-->
+<!--        android:id="@+id/drawer_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:fitsSystemWindows="true"-->
+<!--        tools:layout_editor_absoluteX="396dp"-->
+<!--        tools:layout_editor_absoluteY="95dp"-->
+<!--        tools:openDrawer="start">-->
 
-        <LinearLayout
-            android:id="@+id/home_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+<!--        <LinearLayout-->
+<!--            android:id="@+id/home_content"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical">-->
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize" />
+<!--            <com.google.android.material.appbar.MaterialToolbar-->
+<!--                android:id="@+id/toolbar"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="?attr/actionBarSize" />-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navigation_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:fitsSystemWindows="true"
-            app:headerLayout="@layout/nav_header"
-            app:itemBackground="@drawable/drawer_background_selector"
-            app:itemIconTint="@drawable/drawer_selector"
-            android:visibility="gone"
-            app:itemTextColor="@drawable/drawer_selector"
-            app:menu="@menu/activity_home_navigation_drawer" />
+<!--        <com.google.android.material.navigation.NavigationView-->
+<!--            android:id="@+id/navigation_view"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_gravity="start"-->
+<!--            android:fitsSystemWindows="true"-->
+<!--            app:headerLayout="@layout/nav_header"-->
+<!--            app:itemBackground="@drawable/drawer_background_selector"-->
+<!--            app:itemIconTint="@drawable/drawer_selector"-->
+<!--            app:itemTextColor="@drawable/drawer_selector"-->
+<!--            app:menu="@menu/activity_home_navigation_drawer" />-->
 
-    </androidx.drawerlayout.widget.DrawerLayout>
+<!--    </androidx.drawerlayout.widget.DrawerLayout>-->
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerJuegosActivity"
@@ -68,16 +68,15 @@
         android:layout_above="@id/recyclerJuegosActivity"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="95dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="15dp"
         android:background="@drawable/round"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
     </EditText>
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
