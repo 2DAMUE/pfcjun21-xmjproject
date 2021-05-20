@@ -59,8 +59,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         TextView tvNombre = view2.findViewById(R.id.nombreAlert);
         TextView tvDescripcion = view2.findViewById(R.id.descripcionAlert);
-        TextView tvPrecio = view2.findViewById(R.id.precioAlert);
         ImageView imagenAlert = view2.findViewById(R.id.imagenJuego);
+
+        imagenAlert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vista) {
+
+                Intent intent = new Intent(context, VistaWebVideojuego.class);
+                intent.putExtra("URL", v.getUrl_origen());
+                startActivity(intent);
+            }
+        });
 
         Glide.with(view).load(v.getImage_url()).centerCrop().into(imagenAlert);
 

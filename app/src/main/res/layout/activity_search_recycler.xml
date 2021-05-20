@@ -39,6 +39,7 @@
             app:headerLayout="@layout/nav_header"
             app:itemBackground="@drawable/drawer_background_selector"
             app:itemIconTint="@drawable/drawer_selector"
+            android:visibility="gone"
             app:itemTextColor="@drawable/drawer_selector"
             app:menu="@menu/activity_home_navigation_drawer" />
 
@@ -60,7 +61,7 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <SearchView
+    <EditText
         android:id="@+id/view_search"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -75,7 +76,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
 
-    </SearchView>
+    </EditText>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

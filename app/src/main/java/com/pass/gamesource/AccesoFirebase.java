@@ -13,6 +13,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class AccesoFirebase {
 
@@ -84,4 +85,49 @@ public class AccesoFirebase {
         });
     }
 
+    public static void obtenerVideojuegosFiltrado(ActualizarVideojuegosGratis a, String nombre) {
+        HashSet<String> nombres = new HashSet<>();
+        FirebaseDatabase databaseF = FirebaseDatabase.getInstance();
+        DatabaseReference myRefFiltrar = databaseF.getReference().child("gratis").child("ps_store_free");
+
+        Log.d("MENSAJE", "Obteniendo datos de Firebase...");
+        ArrayList<Videojuego> videojuegosGratis = new ArrayList<Videojuego>();
+        myRefFiltrar.orderByChild("nombre").startAt(nombre).endAt(nombre + "\uf8ff").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for (DataSnapshot esnapshot : snapshot.getChildren()) {
+                    if (nombres.add(esnapshot.getValue(Videojuego.class).getNombre()))
+                        videojuegosGratis.add(esnapshot.getValue(Videojuego.class));
+
+                }
+
+                DatabaseReference myRefFiltrarSteam = databaseF.getReference().child("gratis").child("steam_free");
+                myRefFiltrarSteam.orderByChild("nombre").startAt(nombre).endAt(nombre + "\uf8ff").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                        for (DataSnapshot esnapshot : snapshot.getChildren()) {
+                            if (nombres.add(esnapshot.getValue(Videojuego.class).getNombre()))
+                                videojuegosGratis.add(esnapshot.getValue(Videojuego.class));
+
+                        }
+
+                        Log.d("MENSAJE", videojuegosGratis.toString());
+                        a.recuperarVideojuegos(videojuegosGratis);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                    }
+
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+
+    }
 }

@@ -11,20 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GameSource">
-        <activity android:name=".RegisterActivity"
-            android:theme="@style/Theme.GameSourceNoBar">
-
-        </activity>
+        <activity android:name=".VistaWebVideojuego" android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:theme="@style/Theme.GameSourceNoBar"></activity>
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/Theme.GameSourceNoBar">
-
-        </activity>
+            android:theme="@style/Theme.GameSourceNoBar"></activity>
         <activity
             android:name=".CalendarActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.GameSourceNoBar"></activity>
+            android:theme="@style/Theme.GameSourceNoBar" />
         <activity
             android:name=".MainActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -32,7 +30,7 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".OptionActivity"
-            android:theme="@style/Theme.GameSourceNoBar"></activity>
+            android:theme="@style/Theme.GameSourceNoBar" />
         <activity
             android:name=".SplashScreen"
             android:configChanges="keyboardHidden|orientation"
