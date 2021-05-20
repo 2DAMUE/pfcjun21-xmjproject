@@ -25,8 +25,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -56,7 +54,7 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
         findViewById(R.id.img_Calendar_Logo).setOnClickListener(this);
 
         EditText busqueda = findViewById(R.id.view_search);
-        AccesoFirebase.obtenerVideojuegosFiltrado(context,"");
+        AccesoFirebase.obtenerVideojuegosFiltrado(context, "");
 
         busqueda.addTextChangedListener(new TextWatcher() {
             @Override
@@ -66,7 +64,7 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Log.d("MENSAJE",s.toString());
+                Log.d("MENSAJE", s.toString());
                 AccesoFirebase.obtenerVideojuegosFiltrado(context, s.toString());
             }
 
@@ -123,7 +121,15 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
         TextView tvNombre = view2.findViewById(R.id.nombreAlert);
         TextView tvDescripcion = view2.findViewById(R.id.descripcionAlert);
         ImageView imagenAlert = view2.findViewById(R.id.imagenJuego);
+        imagenAlert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vista) {
 
+                Intent intent = new Intent(context, VistaWebVideojuego.class);
+                intent.putExtra("URL", v.getUrl_origen());
+                startActivity(intent);
+            }
+        });
         Glide.with(view).load(v.getImage_url()).centerCrop().into(imagenAlert);
 
         tvDescripcion.setText(v.getDescripcion());

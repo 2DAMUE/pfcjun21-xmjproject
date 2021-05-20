@@ -8,6 +8,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -51,6 +52,7 @@ public class AdaptadorSearch extends RecyclerView.Adapter<AdaptadorSearch.MiCont
         Animation animation = AnimationUtils.loadAnimation(main, android.R.anim.slide_in_left);
         holder.vista.startAnimation(animation);
         holder.tvTitulo.setText(juego.getNombre());
+        holder.tvDescripcion.setText(juego.getDescripcion());
         //Log.d("Contenedor", "Vinculando position " + position);
 
     }
@@ -63,12 +65,14 @@ public class AdaptadorSearch extends RecyclerView.Adapter<AdaptadorSearch.MiCont
     public class MiContenedorDeVistas extends RecyclerView.ViewHolder {
         public ImageView ivJuego;
         public TextView tvTitulo;
+        public TextView tvDescripcion;
         public View vista;
 
         public MiContenedorDeVistas(View vista) {
             super(vista);
             this.ivJuego = vista.findViewById(R.id.img_Caratula);
             this.tvTitulo = vista.findViewById(R.id.tv_Titulo);
+            this.tvDescripcion = vista.findViewById(R.id.tv_descripcion);
             this.vista = vista;
 
 
