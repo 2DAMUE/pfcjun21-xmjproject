@@ -77,11 +77,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
         btnComparte.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View vista) {
                 Intent compartir = new Intent(android.content.Intent.ACTION_SEND);
                 compartir.setType("text/plain");
                 compartir.putExtra(android.content.Intent.EXTRA_SUBJECT, "GameSource App");
-                compartir.putExtra(android.content.Intent.EXTRA_TEXT, getString(R.string.share_message));
+                compartir.putExtra(android.content.Intent.EXTRA_TEXT, getString(R.string.share_messageGame) + v.getUrl_origen());
                 startActivity(Intent.createChooser(compartir, "Compartir vía"));
             }
         });
