@@ -40,7 +40,7 @@ public class AdaptadorSearch extends RecyclerView.Adapter<AdaptadorSearch.MiCont
         Videojuego juego = listaVideojuegos.get(position);
         //Log.d("mensaje", juego.toString());
         Glide.with(holder.vista).load(juego.getImage_url()).centerCrop().into(holder.ivJuego);
-        holder.ivJuego.setOnClickListener(new View.OnClickListener() {
+        holder.vista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 main.mostrarAlertDialog(juego, main);

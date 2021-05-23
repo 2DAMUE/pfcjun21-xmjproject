@@ -38,4 +38,6 @@
     <string name="signUp"><b>Registrarse</b></string>
     <string name="tool"><b>Herramientas</b></string>
     <string name="updateToast"><b>Actualizado</b></string>
+    <string name="botonIrAJuego">Ir al juego</string>
+    <string name="botoncompartirJuego">Comparte</string>
 </resources>

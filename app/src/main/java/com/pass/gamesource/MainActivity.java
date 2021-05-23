@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,8 +61,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView tvNombre = view2.findViewById(R.id.nombreAlert);
         TextView tvDescripcion = view2.findViewById(R.id.descripcionAlert);
         ImageView imagenAlert = view2.findViewById(R.id.imagenJuego);
+        Button btnComparte = view2.findViewById(R.id.buttonComparteJuego);
+        Button btnVerJuego = view2.findViewById(R.id.buttonVerJuego);
 
-        imagenAlert.setOnClickListener(new View.OnClickListener() {
+        btnVerJuego.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View vista) {
 
@@ -70,6 +73,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.setPackage("com.android.chrome");
                 // intent.putExtra("URL", v.getUrl_origen());
                 startActivity(intent);
+            }
+        });
+        btnComparte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent compartir = new Intent(android.content.Intent.ACTION_SEND);
+                compartir.setType("text/plain");
+                compartir.putExtra(android.content.Intent.EXTRA_SUBJECT, "GameSource App");
+                compartir.putExtra(android.content.Intent.EXTRA_TEXT, getString(R.string.share_message));
+                startActivity(Intent.createChooser(compartir, "Compartir vía"));
             }
         });
 

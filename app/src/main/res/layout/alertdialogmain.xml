@@ -19,23 +19,22 @@
             android:id="@+id/imagenJuego"
             android:layout_width="0dp"
             android:layout_height="400dp"
+            android:contentDescription="Image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/backgrounds/scenic"
-            android:contentDescription="Image" />
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <TextView
             android:id="@+id/nombreAlert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
             android:text=""
             android:textColor="@color/orange_GameSource"
             android:textSize="15pt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imagenJuego" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonVerJuego" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline3"
@@ -51,8 +50,8 @@
             android:layout_marginStart="7dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="7dp"
-            android:text=""
             android:layout_marginBottom="10dp"
+            android:text=""
             android:textAlignment="center"
             android:textColor="@color/black_GameSource"
             android:textSize="9pt"
@@ -60,6 +59,37 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/nombreAlert" />
 
+        <Button
+            android:id="@+id/buttonVerJuego"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
+            android:backgroundTint="@color/orange_GameSource"
+            android:text="@string/botonIrAJuego"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagenJuego" />
+
+        <Button
+            android:id="@+id/buttonComparteJuego"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="@color/white_GameSource"
+            android:text="@string/botoncompartirJuego"
+            android:textColor="@color/black_GameSource"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toBottomOf="@+id/imagenJuego" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".5" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

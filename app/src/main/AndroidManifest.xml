@@ -27,7 +27,7 @@
             android:name=".MainActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/Theme.GameSourceNoBar" />
         <activity
             android:name=".OptionActivity"
             android:theme="@style/Theme.GameSourceNoBar" />
