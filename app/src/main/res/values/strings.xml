@@ -40,4 +40,7 @@
     <string name="updateToast"><b>Actualizado</b></string>
     <string name="botonIrAJuego">Ir al juego</string>
     <string name="botoncompartirJuego">Comparte</string>
+    <string name="tituloRecyclerSteam">Steam</string>
+    <string name="tituloRecyclerPlayStation">PlayStation</string>
+    <string name="tituloRecyclerNintendo">Nintendo</string>
 </resources>
