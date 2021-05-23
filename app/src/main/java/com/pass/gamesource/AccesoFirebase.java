@@ -21,6 +21,11 @@ public class AccesoFirebase {
     static DatabaseReference myRef = database.getReference().child("gratis");
     static DatabaseReference myRefDestacado = database.getReference().child("epic_semanal");
 
+    /**
+     * Método que devuelve todos los videojuegos gratuitos de la base de datos Firebase
+     *
+     * @param a Interfaz de actualización para poder recuperar los datos en el main o en la pantalla que se le requiera
+     */
     public static void obtenerVideojuegosGratis(ActualizarVideojuegosGratis a) {
         Log.d("MENSAJE", "Obteniendo datos de Firebase...");
         ArrayList<Videojuego> videojuegosGratis = new ArrayList<Videojuego>();
@@ -46,6 +51,11 @@ public class AccesoFirebase {
 
     }
 
+    /**
+     * Método que recupera todos los juegos de PlayStation accediendo a la base de datos Firebase
+     *
+     * @param a Interfaz de actualización para poder recuperar los datos en el main o en la pantalla que se le requiera
+     */
     public static void obtenerVideojuegosPS(ActualizarVideojuegosEpic a) {
         ArrayList<Videojuego> videojuegosEpic = new ArrayList<Videojuego>();
         myRef.addValueEventListener(new ValueEventListener() {
@@ -66,6 +76,11 @@ public class AccesoFirebase {
         });
     }
 
+    /**
+     * Obtención del videojuego destacado, que en este caso es el primer juego de la tienda de EpicGames semanal
+     *
+     * @param a Interfaz de actualización para poder recuperar los datos en el main o en la pantalla que se le requiera
+     */
     public static void obtenerVideojuegoDestacado(ActualizarVideojuegoDestacado a) {
 
         myRefDestacado.addValueEventListener(new ValueEventListener() {
@@ -85,6 +100,11 @@ public class AccesoFirebase {
         });
     }
 
+    /**
+     * Método que devuelve la lista de los videojuegos gratuitos de Steam accediendo a Firebase
+     *
+     * @param a Interfaz de actualización para poder recuperar los datos en el main o en la pantalla que se le requiera
+     */
     public static void obtenerVideojuegosSteam(ActualizarVideojuegosSteam a) {
         ArrayList<Videojuego> videojuegosSteam = new ArrayList<Videojuego>();
         myRef.addValueEventListener(new ValueEventListener() {
@@ -105,6 +125,13 @@ public class AccesoFirebase {
         });
     }
 
+    /**
+     * Es un método que devuelve la lista de videojuegos que coinciden con las letras que se
+     * van escribiendo en el campo de búsqueda
+     *
+     * @param a      Interfaz de acutalización para la recuperación de datos
+     * @param nombre El nombre del videojuego a buscar
+     */
     public static void obtenerVideojuegosFiltrado(ActualizarVideojuegosGratis a, String nombre) {
         HashSet<String> nombres = new HashSet<>();
         FirebaseDatabase databaseF = FirebaseDatabase.getInstance();

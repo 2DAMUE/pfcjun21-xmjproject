@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        //Llamada a los métodos de Firebase para que se construyan los Recycler
         AccesoFirebase.obtenerVideojuegosGratis(this);
         AccesoFirebase.obtenerVideojuegosPS(this);
         AccesoFirebase.obtenerVideojuegosSteam(this);
@@ -38,18 +38,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         swipeLayout = findViewById(R.id.myswipe);
         swipeLayout.setOnRefreshListener(mOnRefreshListener);
 
-
+        //Inicialización de los botones del bottom app bar
         findViewById(R.id.img_Home_Logo).setOnClickListener(this);
         findViewById(R.id.img_Search_Logo).setOnClickListener(this);
         findViewById(R.id.img_Historial_Logo).setOnClickListener(this);
         findViewById(R.id.img_Calendar_Logo).setOnClickListener(this);
 
-        //Creamos el ArrayList con todos los videojuegos para que se muestren en el Recycler
-        ArrayList<Videojuego> listaVideojuegos = new ArrayList<Videojuego>();
-
-
     }
 
+    /**
+     * @param v    El videojuego a mostrar en el AlertDialog
+     * @param view Objeto MainActivity para poder realizar la construcción del alertDialog
+     */
     public void mostrarAlertDialog(Videojuego v, MainActivity view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(view);
         AlertDialog alert = builder.create();
@@ -142,7 +142,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }
-
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //Aquí iniciamos todos los métodos de recuperación e inicialización de los Recycler
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     @Override
     public void recuperarVideojuegos(ArrayList<Videojuego> videojuegos) {
@@ -171,7 +173,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void recuperarVideojuegosSteam(ArrayList<Videojuego> videojuegos) {
-
 
         RecyclerView recyclerViewSteam = findViewById(R.id.recyclerMainSteam);
         RecyclerView.LayoutManager gestorSteam = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
