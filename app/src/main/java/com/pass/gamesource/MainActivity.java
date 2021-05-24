@@ -1,11 +1,13 @@
 package com.pass.gamesource;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,6 +65,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ImageView imagenAlert = view2.findViewById(R.id.imagenJuego);
         Button btnComparte = view2.findViewById(R.id.buttonComparteJuego);
         Button btnVerJuego = view2.findViewById(R.id.buttonVerJuego);
+        ImageButton btnFavorito = view2.findViewById(R.id.btnFavorito);
+
+        btnFavorito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnFavorito.setImageResource(R.drawable.btn_favorites_border_foreground);
+            }
+        });
 
         btnVerJuego.setOnClickListener(new View.OnClickListener() {
             @Override
