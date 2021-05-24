@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/vw_Search"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_GameSource">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerJuegosActivityFavoritos"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:divider="@drawable/divider"
+        android:layoutAnimation="@anim/layout_fall_down"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_search_favoritos"
+        app:layout_constraintVertical_bias="0.542" >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <EditText
+        android:id="@+id/view_search_favoritos"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_above="@id/recyclerJuegosActivityFavoritos"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/round"
+        android:maxLines="1"
+        android:paddingStart="10dp"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </EditText>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:alpha="0.9"
+        android:background="@color/black_GameSource"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+
+        <ImageView
+            android:id="@+id/img_Home_Logo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            app:layout_constraintEnd_toStartOf="@id/guideline_25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/home_logo_foreground" />
+
+        <ImageView
+            android:id="@+id/img_Search_Logo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            app:layout_constraintEnd_toStartOf="@id/guideline_50"
+            app:layout_constraintStart_toStartOf="@id/guideline_25"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/search_logo_foreground" />
+
+        <ImageView
+            android:id="@+id/img_Historial_Logo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            app:layout_constraintEnd_toStartOf="@id/guideline_75"
+            app:layout_constraintStart_toStartOf="@id/guideline_50"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/historial_logo_foreground" />
+
+        <ImageView
+            android:id="@+id/img_Calendar_Logo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline_75"
+            app:layout_constraintTop_toTopOf="parent"
+
+
+            app:srcCompat="@drawable/calendar_logo_foreground" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".25" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_75"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".75" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -92,7 +92,7 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
                 startActivity(intent4);
                 break;
             case R.id.img_Historial_Logo:
-                Intent intent5 = new Intent(SearchRecycler.this, MainActivity.class);
+                Intent intent5 = new Intent(SearchRecycler.this, FavoritosActivity.class);
                 startActivity(intent5);
                 break;
             case R.id.img_Calendar_Logo:

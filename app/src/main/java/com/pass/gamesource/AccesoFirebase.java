@@ -125,6 +125,31 @@ public class AccesoFirebase {
         });
     }
 
+    //TODO: implementar usuario activo
+    public static void obtenerVideojuegosFavoritos(ActualizarVideojuegosFavoritos a, String user) {
+        ArrayList<Videojuego> videojuegosFavoritos = new ArrayList<Videojuego>();
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for (DataSnapshot esnapshot : snapshot.child("user_favorites").child(user).getChildren()) {
+                    videojuegosFavoritos.add(esnapshot.getValue(Videojuego.class));
+                }
+
+                //Log.d("MENSAJE", snapshot.getValue(Videojuego.class).toString());
+                a.obtenerVideojuegosFavoritos(videojuegosFavoritos);
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    public static void aniadirJuegoFavorito(Videojuego v) {
+
+    }
+
     /**
      * Es un método que devuelve la lista de videojuegos que coinciden con las letras que se
      * van escribiendo en el campo de búsqueda
