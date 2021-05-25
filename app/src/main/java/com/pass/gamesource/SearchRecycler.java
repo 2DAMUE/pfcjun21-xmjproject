@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -102,7 +103,7 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    public void mostrarAlertDialog(Videojuego v, SearchRecycler view) {
+    public void mostrarAlertDialog(Videojuego videojuego, SearchRecycler view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(view);
         AlertDialog alert = builder.create();
         View view2 = getLayoutInflater().inflate(R.layout.alertdialogmain, null, false);
@@ -115,15 +116,23 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
         ImageView imagenAlert = view2.findViewById(R.id.imagenJuego);
         Button btnIrAJuego = view2.findViewById(R.id.buttonVerJuego);
         Button btnComparte = view2.findViewById(R.id.buttonComparteJuego);
+        ImageButton btnFavorito = view2.findViewById(R.id.btnFavorito);
+
+        btnFavorito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnFavorito.setImageResource(R.drawable.btn_favorites_border_foreground);
+                AccesoFirebase.aniadirJuegoFavorito(videojuego, "hola");
+            }
+        });
 
         btnIrAJuego.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View vista) {
 
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(v.getUrl_origen()));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(videojuego.getUrl_origen()));
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.setPackage("com.android.chrome");
-                // intent.putExtra("URL", v.getUrl_origen());
                 startActivity(intent);
             }
         });
@@ -134,14 +143,14 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
                 Intent compartir = new Intent(android.content.Intent.ACTION_SEND);
                 compartir.setType("text/plain");
                 compartir.putExtra(android.content.Intent.EXTRA_SUBJECT, "GameSource App");
-                compartir.putExtra(android.content.Intent.EXTRA_TEXT, getString(R.string.share_messageGame) + v.getUrl_origen());
+                compartir.putExtra(android.content.Intent.EXTRA_TEXT, getString(R.string.share_messageGame) + videojuego.getUrl_origen());
                 startActivity(Intent.createChooser(compartir, "Compartir vía"));
             }
         });
-        Glide.with(view).load(v.getImage_url()).centerCrop().into(imagenAlert);
+        Glide.with(view).load(videojuego.getImage_url()).centerCrop().into(imagenAlert);
 
-        tvDescripcion.setText(v.getDescripcion());
-        tvNombre.setText(v.getNombre());
+        tvDescripcion.setText(videojuego.getDescripcion());
+        tvNombre.setText(videojuego.getNombre());
 
         //builder.show();
         alert.show();

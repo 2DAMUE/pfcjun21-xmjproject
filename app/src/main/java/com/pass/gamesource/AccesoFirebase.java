@@ -20,6 +20,7 @@ public class AccesoFirebase {
     static FirebaseDatabase database = FirebaseDatabase.getInstance();
     static DatabaseReference myRef = database.getReference().child("gratis");
     static DatabaseReference myRefDestacado = database.getReference().child("epic_semanal");
+    static DatabaseReference myRefFavorite = database.getReference().child("user_favorite");
 
     /**
      * Método que devuelve todos los videojuegos gratuitos de la base de datos Firebase
@@ -125,17 +126,27 @@ public class AccesoFirebase {
         });
     }
 
+    /**
+     * Método que devuelve todos los juegos favoritos de un usuario
+     *
+     * @param a    interfaz de actualizar los datos para manejar la callback
+     * @param user el nombre de usuario para recoger sus juegos favoritos
+     */
     //TODO: implementar usuario activo
     public static void obtenerVideojuegosFavoritos(ActualizarVideojuegosFavoritos a, String user) {
         ArrayList<Videojuego> videojuegosFavoritos = new ArrayList<Videojuego>();
-        myRef.addValueEventListener(new ValueEventListener() {
+        myRefFavorite.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                for (DataSnapshot esnapshot : snapshot.child("user_favorites").child(user).getChildren()) {
+                if (!snapshot.exists()) {
+                    a.obtenerVideojuegosFavoritos(videojuegosFavoritos);
+                    return;
+                }
+                for (DataSnapshot esnapshot : snapshot.child(user).getChildren()) {
                     videojuegosFavoritos.add(esnapshot.getValue(Videojuego.class));
                 }
 
-                //Log.d("MENSAJE", snapshot.getValue(Videojuego.class).toString());
+                Log.d("MENSAJE", videojuegosFavoritos.toString());
                 a.obtenerVideojuegosFavoritos(videojuegosFavoritos);
             }
 
@@ -146,8 +157,8 @@ public class AccesoFirebase {
         });
     }
 
-    public static void aniadirJuegoFavorito(Videojuego v) {
-
+    public static void aniadirJuegoFavorito(Videojuego v, String user) {
+        myRefFavorite.child(user).push().setValue(v);
     }
 
     /**
