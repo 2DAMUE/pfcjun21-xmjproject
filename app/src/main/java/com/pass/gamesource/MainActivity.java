@@ -1,11 +1,13 @@
 package com.pass.gamesource;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,10 +49,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * @param v    El videojuego a mostrar en el AlertDialog
-     * @param view Objeto MainActivity para poder realizar la construcción del alertDialog
+     * @param videojuego El videojuego a mostrar en el AlertDialog
+     * @param view       Objeto MainActivity para poder realizar la construcción del alertDialog
      */
-    public void mostrarAlertDialog(Videojuego v, MainActivity view) {
+    public void mostrarAlertDialog(Videojuego videojuego, MainActivity view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(view);
         AlertDialog alert = builder.create();
         View view2 = getLayoutInflater().inflate(R.layout.alertdialogmain, null, false);
@@ -63,33 +65,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ImageView imagenAlert = view2.findViewById(R.id.imagenJuego);
         Button btnComparte = view2.findViewById(R.id.buttonComparteJuego);
         Button btnVerJuego = view2.findViewById(R.id.buttonVerJuego);
+        ImageButton btnFavorito = view2.findViewById(R.id.btnFavorito);
 
-        btnVerJuego.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vista) {
-
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(v.getUrl_origen()));
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.setPackage("com.android.chrome");
-                // intent.putExtra("URL", v.getUrl_origen());
-                startActivity(intent);
-            }
-        });
-        btnComparte.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vista) {
-                Intent compartir = new Intent(android.content.Intent.ACTION_SEND);
-                compartir.setType("text/plain");
-                compartir.putExtra(android.content.Intent.EXTRA_SUBJECT, "GameSource App");
-                compartir.putExtra(android.content.Intent.EXTRA_TEXT, getString(R.string.share_messageGame) + v.getUrl_origen());
-                startActivity(Intent.createChooser(compartir, "Compartir vía"));
-            }
+        btnFavorito.setOnClickListener(v -> {
+            btnFavorito.setImageResource(R.drawable.btn_favorites_border_foreground);
+            AccesoFirebase.aniadirJuegoFavorito(videojuego, "hola");
         });
 
-        Glide.with(view).load(v.getImage_url()).centerCrop().into(imagenAlert);
+        btnVerJuego.setOnClickListener(vista -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(videojuego.getUrl_origen()));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setPackage("com.android.chrome");
+            // intent.putExtra("URL", v.getUrl_origen());
+            startActivity(intent);
+        });
+        btnComparte.setOnClickListener(vista -> {
+            Intent compartir = new Intent(Intent.ACTION_SEND);
+            compartir.setType("text/plain");
+            compartir.putExtra(Intent.EXTRA_SUBJECT, "GameSource App");
+            compartir.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_messageGame) + videojuego.getUrl_origen());
+            startActivity(Intent.createChooser(compartir, "Compartir vía"));
+        });
 
-        tvDescripcion.setText(v.getDescripcion());
-        tvNombre.setText(v.getNombre());
+        Glide.with(view).load(videojuego.getImage_url()).centerCrop().into(imagenAlert);
+
+        tvDescripcion.setText(videojuego.getDescripcion());
+        tvNombre.setText(videojuego.getNombre());
 
         //builder.show();
         alert.show();
@@ -114,6 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * navigation Bar
      */
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -127,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent9);
                 break;
             case R.id.img_Historial_Logo:
-                Intent intent10 = new Intent(MainActivity.this, MainActivity.class);
+                Intent intent10 = new Intent(MainActivity.this, FavoritosActivity.class);
                 startActivity(intent10);
                 break;
             case R.id.img_Calendar_Logo:
@@ -149,12 +151,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void recuperarVideojuegos(ArrayList<Videojuego> videojuegos) {
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerMain);
-        RecyclerView.LayoutManager gestor = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-        AdaptadorRecyclerMain adaptador = new AdaptadorRecyclerMain(videojuegos, this);
-        recyclerView.setLayoutManager(gestor);
-        recyclerView.setAdapter(adaptador);
 
+        RecyclerView recyclerViewSteam = findViewById(R.id.recyclerMainSteam);
+        RecyclerView.LayoutManager gestorSteam = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        AdaptadorRecyclerMain adaptadorSteam = new AdaptadorRecyclerMain(videojuegos, this);
+        recyclerViewSteam.setLayoutManager(gestorSteam);
+        recyclerViewSteam.setAdapter(adaptadorSteam);
 
         Log.d("MENSAJE NORMAL", videojuegos.toString());
     }
@@ -174,11 +176,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void recuperarVideojuegosSteam(ArrayList<Videojuego> videojuegos) {
 
-        RecyclerView recyclerViewSteam = findViewById(R.id.recyclerMainSteam);
-        RecyclerView.LayoutManager gestorSteam = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-        AdaptadorRecyclerMain adaptadorSteam = new AdaptadorRecyclerMain(videojuegos, this);
-        recyclerViewSteam.setLayoutManager(gestorSteam);
-        recyclerViewSteam.setAdapter(adaptadorSteam);
+        RecyclerView recyclerView = findViewById(R.id.recyclerMain);
+        RecyclerView.LayoutManager gestor = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        AdaptadorRecyclerMain adaptador = new AdaptadorRecyclerMain(videojuegos, this);
+        recyclerView.setLayoutManager(gestor);
+        recyclerView.setAdapter(adaptador);
 
         Log.d("MENSAJE STEAM", videojuegos.toString());
 

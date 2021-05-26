@@ -1,18 +1,17 @@
 package com.pass.gamesource;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Switch;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -85,7 +84,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(intent9);
                 break;
             case R.id.img_Historial_Logo:
-                Intent intent10 = new Intent(CalendarActivity.this, MainActivity.class);
+                Intent intent10 = new Intent(CalendarActivity.this, FavoritosActivity.class);
                 startActivity(intent10);
                 break;
             case R.id.img_Calendar_Logo:
@@ -97,6 +96,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
 
 
     }
+
     /**
      * Menu lateral
      * inicializacion
@@ -119,7 +119,6 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
 
         navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
-
 
 
 /**1
