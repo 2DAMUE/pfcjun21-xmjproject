@@ -1,5 +1,6 @@
 package com.pass.gamesource;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -66,34 +67,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btnVerJuego = view2.findViewById(R.id.buttonVerJuego);
         ImageButton btnFavorito = view2.findViewById(R.id.btnFavorito);
 
-        btnFavorito.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                btnFavorito.setImageResource(R.drawable.btn_favorites_border_foreground);
-                AccesoFirebase.aniadirJuegoFavorito(videojuego, "hola");
-            }
+        btnFavorito.setOnClickListener(v -> {
+            btnFavorito.setImageResource(R.drawable.btn_favorites_border_foreground);
+            AccesoFirebase.aniadirJuegoFavorito(videojuego, "hola");
         });
 
-        btnVerJuego.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vista) {
-
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(videojuego.getUrl_origen()));
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.setPackage("com.android.chrome");
-                // intent.putExtra("URL", v.getUrl_origen());
-                startActivity(intent);
-            }
+        btnVerJuego.setOnClickListener(vista -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(videojuego.getUrl_origen()));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setPackage("com.android.chrome");
+            // intent.putExtra("URL", v.getUrl_origen());
+            startActivity(intent);
         });
-        btnComparte.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vista) {
-                Intent compartir = new Intent(android.content.Intent.ACTION_SEND);
-                compartir.setType("text/plain");
-                compartir.putExtra(android.content.Intent.EXTRA_SUBJECT, "GameSource App");
-                compartir.putExtra(android.content.Intent.EXTRA_TEXT, getString(R.string.share_messageGame) + videojuego.getUrl_origen());
-                startActivity(Intent.createChooser(compartir, "Compartir vía"));
-            }
+        btnComparte.setOnClickListener(vista -> {
+            Intent compartir = new Intent(Intent.ACTION_SEND);
+            compartir.setType("text/plain");
+            compartir.putExtra(Intent.EXTRA_SUBJECT, "GameSource App");
+            compartir.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_messageGame) + videojuego.getUrl_origen());
+            startActivity(Intent.createChooser(compartir, "Compartir vía"));
         });
 
         Glide.with(view).load(videojuego.getImage_url()).centerCrop().into(imagenAlert);
@@ -124,6 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * navigation Bar
      */
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
