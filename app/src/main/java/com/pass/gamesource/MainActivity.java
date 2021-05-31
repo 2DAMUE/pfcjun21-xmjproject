@@ -22,17 +22,15 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegoDestacado, ActualizarVideojuegosGratis, ActualizarVideojuegosSteam, ActualizarVideojuegosEpic {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,ActualizarVideojuegosFavoritos, ActualizarVideojuegoDestacado, ActualizarVideojuegosGratis, ActualizarVideojuegosSteam, ActualizarVideojuegosEpic {
     MainActivity context = this;
     private SwipeRefreshLayout swipeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Llamada a los métodos de Firebase para que se construyan los Recycler
-        AccesoFirebase.obtenerVideojuegosGratis(this);
-        AccesoFirebase.obtenerVideojuegosPS(this);
-        AccesoFirebase.obtenerVideojuegosSteam(this);
-        AccesoFirebase.obtenerVideojuegoDestacado(this);
+
+        AccesoFirebase.obtenerVideojuegosFavoritos(this);
 
         context = this;
         super.onCreate(savedInstanceState);
@@ -69,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnFavorito.setOnClickListener(v -> {
             btnFavorito.setImageResource(R.drawable.btn_favorites_border_foreground);
-            AccesoFirebase.aniadirJuegoFavorito(videojuego, "hola");
+            AccesoFirebase.aniadirJuegoFavorito(videojuego);
         });
 
         btnVerJuego.setOnClickListener(vista -> {
@@ -192,5 +190,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Glide.with(this)
                 .load(v.getImage_url())
                 .centerCrop().into(ivMain);
+    }
+
+    @Override
+    public void obtenerVideojuegosFavoritos(ArrayList<Videojuego> videojuegos) {
+        AccesoFirebase.obtenerVideojuegosGratis(this);
+        AccesoFirebase.obtenerVideojuegosPS(this);
+        AccesoFirebase.obtenerVideojuegosSteam(this);
+        AccesoFirebase.obtenerVideojuegoDestacado(this);
     }
 }

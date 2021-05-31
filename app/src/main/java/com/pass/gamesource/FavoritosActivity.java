@@ -44,7 +44,7 @@ public class FavoritosActivity extends AppCompatActivity implements View.OnClick
 
         //EditText busqueda = findViewById(R.id.view_search);
         //TODO: implementar usuario activo
-        AccesoFirebase.obtenerVideojuegosFavoritos(context, "hola");
+        AccesoFirebase.obtenerVideojuegosFavoritos(context);
 /*
         busqueda.addTextChangedListener(new TextWatcher() {
             @Override

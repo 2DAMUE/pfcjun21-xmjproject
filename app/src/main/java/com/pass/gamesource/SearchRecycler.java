@@ -122,7 +122,7 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onClick(View v) {
                 btnFavorito.setImageResource(R.drawable.btn_favorites_border_foreground);
-                AccesoFirebase.aniadirJuegoFavorito(videojuego, "hola");
+                AccesoFirebase.aniadirJuegoFavorito(videojuego);
             }
         });
 

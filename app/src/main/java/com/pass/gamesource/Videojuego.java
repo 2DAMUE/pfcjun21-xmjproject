@@ -10,7 +10,16 @@ public class Videojuego {
     private String url_origen;
     private String nombreMin;
     private List<String> fechas;
+    private boolean favorito = false;
     private int img;
+
+    public boolean isFavorito() {
+        return favorito;
+    }
+
+    public void setFavorito(boolean favorito) {
+        this.favorito = favorito;
+    }
 
     public String getNombreMin() {
         return nombreMin;
