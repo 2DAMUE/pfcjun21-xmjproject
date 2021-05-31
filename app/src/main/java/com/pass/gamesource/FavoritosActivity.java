@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -120,6 +121,13 @@ public class FavoritosActivity extends AppCompatActivity implements View.OnClick
         ImageView imagenAlert = view2.findViewById(R.id.imagenJuego);
         Button btnIrAJuego = view2.findViewById(R.id.buttonVerJuego);
         Button btnComparte = view2.findViewById(R.id.buttonComparteJuego);
+        ImageButton btnFavorito = view2.findViewById(R.id.btnFavorito);
+        btnFavorito.setImageResource(R.drawable.btn_favorites_filled_foreground);
+        btnFavorito.setOnClickListener(v1 -> {
+            btnFavorito.setImageResource(R.drawable.btn_favorites_border_foreground);
+            AccesoFirebase.eliminarJuegoFavorito(v);
+            AccesoFirebase.obtenerVideojuegosFavoritos(context);
+        });
 
         btnIrAJuego.setOnClickListener(new View.OnClickListener() {
             @Override

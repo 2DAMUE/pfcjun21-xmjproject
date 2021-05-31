@@ -10,7 +10,7 @@ public class Videojuego {
     private String url_origen;
     private String nombreMin;
     private List<String> fechas;
-    private boolean favorito = false;
+    private boolean favorito;
     private int img;
 
     public boolean isFavorito() {
@@ -104,7 +104,9 @@ public class Videojuego {
                 ", image_url='" + image_url + '\'' +
                 ", plataforma='" + plataforma + '\'' +
                 ", url_origen='" + url_origen + '\'' +
+                ", nombreMin='" + nombreMin + '\'' +
                 ", fechas=" + fechas +
+                ", favorito=" + favorito +
                 ", img=" + img +
                 '}';
     }

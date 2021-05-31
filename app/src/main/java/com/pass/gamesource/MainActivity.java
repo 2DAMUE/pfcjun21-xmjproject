@@ -22,15 +22,17 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener,ActualizarVideojuegosFavoritos, ActualizarVideojuegoDestacado, ActualizarVideojuegosGratis, ActualizarVideojuegosSteam, ActualizarVideojuegosEpic {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosFavoritos, ActualizarVideojuegoDestacado, ActualizarVideojuegosGratis, ActualizarVideojuegosSteam, ActualizarVideojuegosEpic {
     MainActivity context = this;
     private SwipeRefreshLayout swipeLayout;
+    ArrayList<String> favoritos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Llamada a los métodos de Firebase para que se construyan los Recycler
 
         AccesoFirebase.obtenerVideojuegosFavoritos(this);
+        favoritos = new ArrayList<>();
 
         context = this;
         super.onCreate(savedInstanceState);
@@ -64,10 +66,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btnComparte = view2.findViewById(R.id.buttonComparteJuego);
         Button btnVerJuego = view2.findViewById(R.id.buttonVerJuego);
         ImageButton btnFavorito = view2.findViewById(R.id.btnFavorito);
+        if (videojuego.isFavorito())
+            btnFavorito.setImageResource(R.drawable.btn_favorites_filled_foreground);
 
         btnFavorito.setOnClickListener(v -> {
-            btnFavorito.setImageResource(R.drawable.btn_favorites_border_foreground);
-            AccesoFirebase.aniadirJuegoFavorito(videojuego);
+
+            if (!videojuego.isFavorito()) {
+                btnFavorito.setImageResource(R.drawable.btn_favorites_filled_foreground);
+                AccesoFirebase.aniadirJuegoFavorito(videojuego);
+            } else {
+                btnFavorito.setImageResource(R.drawable.btn_favorites_border_foreground);
+                AccesoFirebase.eliminarJuegoFavorito(videojuego);
+            }
         });
 
         btnVerJuego.setOnClickListener(vista -> {
@@ -149,6 +159,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void recuperarVideojuegos(ArrayList<Videojuego> videojuegos) {
 
+        for (Videojuego videojuego : videojuegos) {
+            if (favoritos.contains(videojuego.getNombre()))
+                videojuego.setFavorito(true);
+            else
+                videojuego.setFavorito(false);
+
+        }
 
         RecyclerView recyclerViewSteam = findViewById(R.id.recyclerMainSteam);
         RecyclerView.LayoutManager gestorSteam = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -162,6 +179,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void recuperarVideojuegosEpic(ArrayList<Videojuego> videojuegos) {
 
+        for (Videojuego videojuego : videojuegos) {
+            if (favoritos.contains(videojuego.getNombre()))
+                videojuego.setFavorito(true);
+            else
+                videojuego.setFavorito(false);
+
+        }
         RecyclerView recyclerViewEpic = findViewById(R.id.recyclerMainSoftware);
         RecyclerView.LayoutManager gestorEpic = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         AdaptadorRecyclerMain adaptadorEpic = new AdaptadorRecyclerMain(videojuegos, this);
@@ -173,6 +197,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void recuperarVideojuegosSteam(ArrayList<Videojuego> videojuegos) {
+        for (Videojuego videojuego : videojuegos) {
+            if (favoritos.contains(videojuego.getNombre()))
+                videojuego.setFavorito(true);
+            else
+                videojuego.setFavorito(false);
+
+        }
 
         RecyclerView recyclerView = findViewById(R.id.recyclerMain);
         RecyclerView.LayoutManager gestor = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -194,6 +225,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void obtenerVideojuegosFavoritos(ArrayList<Videojuego> videojuegos) {
+        for (Videojuego videojuego : videojuegos) {
+            favoritos.add(videojuego.getNombre());
+        }
         AccesoFirebase.obtenerVideojuegosGratis(this);
         AccesoFirebase.obtenerVideojuegosPS(this);
         AccesoFirebase.obtenerVideojuegosSteam(this);
