@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "204253438311-9eh3s76rbhlahcrml721543jg2js4u0d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pass.gamesource",
+            "certificate_hash": "91dd3e987d86c2cecc1c7efdbea0ee24320e22e5"
+          }
+        },
+        {
           "client_id": "204253438311-f18jkgnbq47rlc0i1t03tfpgmff591jt.apps.googleusercontent.com",
           "client_type": 3
         }
