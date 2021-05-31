@@ -129,11 +129,10 @@ public class AccesoFirebase {
     /**
      * Método que devuelve todos los juegos favoritos de un usuario
      *
-     * @param a    interfaz de actualizar los datos para manejar la callback
-     * @param user el nombre de usuario para recoger sus juegos favoritos
+     * @param a interfaz de actualizar los datos para manejar la callback
      */
     //TODO: implementar usuario activo
-    public static void obtenerVideojuegosFavoritos(ActualizarVideojuegosFavoritos a, String user) {
+    public static void obtenerVideojuegosFavoritos(ActualizarVideojuegosFavoritos a) {
         ArrayList<Videojuego> videojuegosFavoritos = new ArrayList<Videojuego>();
         myRefFavorite.addValueEventListener(new ValueEventListener() {
             @Override
@@ -142,7 +141,7 @@ public class AccesoFirebase {
                     a.obtenerVideojuegosFavoritos(videojuegosFavoritos);
                     return;
                 }
-                for (DataSnapshot esnapshot : snapshot.child(user).getChildren()) {
+                for (DataSnapshot esnapshot : snapshot.child(LoginActivity.userEmail.split("\\.")[0] + LoginActivity.userEmail.split("\\.")[1]).getChildren()) {
                     videojuegosFavoritos.add(esnapshot.getValue(Videojuego.class));
                 }
 
@@ -157,8 +156,12 @@ public class AccesoFirebase {
         });
     }
 
-    public static void aniadirJuegoFavorito(Videojuego v, String user) {
-        myRefFavorite.child(user).push().setValue(v);
+    public static void aniadirJuegoFavorito(Videojuego v) {
+        myRefFavorite.child(LoginActivity.userEmail.split("\\.")[0] + LoginActivity.userEmail.split("\\.")[1]).child(v.getNombre()).setValue(v);
+    }
+
+    public static void eliminarJuegoFavorito(Videojuego v) {
+        myRefFavorite.child(LoginActivity.userEmail.split("\\.")[0] + LoginActivity.userEmail.split("\\.")[1]).child(v.getNombre()).removeValue();
     }
 
     /**

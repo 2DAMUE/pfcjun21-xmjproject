@@ -24,16 +24,17 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class SearchRecycler extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosGratis {
+public class SearchRecycler extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosFavoritos, ActualizarVideojuegosGratis {
 
     private final SearchRecycler context = this;
 
-    private ArrayList<Videojuego> videojuegosGratis;
+    ArrayList<String> favoritos;
     private EditText busqueda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        favoritos = new ArrayList<>();
         setContentView(R.layout.activity_search_recycler);
         /*
         //menuLateral();
@@ -117,35 +118,34 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
         Button btnIrAJuego = view2.findViewById(R.id.buttonVerJuego);
         Button btnComparte = view2.findViewById(R.id.buttonComparteJuego);
         ImageButton btnFavorito = view2.findViewById(R.id.btnFavorito);
+        if (videojuego.isFavorito())
+            btnFavorito.setImageResource(R.drawable.btn_favorites_filled_foreground);
 
-        btnFavorito.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btnFavorito.setOnClickListener(v -> {
+
+            if (!videojuego.isFavorito()) {
+                btnFavorito.setImageResource(R.drawable.btn_favorites_filled_foreground);
+                AccesoFirebase.aniadirJuegoFavorito(videojuego);
+            } else {
                 btnFavorito.setImageResource(R.drawable.btn_favorites_border_foreground);
-                AccesoFirebase.aniadirJuegoFavorito(videojuego, "hola");
+                AccesoFirebase.eliminarJuegoFavorito(videojuego);
             }
         });
 
-        btnIrAJuego.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vista) {
+        btnIrAJuego.setOnClickListener(vista -> {
 
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(videojuego.getUrl_origen()));
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.setPackage("com.android.chrome");
-                startActivity(intent);
-            }
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(videojuego.getUrl_origen()));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setPackage("com.android.chrome");
+            startActivity(intent);
         });
 
-        btnComparte.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vista) {
-                Intent compartir = new Intent(android.content.Intent.ACTION_SEND);
-                compartir.setType("text/plain");
-                compartir.putExtra(android.content.Intent.EXTRA_SUBJECT, "GameSource App");
-                compartir.putExtra(android.content.Intent.EXTRA_TEXT, getString(R.string.share_messageGame) + videojuego.getUrl_origen());
-                startActivity(Intent.createChooser(compartir, "Compartir vía"));
-            }
+        btnComparte.setOnClickListener(vista -> {
+            Intent compartir = new Intent(Intent.ACTION_SEND);
+            compartir.setType("text/plain");
+            compartir.putExtra(Intent.EXTRA_SUBJECT, "GameSource App");
+            compartir.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_messageGame) + videojuego.getUrl_origen());
+            startActivity(Intent.createChooser(compartir, "Compartir vía"));
         });
         Glide.with(view).load(videojuego.getImage_url()).centerCrop().into(imagenAlert);
 
@@ -315,10 +315,27 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void recuperarVideojuegos(ArrayList<Videojuego> videojuegos) {
+
+        for (Videojuego videojuego : videojuegos) {
+            if (favoritos.contains(videojuego.getNombre()))
+                videojuego.setFavorito(true);
+            else
+                videojuego.setFavorito(false);
+
+        }
+
         RecyclerView recycler = findViewById(R.id.recyclerJuegosActivity);
         RecyclerView.LayoutManager gestor = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         AdaptadorSearch adaptador = new AdaptadorSearch(videojuegos, context);
         recycler.setLayoutManager(gestor);
         recycler.setAdapter(adaptador);
+    }
+
+    @Override
+    public void obtenerVideojuegosFavoritos(ArrayList<Videojuego> videojuegos) {
+        for (Videojuego videojuego : videojuegos) {
+            favoritos.add(videojuego.getNombre());
+        }
+        AccesoFirebase.obtenerVideojuegosGratis(this);
     }
 }

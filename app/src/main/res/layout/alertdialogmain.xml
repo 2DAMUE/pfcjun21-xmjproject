@@ -110,7 +110,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
             android:background="@color/white_GameSource"
-            android:src="@drawable/btn_favorites_filled_foreground"
+            android:src="@drawable/btn_favorites_border_foreground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonComparteJuego" />
 
