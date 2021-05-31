@@ -58,12 +58,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         findViewById(R.id.btn_login).setOnClickListener(this);
         findViewById(R.id.tv_Register).setOnClickListener(this);
-        findViewById(R.id.sign_in_button).setOnClickListener(this);
+        findViewById(R.id.btn_Google).setOnClickListener(this);
         findViewById(R.id.disconnect_button).setOnClickListener(this);
         findViewById(R.id.btn_login).setOnClickListener(this);
         findViewById(R.id.tv_Register).setOnClickListener(this);
-        SignInButton signInButton = findViewById(R.id.sign_in_button);
-        signInButton.setColorScheme(SignInButton.COLOR_LIGHT);
+//        SignInButton signInButton = findViewById(R.id.btn_Google);
+//        signInButton.setColorScheme(SignInButton.COLOR_LIGHT);
 
         // Views
         mStatusTextView = findViewById(R.id.status);
@@ -113,7 +113,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (user != null) {
             mStatusTextView.setText(getString(R.string.signed_in_fmt, user.getDisplayName()));
             ((TextView) findViewById(R.id.status)).setText(R.string.signed_in);
-            findViewById(R.id.sign_in_button).setVisibility(View.GONE);
+            findViewById(R.id.btn_Google).setVisibility(View.GONE);
             findViewById(R.id.disconnect_button).setVisibility(View.VISIBLE);
             Log.d("TAG", currentUser.getEmail());
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -122,7 +122,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         } else {
             mStatusTextView.setText(R.string.signed_out);
 
-            findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
+            findViewById(R.id.btn_Google).setVisibility(View.VISIBLE);
             findViewById(R.id.disconnect_button).setVisibility(View.GONE);
             ((TextView) findViewById(R.id.status)).setText(R.string.signed_out);
         }
@@ -223,7 +223,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             userEmail = account.getEmail();
             mStatusTextView.setText(getString(R.string.signed_in_fmt, account.getDisplayName()));
             ((TextView) findViewById(R.id.status)).setText(R.string.signed_in);
-            findViewById(R.id.sign_in_button).setVisibility(View.GONE);
+            findViewById(R.id.btn_Google).setVisibility(View.GONE);
             findViewById(R.id.disconnect_button).setVisibility(View.VISIBLE);
 
 
@@ -233,7 +233,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         } else {
             mStatusTextView.setText(R.string.signed_out);
 
-            findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
+            findViewById(R.id.btn_Google).setVisibility(View.VISIBLE);
             findViewById(R.id.disconnect_button).setVisibility(View.GONE);
             ((TextView) findViewById(R.id.status)).setText(R.string.signed_out);
         }
@@ -248,7 +248,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Intent intent1 = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent1);
                 break;
-            case R.id.sign_in_button:
+            case R.id.btn_Google:
                 signIn();
                 break;
             case R.id.disconnect_button:

@@ -44,6 +44,8 @@
     <string name="tituloRecyclerSteam">Steam</string>
     <string name="tituloRecyclerPlayStation">PlayStation</string>
     <string name="tituloRecyclerNintendo">Nintendo</string>
+    <string name="googleTitle">Sign In</string>
+
 
 
     <!--    #####################################Google################################################-->
