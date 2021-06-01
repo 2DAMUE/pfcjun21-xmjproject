@@ -131,9 +131,8 @@ public class AccesoFirebase {
      *
      * @param a interfaz de actualizar los datos para manejar la callback
      */
-    //TODO: implementar usuario activo
     public static void obtenerVideojuegosFavoritos(ActualizarVideojuegosFavoritos a) {
-        ArrayList<Videojuego> videojuegosFavoritos = new ArrayList<Videojuego>();
+        ArrayList<Videojuego> videojuegosFavoritos = new ArrayList<>();
         myRefFavorite.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
@@ -141,6 +140,7 @@ public class AccesoFirebase {
                     a.obtenerVideojuegosFavoritos(videojuegosFavoritos);
                     return;
                 }
+                Log.d("MENSAJE",LoginActivity.userEmail.split("\\.")[0]);
                 for (DataSnapshot esnapshot : snapshot.child(LoginActivity.userEmail.split("\\.")[0] + LoginActivity.userEmail.split("\\.")[1]).getChildren()) {
                     videojuegosFavoritos.add(esnapshot.getValue(Videojuego.class));
                 }
@@ -215,5 +215,29 @@ public class AccesoFirebase {
             }
         });
 
+    }
+
+    public static void obtenerFavoritosFiltrado(ActualizarVideojuegosFavoritos a, String nombre) {
+        DatabaseReference myRefFiltrar = database.getReference().child("user_favorite").child(LoginActivity.userEmail.split("\\.")[0] + LoginActivity.userEmail.split("\\.")[1]);
+        ArrayList<Videojuego> videojuegosGratis = new ArrayList<Videojuego>();
+
+        myRefFiltrar.orderByChild("nombreMin").startAt(nombre.toLowerCase()).endAt(nombre.toLowerCase() + "\uf8ff").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for (DataSnapshot esnapshot : snapshot.getChildren()) {
+                    videojuegosGratis.add(esnapshot.getValue(Videojuego.class));
+
+                }
+
+                Log.d("MENSAJE", videojuegosGratis.toString());
+                a.obtenerVideojuegosFavoritos(videojuegosGratis);
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+
+        });
     }
 }

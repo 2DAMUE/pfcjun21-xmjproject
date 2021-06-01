@@ -4,12 +4,16 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,21 +36,15 @@ public class FavoritosActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favoritos);
-        /*
-        //menuLateral();
-        /**
-         * Declaracion de los botones
-         */
 
         findViewById(R.id.img_Home_Logo).setOnClickListener(this);
         findViewById(R.id.img_Search_Logo).setOnClickListener(this);
         findViewById(R.id.img_Historial_Logo).setOnClickListener(this);
         findViewById(R.id.img_Calendar_Logo).setOnClickListener(this);
 
-        //EditText busqueda = findViewById(R.id.view_search);
-        //TODO: implementar usuario activo
+        EditText busqueda = findViewById(R.id.view_search_favoritos);
         AccesoFirebase.obtenerVideojuegosFavoritos(context);
-/*
+
         busqueda.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -56,7 +54,7 @@ public class FavoritosActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 Log.d("MENSAJE", s.toString());
-                // AccesoFirebase.obtenerVideojuegosFiltrado(context, s.toString());
+                AccesoFirebase.obtenerFavoritosFiltrado(context, s.toString());
             }
 
             @Override
@@ -64,7 +62,7 @@ public class FavoritosActivity extends AppCompatActivity implements View.OnClick
 
             }
         });
-*/
+
 
     }
 
@@ -91,8 +89,7 @@ public class FavoritosActivity extends AppCompatActivity implements View.OnClick
                 startActivity(intent4);
                 break;
             case R.id.img_Historial_Logo:
-                Intent intent5 = new Intent(FavoritosActivity.this, MainActivity.class);
-                startActivity(intent5);
+                Toast.makeText(this,"Ya estás aquí",Toast.LENGTH_LONG).show();
                 break;
             case R.id.img_Calendar_Logo:
                 Intent intent6 = new Intent(FavoritosActivity.this, CalendarActivity.class);
