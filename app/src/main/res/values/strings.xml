@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">GameSource</string>
+    <string name="activityCalendar">Calendario</string>
+    <string name="activitySearch">Busqueda</string>
+    <string name="activityFavorites">Favoritos</string>
     <string name="Volver">&lt; <b>volver</b></string>
     <string name="opciones"><b>Opciones</b></string>
     <string name="notificaciones"><b>Notificaciones</b></string>

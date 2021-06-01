@@ -41,6 +41,7 @@ public class FavoritosActivity extends AppCompatActivity implements View.OnClick
         findViewById(R.id.img_Search_Logo).setOnClickListener(this);
         findViewById(R.id.img_Historial_Logo).setOnClickListener(this);
         findViewById(R.id.img_Calendar_Logo).setOnClickListener(this);
+        findViewById(R.id.btn_fab).setOnClickListener(this);
 
         //EditText busqueda = findViewById(R.id.view_search);
         //TODO: implementar usuario activo
@@ -96,6 +97,10 @@ public class FavoritosActivity extends AppCompatActivity implements View.OnClick
             case R.id.img_Calendar_Logo:
                 Intent intent6 = new Intent(FavoritosActivity.this, CalendarActivity.class);
                 startActivity(intent6);
+                break;
+            case R.id.btn_fab:
+                Intent intent25 = new Intent(FavoritosActivity.this, OptionActivity.class);
+                startActivity(intent25);
                 break;
         }
     }
