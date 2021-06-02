@@ -46,6 +46,7 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
         findViewById(R.id.img_Search_Logo).setOnClickListener(this);
         findViewById(R.id.img_Historial_Logo).setOnClickListener(this);
         findViewById(R.id.img_Calendar_Logo).setOnClickListener(this);
+        findViewById(R.id.btn_fab).setOnClickListener(this);
 
         EditText busqueda = findViewById(R.id.view_search);
         AccesoFirebase.obtenerVideojuegosFiltrado(context, "");
@@ -100,6 +101,10 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
             case R.id.img_Calendar_Logo:
                 Intent intent6 = new Intent(SearchRecycler.this, CalendarActivity.class);
                 startActivity(intent6);
+                break;
+            case R.id.btn_fab:
+                Intent intent25 = new Intent(SearchRecycler.this, OptionActivity.class);
+                startActivity(intent25);
                 break;
         }
     }

@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/tv_Title"
-        android:layout_width="344dp"
-        android:layout_height="54dp"
+        android:layout_width="340dp"
+        android:layout_height="116dp"
         android:layout_marginStart="164dp"
         android:layout_marginTop="200dp"
         android:layout_marginEnd="190dp"
@@ -20,10 +20,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintHorizontal_bias="0.455"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.714" />
 
     <CalendarView
         android:id="@+id/calendarView"
@@ -77,42 +77,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_Notificaciones" />
-
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawer_layout"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:openDrawer="start">
-
-        <LinearLayout
-            android:id="@+id/home_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize" />
-
-        </LinearLayout>
-
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navigation_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:fitsSystemWindows="true"
-            app:headerLayout="@layout/nav_header"
-            app:itemBackground="@drawable/drawer_background_selector"
-            app:itemIconTint="@drawable/drawer_selector"
-            app:itemTextColor="@drawable/drawer_selector"
-            app:menu="@menu/activity_home_navigation_drawer" />
-
-    </androidx.drawerlayout.widget.DrawerLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -192,5 +156,32 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent=".75" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/orange_GameSource"
+        android:src="@drawable/img_setting_foreground"
+        app:backgroundTint="@color/black_GameSource"
+        app:fabCustomSize="38dp"
+        app:fabSize="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_Title_Activity"
+        android:layout_width="242dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="2dp"
+        android:text="@string/activityCalendar"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/btn_fab"
+        app:layout_constraintHorizontal_bias="0.102"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
