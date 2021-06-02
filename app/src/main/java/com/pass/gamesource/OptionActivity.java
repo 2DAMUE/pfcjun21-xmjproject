@@ -55,7 +55,7 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
                     img_notificacion.setImageResource(R.drawable.img_notificacion_foreground);
                     notificacion = false;
                 } else {
-                    img_notificacion.setImageResource(R.drawable.logonotificatioff_foreground);
+                    img_notificacion.setImageResource(R.drawable.img_notificacion_foreground);
                     notificacion = true;
                 }
 
