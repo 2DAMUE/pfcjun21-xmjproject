@@ -54,15 +54,17 @@ def sacar_datos(datos, url, image_url):
         estado = False
     
     nombre = datos[1]
-    if estado == True:
-        fecha = [-1, datos[2].split(' - ')[1]]
+    if 'Desbloqueando' in nombre:
+        juego = Juego(nombre, ['1','-1'], "Proximamente",'no image', [], url)
     else:
-        fecha = [datos[2].split(' - ')[0], datos[2].split(' - ')[1]]
-    
-    descripcion = obtenerDescripcion(url)
-    generos = obtenerGeneros(url)
-    my_db_image = guardarImagen(image_url, nombre)
-    juego = Juego(nombre, fecha, descripcion,my_db_image, generos, url)
+        if estado == True:
+            fecha = ['-1', datos[2].split(' - ')[1]]
+        else:
+            fecha = [datos[2].split(' - ')[0], datos[2].split(' - ')[1]]
+        descripcion = obtenerDescripcion(url)
+        generos = obtenerGeneros(url)
+        my_db_image = guardarImagen(image_url, nombre)
+        juego = Juego(nombre, fecha, descripcion,my_db_image, generos, url)
     return juego
 
 def obtenerGeneros(url):
@@ -88,7 +90,6 @@ def guardarImagen(image_url, nombre):
 def obtenerDescripcion(url):
     html = urllib.request.urlopen(url)
     soup = BeautifulSoup(html, "lxml")
-
     div = soup.find('div', class_='css-pfxkyb')
     descripcion = div.text
     return descripcion
@@ -136,6 +137,6 @@ for div in divs:
 
 
 db = firebase.database()
-db.child('gratis').child('epic').remove()
+db.child('epic_semanal').remove()
 for j in juegosLista:
-    db.child("gratis").child("epic").push(j.__json__())
+    db.child('epic_semanal').push(j.__json__())

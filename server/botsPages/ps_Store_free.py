@@ -55,16 +55,35 @@ def guardarImagen(image_url, nombreJ):
 
 def sacar_datos(nombre, url_img, urlJuego):
     des_gen = descripcion_generos(urlJuego)
-    my_url_img = guardarImagen(url_img)
+    my_url_img = guardarImagen(url_img, nombre)
     return Juego(nombre, des_gen[0], my_url_img, des_gen[1], urlJuego)
 
 def descripcion_generos(urlJuego):
-    html = urllib.request.urlopen(url)
+    try:
+        chromeOptions = webdriver.ChromeOptions()
+        prefs = {"download.default_directory" : os.getcwd()+"/Resultados Selenium"}
+        chromeOptions.add_experimental_option("prefs",prefs)
+        chromeOptions.add_argument('--disable-blink-features=AutomationControlled')
+        driver = webdriver.Chrome("chromedriver",options=chromeOptions)
+        driver.get(urlJuego)
+    except Exception as e:
+        print(e)
+
+    #esperamos aque carge la caja de los juegos
+    WebDriverWait(driver,20).until(EC.presence_of_element_located((By.CSS_SELECTOR,'div[class="psw-bg-0 psw-body-2"')))
+    html = driver.find_element_by_xpath("//body").get_attribute('outerHTML')
     soup = BeautifulSoup(html, "lxml")
+    driver.quit()
     divsDescripcion = soup.find_all('div', class_='psw-bg-0 psw-body-2')
-    descripcion = divsDescripcion[2].text
+    try:
+        descripcion = divsDescripcion[2].text
+    except:
+        descripcion = divsDescripcion[0].text
     divsGeneros = soup.find('div', class_='psw-cell psw-mobile-p-12 psw-tablet-l-5 psw-m-b-l psw-m-b-0@tablet-l')
-    generos = (divsGeneros.find('span')).text.split(', ')
+    try:
+        generos = (divsGeneros.find('span')).text.split(', ')
+    except:
+        generos = []
     return (descripcion,generos)
 
 # INICIAMOS EL RECORRIDO DE CADA PAGINA DE PS STORE
@@ -90,6 +109,7 @@ div = soup.find('div', class_='ems-sdk-grid-paginator__page-buttons')
 buttons = div.find_all('button')
 fin = int(buttons[len(buttons)-1].text)+1
 cont = 1
+juegos_lista = []
 while fin != cont:
     # INICIAMOS SCRAPING
     #abrimos ventana con la pagina del principio pora obtener cuantas paginas de juegos hay
@@ -111,7 +131,6 @@ while fin != cont:
     soup = BeautifulSoup(html, "lxml")
     driver.quit()
     lis = soup.find_all('li', class_='psw-cell')
-    juegos_lista = []
     for li in lis:
         #Nombre del juego
         nombre = li.find('span', class_='psw-body-2 psw-truncate-text-2 psw-p-t-2xs').text
@@ -122,8 +141,7 @@ while fin != cont:
         url_img = img['src']
         #url a la pagina del juego
         urlJuego = urlBase + (li.find('a'))['href']
-        print(nombre, ' - ', urlJuego)
-        if estado.lower().find('gratis'):
+        if estado.lower() == 'gratis':
             juegos_lista.append(sacar_datos(nombre, url_img, urlJuego))
     cont += 1
 
