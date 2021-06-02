@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.img_Search_Logo).setOnClickListener(this);
         findViewById(R.id.img_Historial_Logo).setOnClickListener(this);
         findViewById(R.id.img_Calendar_Logo).setOnClickListener(this);
+        findViewById(R.id.btn_fab).setOnClickListener(this);
 
     }
 
@@ -131,8 +132,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
 
             case R.id.img_Home_Logo:
-                Intent intent8 = new Intent(MainActivity.this, MainActivity.class);
-                startActivity(intent8);
+                Toast.makeText(this, getString(R.string.here),
+                        Toast.LENGTH_SHORT).show();
                 break;
             case R.id.img_Search_Logo:
                 Intent intent9 = new Intent(MainActivity.this, SearchRecycler.class);
@@ -148,6 +149,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.drawable.scrim:
                 mostrarAlertDialog(new Videojuego("Alien Isolation", "Juego de terror en el que seremos perseguidos por unos peligrosos alienígenas que quieren acabar con nosotros", "https://firebasestorage.googleapis.com/v0/b/gamesource-9bc51.appspot.com/o/epic_free%2FAlien%3A%20Isolation%20.JPEG?alt=media"), this);
+                break;
+            case R.id.btn_fab:
+                Intent intent25 = new Intent(MainActivity.this, OptionActivity.class);
+                startActivity(intent25);
                 break;
 
         }

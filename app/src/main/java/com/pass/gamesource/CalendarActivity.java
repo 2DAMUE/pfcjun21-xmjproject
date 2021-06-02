@@ -62,8 +62,8 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(intent10);
                 break;
             case R.id.img_Calendar_Logo:
-                Intent intent11 = new Intent(CalendarActivity.this, CalendarActivity.class);
-                startActivity(intent11);
+                Toast.makeText(this, getString(R.string.here),
+                        Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_fab:
                 Intent intent25 = new Intent(CalendarActivity.this, OptionActivity.class);

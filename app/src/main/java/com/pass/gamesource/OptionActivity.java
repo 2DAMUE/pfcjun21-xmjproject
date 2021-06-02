@@ -97,7 +97,7 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(intent22);
                 break;
             case R.id.img_Historial_Logo:
-                Intent intent23 = new Intent(OptionActivity.this, MainActivity.class);
+                Intent intent23 = new Intent(OptionActivity.this, FavoritosActivity.class);
                 startActivity(intent23);
                 break;
             case R.id.img_Calendar_Logo:
