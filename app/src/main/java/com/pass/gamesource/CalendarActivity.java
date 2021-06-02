@@ -41,21 +41,9 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
                 Intent intent2 = new Intent(CalendarActivity.this, SplashScreen.class);
                 startActivity(intent2);
                 break;
-            case R.id.img_user:
-                Intent intent3 = new Intent(CalendarActivity.this, SplashScreen.class);
-                startActivity(intent3);
-                break;
-            case R.id.img_ayuda:
-                Intent intent4 = new Intent(CalendarActivity.this, SplashScreen.class);
-                startActivity(intent4);
-                break;
             case R.id.tv_notificaciones:
                 Intent intent5 = new Intent(CalendarActivity.this, SplashScreen.class);
                 startActivity(intent5);
-                break;
-            case R.id.tv_cuenta:
-                Intent intent6 = new Intent(CalendarActivity.this, SplashScreen.class);
-                startActivity(intent6);
                 break;
             case R.id.tv_ayuda:
                 Intent intent7 = new Intent(CalendarActivity.this, SplashScreen.class);

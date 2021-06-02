@@ -1,42 +1,36 @@
 package com.pass.gamesource;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
-
-import com.google.android.material.navigation.NavigationView;
-
-import org.jetbrains.annotations.NotNull;
 
 /**
  * @author GameSource
  */
-public class OptionActivity extends AppCompatActivity implements View.OnClickListener{
+public class OptionActivity extends AppCompatActivity implements View.OnClickListener {
+    private ImageView img_notificacion;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_option);
 
-
+        img_notificacion = findViewById(R.id.img_notificacion);
         /**
          * Declaracion de los botones
          */
         findViewById(R.id.tv_notificaciones).setOnClickListener(this);
-        findViewById(R.id.tv_cuenta).setOnClickListener(this);
         findViewById(R.id.tv_ayuda).setOnClickListener(this);
         findViewById(R.id.img_notificacion).setOnClickListener(this);
-        findViewById(R.id.img_user).setOnClickListener(this);
-        findViewById(R.id.img_ayuda).setOnClickListener(this);
+        findViewById(R.id.img_comparte_app).setOnClickListener(this);
+        findViewById(R.id.img_opina_option).setOnClickListener(this);
+        findViewById(R.id.img_help).setOnClickListener(this);
+
 
         /**
          * appBar
@@ -50,33 +44,43 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
     }
 
 
+    boolean notificacion = true;
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.img_notificacion:
-                Intent intent2 = new Intent(OptionActivity.this, SplashScreen.class);
-                startActivity(intent2);
+            case R.id.tv_notificaciones:
+                if (notificacion) {
+                    img_notificacion.setImageResource(R.drawable.img_notificacion_foreground);
+                    notificacion = false;
+                } else {
+                    img_notificacion.setImageResource(R.drawable.logonotificatioff_foreground);
+                    notificacion = true;
+                }
+
                 break;
-            case R.id.img_user:
+            case R.id.tv_ayuda:
                 Intent intent3 = new Intent(OptionActivity.this, SplashScreen.class);
                 startActivity(intent3);
                 break;
-            case R.id.img_ayuda:
-                Intent intent4 = new Intent(OptionActivity.this, SplashScreen.class);
-                startActivity(intent4);
+
+            case R.id.img_comparte_app:
+                Intent compartir = new Intent(android.content.Intent.ACTION_SEND);
+                compartir.setType("text/plain");
+                compartir.putExtra(android.content.Intent.EXTRA_SUBJECT, "GameSource App");
+                compartir.putExtra(android.content.Intent.EXTRA_TEXT, getString(R.string.share_message));
+                startActivity(Intent.createChooser(compartir, "Compartir vía"));
                 break;
-            case R.id.tv_notificaciones:
-                Intent intent5 = new Intent(OptionActivity.this, SplashScreen.class);
-                startActivity(intent5);
+
+            case R.id.img_opina_option:
+                Toast.makeText(this, getString(R.string.coming_soon),
+                        Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.tv_cuenta:
-                Intent intent6 = new Intent(OptionActivity.this, SplashScreen.class);
-                startActivity(intent6);
-                break;
-            case R.id.tv_ayuda:
-                Intent intent7 = new Intent(OptionActivity.this, SplashScreen.class);
-                startActivity(intent7);
+
+            case R.id.img_help:
+                Toast.makeText(this, getString(R.string.coming_soon),
+                        Toast.LENGTH_SHORT).show();
                 break;
 
 

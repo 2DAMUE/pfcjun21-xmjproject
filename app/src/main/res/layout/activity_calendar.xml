@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/tv_Title"
-        android:layout_width="344dp"
-        android:layout_height="54dp"
+        android:layout_width="340dp"
+        android:layout_height="116dp"
         android:layout_marginStart="164dp"
         android:layout_marginTop="200dp"
         android:layout_marginEnd="190dp"
@@ -20,10 +20,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintHorizontal_bias="0.455"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.714" />
 
     <CalendarView
         android:id="@+id/calendarView"
@@ -170,5 +170,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_Title_Activity"
+        android:layout_width="242dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="2dp"
+        android:text="@string/activityCalendar"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/btn_fab"
+        app:layout_constraintHorizontal_bias="0.102"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
