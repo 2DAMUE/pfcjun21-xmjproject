@@ -6,37 +6,22 @@
     android:layout_height="match_parent"
     android:background="@color/white_GameSource">
 
-    <ScrollView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerJuegosActivity"
         android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/view_search"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/constraintLayout2"
+        android:layout_alignParentBottom="true"
+        android:divider="@drawable/divider"
+        android:layoutAnimation="@anim/layout_fall_down"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_search">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerJuegosActivity"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:divider="@drawable/divider"
-                android:layoutAnimation="@anim/layout_fall_down"
-                android:scrollbars="none"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_bias="0.542">
-
-            </androidx.recyclerview.widget.RecyclerView>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                app:layout_constraintTop_toBottomOf="@id/recyclerJuegosActivity"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.recyclerview.widget.RecyclerView>
 
     <EditText
         android:id="@+id/view_search"
