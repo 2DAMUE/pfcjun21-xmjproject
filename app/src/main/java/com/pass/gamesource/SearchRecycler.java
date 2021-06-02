@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -90,8 +91,8 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
                 startActivity(intent3);
                 break;
             case R.id.img_Search_Logo:
-                Intent intent4 = new Intent(SearchRecycler.this, SearchRecycler.class);
-                startActivity(intent4);
+                Toast.makeText(this, getString(R.string.here),
+                        Toast.LENGTH_SHORT).show();
                 break;
             case R.id.img_Historial_Logo:
                 Intent intent5 = new Intent(SearchRecycler.this, FavoritosActivity.class);
