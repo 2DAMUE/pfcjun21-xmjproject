@@ -26,17 +26,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_calendar);
         menuLateral();
 
-        /**
-         * Declaracion de los botones
-         */
-        //findViewById(R.id.tv_notificaciones).setOnClickListener(this);
-//        findViewById(R.id.tv_cuenta).setOnClickListener(this);
-//        findViewById(R.id.tv_ayuda).setOnClickListener(this);
-//        findViewById(R.id.img_notificacion).setOnClickListener(this);
-//        findViewById(R.id.img_user).setOnClickListener(this);
-//        findViewById(R.id.img_ayuda).setOnClickListener(this);
-
-        /**
+        /*
          * appBar
          */
         findViewById(R.id.img_Home_Logo).setOnClickListener(this);

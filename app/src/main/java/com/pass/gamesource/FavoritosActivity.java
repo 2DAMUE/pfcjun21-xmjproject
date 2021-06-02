@@ -66,7 +66,7 @@ public class FavoritosActivity extends AppCompatActivity implements View.OnClick
     /**
      * Oyente de botones
      *
-     * @param v coger el parametro del botn especificado arriba.
+     * @param v coger el parametro del botón especificado arriba.
      */
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -94,21 +94,30 @@ public class FavoritosActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-
+    /**
+     * Este método se encarga de mostrar el Aler Dialog correspondiente a cada videojuego
+     *
+     * @param v    el videojuego clickado
+     * @param view la instanciación de la misma clase
+     */
     public void mostrarAlertDialog(Videojuego v, FavoritosActivity view) {
+        //Inicialización del builder del AlerDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(view);
         AlertDialog alert = builder.create();
         View view2 = getLayoutInflater().inflate(R.layout.alertdialogmain, null, false);
 
         alert.setView(view2);
         builder.setView(view2);
-
+        //Inicialización de los elementos de la vista
         TextView tvNombre = view2.findViewById(R.id.nombreAlert);
         TextView tvDescripcion = view2.findViewById(R.id.descripcionAlert);
         ImageView imagenAlert = view2.findViewById(R.id.imagenJuego);
         Button btnIrAJuego = view2.findViewById(R.id.buttonVerJuego);
         Button btnComparte = view2.findViewById(R.id.buttonComparteJuego);
         ImageButton btnFavorito = view2.findViewById(R.id.btnFavorito);
+
+        //Manejo del aspecto del botón de favoritos
+
         btnFavorito.setImageResource(R.drawable.btn_favorites_filled_foreground);
         btnFavorito.setOnClickListener(v1 -> {
             btnFavorito.setImageResource(R.drawable.btn_favorites_border_foreground);
@@ -139,6 +148,11 @@ public class FavoritosActivity extends AppCompatActivity implements View.OnClick
         alert.show();
     }
 
+    /**
+     * Método para manejar la llegada de los datos desde Firebase
+     *
+     * @param videojuegos El arraylist de objetos que se obtienen de Firebase
+     */
     @Override
     public void obtenerVideojuegosFavoritos(ArrayList<Videojuego> videojuegos) {
         RecyclerView recyclerViewEpic = findViewById(R.id.recyclerJuegosActivityFavoritos);
