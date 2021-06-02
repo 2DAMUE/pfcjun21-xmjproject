@@ -14,12 +14,12 @@
         android:layout_alignParentBottom="true"
         android:divider="@drawable/divider"
         android:layoutAnimation="@anim/layout_fall_down"
-        android:scrollbars="none"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_search_favoritos"
-        app:layout_constraintVertical_bias="0.542" >
+        app:layout_constraintVertical_bias="0.542">
 
     </androidx.recyclerview.widget.RecyclerView>
 

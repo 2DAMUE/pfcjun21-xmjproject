@@ -126,9 +126,11 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
             if (!videojuego.isFavorito()) {
                 btnFavorito.setImageResource(R.drawable.btn_favorites_filled_foreground);
                 AccesoFirebase.aniadirJuegoFavorito(videojuego);
+                videojuego.setFavorito(true);
             } else {
                 btnFavorito.setImageResource(R.drawable.btn_favorites_border_foreground);
                 AccesoFirebase.eliminarJuegoFavorito(videojuego);
+                videojuego.setFavorito(false);
             }
         });
 
