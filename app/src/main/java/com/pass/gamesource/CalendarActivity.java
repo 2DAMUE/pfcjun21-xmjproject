@@ -23,7 +23,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-        /**
+        /*
          * appBar
          */
         findViewById(R.id.img_Home_Logo).setOnClickListener(this);
@@ -33,6 +33,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.btn_fab).setOnClickListener(this);
 
     }
+
 
     @Override
     public void onClick(View v) {

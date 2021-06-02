@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,9 +27,6 @@ import java.util.ArrayList;
 public class FavoritosActivity extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosFavoritos {
 
     private final FavoritosActivity context = this;
-
-    private ArrayList<Videojuego> videojuegosGratis;
-    private EditText busqueda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +67,7 @@ public class FavoritosActivity extends AppCompatActivity implements View.OnClick
     /**
      * Oyente de botones
      *
-     * @param v coger el parametro del botn especificado arriba.
+     * @param v coger el parametro del botón especificado arriba.
      */
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -90,7 +86,7 @@ public class FavoritosActivity extends AppCompatActivity implements View.OnClick
                 startActivity(intent4);
                 break;
             case R.id.img_Historial_Logo:
-                Toast.makeText(this,"Ya estás aquí",Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Ya estás aquí", Toast.LENGTH_LONG).show();
                 break;
             case R.id.img_Calendar_Logo:
                 Intent intent6 = new Intent(FavoritosActivity.this, CalendarActivity.class);
@@ -103,27 +99,30 @@ public class FavoritosActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-
     /**
-     * Menu lateral
-     * inicializacion
+     * Este método se encarga de mostrar el Aler Dialog correspondiente a cada videojuego
+     *
+     * @param v    el videojuego clickado
+     * @param view la instanciación de la misma clase
      */
-    private DrawerLayout drawerLayout;
-
     public void mostrarAlertDialog(Videojuego v, FavoritosActivity view) {
+        //Inicialización del builder del AlerDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(view);
         AlertDialog alert = builder.create();
         View view2 = getLayoutInflater().inflate(R.layout.alertdialogmain, null, false);
 
         alert.setView(view2);
         builder.setView(view2);
-
+        //Inicialización de los elementos de la vista
         TextView tvNombre = view2.findViewById(R.id.nombreAlert);
         TextView tvDescripcion = view2.findViewById(R.id.descripcionAlert);
         ImageView imagenAlert = view2.findViewById(R.id.imagenJuego);
         Button btnIrAJuego = view2.findViewById(R.id.buttonVerJuego);
         Button btnComparte = view2.findViewById(R.id.buttonComparteJuego);
         ImageButton btnFavorito = view2.findViewById(R.id.btnFavorito);
+
+        //Manejo del aspecto del botón de favoritos
+
         btnFavorito.setImageResource(R.drawable.btn_favorites_filled_foreground);
         btnFavorito.setOnClickListener(v1 -> {
             btnFavorito.setImageResource(R.drawable.btn_favorites_border_foreground);
@@ -131,37 +130,34 @@ public class FavoritosActivity extends AppCompatActivity implements View.OnClick
             AccesoFirebase.obtenerVideojuegosFavoritos(context);
         });
 
-        btnIrAJuego.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vista) {
+        btnIrAJuego.setOnClickListener(vista -> {
 
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(v.getUrl_origen()));
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.setPackage("com.android.chrome");
-                // intent.putExtra("URL", v.getUrl_origen());
-                startActivity(intent);
-            }
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(v.getUrl_origen()));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setPackage("com.android.chrome");
+            startActivity(intent);
         });
 
-        btnComparte.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vista) {
-                Intent compartir = new Intent(android.content.Intent.ACTION_SEND);
-                compartir.setType("text/plain");
-                compartir.putExtra(android.content.Intent.EXTRA_SUBJECT, "GameSource App");
-                compartir.putExtra(android.content.Intent.EXTRA_TEXT, getString(R.string.share_messageGame) + v.getUrl_origen());
-                startActivity(Intent.createChooser(compartir, "Compartir vía"));
-            }
+        btnComparte.setOnClickListener(vista -> {
+            Intent compartir = new Intent(Intent.ACTION_SEND);
+            compartir.setType("text/plain");
+            compartir.putExtra(Intent.EXTRA_SUBJECT, "GameSource App");
+            compartir.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_messageGame) + v.getUrl_origen());
+            startActivity(Intent.createChooser(compartir, "Compartir vía"));
         });
         Glide.with(view).load(v.getImage_url()).centerCrop().into(imagenAlert);
 
         tvDescripcion.setText(v.getDescripcion());
         tvNombre.setText(v.getNombre());
 
-        //builder.show();
         alert.show();
     }
 
+    /**
+     * Método para manejar la llegada de los datos desde Firebase
+     *
+     * @param videojuegos El arraylist de objetos que se obtienen de Firebase
+     */
     @Override
     public void obtenerVideojuegosFavoritos(ArrayList<Videojuego> videojuegos) {
         RecyclerView recyclerViewEpic = findViewById(R.id.recyclerJuegosActivityFavoritos);

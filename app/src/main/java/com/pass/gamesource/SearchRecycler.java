@@ -30,7 +30,6 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
     private final SearchRecycler context = this;
 
     ArrayList<String> favoritos;
-    private EditText busqueda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +37,6 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
         favoritos = new ArrayList<>();
         setContentView(R.layout.activity_search_recycler);
         /*
-        //menuLateral();
-        /**
          * Declaracion de los botones
          */
 
@@ -52,6 +49,7 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
         EditText busqueda = findViewById(R.id.view_search);
         AccesoFirebase.obtenerVideojuegosFiltrado(context, "");
 
+        //Creamos el Listener que se activará a cada caracter que escribamos en el campo de búsqueda
         busqueda.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -110,6 +108,12 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    /**
+     * Método que mostrará el AlertDialog correspondiente a cada videojuego
+     *
+     * @param videojuego El videojuego cuyos datos se deben mostrar
+     * @param view       la instanciación de la clase en la que se quiere mostrar el AlertDialog
+     */
     public void mostrarAlertDialog(Videojuego videojuego, SearchRecycler view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(view);
         AlertDialog alert = builder.create();
@@ -321,6 +325,11 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
 //
 //    }
 
+    /**
+     * Método que maneja la llegada de los datos desde Firebase
+     *
+     * @param videojuegos ArrayList de los videojuegos que osn obtenidos de Firebase
+     */
     @Override
     public void recuperarVideojuegos(ArrayList<Videojuego> videojuegos) {
 
@@ -331,7 +340,7 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
                 videojuego.setFavorito(false);
 
         }
-
+        //Iniciamos el Recycler una vez hayan llegado los videojuegos ya que sin datos, se quedaría vacío
         RecyclerView recycler = findViewById(R.id.recyclerJuegosActivity);
         RecyclerView.LayoutManager gestor = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         AdaptadorSearch adaptador = new AdaptadorSearch(videojuegos, context);
@@ -339,6 +348,12 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
         recycler.setAdapter(adaptador);
     }
 
+    /**
+     * Obtención de los videojuegos favoritos para poder determinar si un videojuego es favorito
+     * para cambiar el botón que lo señala de acuerdo a si lo es o no
+     *
+     * @param videojuegos ArrayList de los videojuegos que osn obtenidos de Firebase
+     */
     @Override
     public void obtenerVideojuegosFavoritos(ArrayList<Videojuego> videojuegos) {
         for (Videojuego videojuego : videojuegos) {
