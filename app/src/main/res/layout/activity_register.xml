@@ -170,21 +170,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.626" />
 
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_rePassRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text="@string/RePassRegister"
-        android:textColor="@color/white_GameSource"
-        android:textStyle="bold"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/et_rePassRegister"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.733" />
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_registrarse"
         android:layout_width="match_parent"

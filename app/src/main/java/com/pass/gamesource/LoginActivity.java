@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private TextView mStatusTextView;
     private TextInputEditText correo;
     private TextInputEditText pass;
+
     //    Normal Login
     public static FirebaseUser currentUser;
 
@@ -61,6 +62,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.btn_Google).setOnClickListener(this);
         findViewById(R.id.disconnect_button).setOnClickListener(this);
         findViewById(R.id.btn_login).setOnClickListener(this);
+        findViewById(R.id.btn_login_logueado).setOnClickListener(this);
         findViewById(R.id.tv_Register).setOnClickListener(this);
 //        SignInButton signInButton = findViewById(R.id.btn_Google);
 //        signInButton.setColorScheme(SignInButton.COLOR_LIGHT);
@@ -107,26 +109,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         // ...
                     }
                 });
-    }
-
-    private void updateUIF(FirebaseUser user) {
-        if (user != null) {
-            mStatusTextView.setText(getString(R.string.signed_in_fmt, user.getDisplayName()));
-            ((TextView) findViewById(R.id.status)).setText(R.string.signed_in);
-            findViewById(R.id.btn_Google).setVisibility(View.GONE);
-            findViewById(R.id.disconnect_button).setVisibility(View.VISIBLE);
-            Log.d("TAG", currentUser.getEmail());
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-
-        } else {
-            mStatusTextView.setText(R.string.signed_out);
-
-            findViewById(R.id.btn_Google).setVisibility(View.VISIBLE);
-            findViewById(R.id.disconnect_button).setVisibility(View.GONE);
-            ((TextView) findViewById(R.id.status)).setText(R.string.signed_out);
-        }
-
     }
 
     /**
@@ -185,6 +167,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
     // Final
 
+
+
+
+
     /**
      * inicia la sesion de google
      */
@@ -194,7 +180,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
     // Final signIn
-
 
     /**
      * Cierra sesion de google
@@ -213,6 +198,29 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
     // Fin acceso revocado
 
+    private void updateUIF(FirebaseUser user) {
+        if (user != null) {
+            mStatusTextView.setText(getString(R.string.signed_in_fmt, user.getDisplayName()));
+            ((TextView) findViewById(R.id.status)).setText(R.string.signed_in);
+            findViewById(R.id.btn_Google).setVisibility(View.GONE);
+            findViewById(R.id.disconnect_button).setVisibility(View.VISIBLE);
+
+            Log.d("TAG", currentUser.getEmail());
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+
+        } else {
+            mStatusTextView.setText(R.string.signed_out);
+
+            findViewById(R.id.btn_Google).setVisibility(View.VISIBLE);
+            findViewById(R.id.disconnect_button).setVisibility(View.GONE);
+            ((TextView) findViewById(R.id.status)).setText(R.string.signed_out);
+
+        }
+
+    }
+
+
     /**
      * @param account le pasa los datos a ala cuenta si se ha inciado o no la sesion.
      *                comparamos resultado y realizamos acciones segun necesitemos
@@ -224,7 +232,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             mStatusTextView.setText(getString(R.string.signed_in_fmt, account.getDisplayName()));
             ((TextView) findViewById(R.id.status)).setText(R.string.signed_in);
             findViewById(R.id.btn_Google).setVisibility(View.GONE);
+            findViewById(R.id.btn_login).setVisibility(View.GONE);
+            findViewById(R.id.btn_login_logueado).setVisibility(View.VISIBLE);
             findViewById(R.id.disconnect_button).setVisibility(View.VISIBLE);
+            findViewById(R.id.et_email).setVisibility(View.GONE);
+            findViewById(R.id.et_Password).setVisibility(View.GONE);
 
 
 //            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -236,6 +248,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             findViewById(R.id.btn_Google).setVisibility(View.VISIBLE);
             findViewById(R.id.disconnect_button).setVisibility(View.GONE);
             ((TextView) findViewById(R.id.status)).setText(R.string.signed_out);
+            findViewById(R.id.et_email).setVisibility(View.VISIBLE);
+            findViewById(R.id.et_Password).setVisibility(View.VISIBLE);
+            findViewById(R.id.btn_login_logueado).setVisibility(View.GONE);
+            findViewById(R.id.btn_login).setVisibility(View.VISIBLE);
         }
 
     }
@@ -273,6 +289,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Toast.makeText(LoginActivity.this, "Email y contraseña no pueden estar vacios",
                             Toast.LENGTH_SHORT).show();
                 }
+                break;
+            case R.id.btn_login_logueado:
+                Intent intent2 = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent2);
                 break;
         }
     }
