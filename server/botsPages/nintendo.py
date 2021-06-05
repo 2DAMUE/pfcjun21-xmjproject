@@ -34,7 +34,7 @@ class Juego():
         self.descripcion = descripcion
         self.my_db_image = guardarImagen(url_imagen, nombre)
         self.generos = generos
-        self.plataforma = 'ps'
+        self.plataforma = 'switch'
         self.url_origen = url_origen
     
     def __str__(self):
@@ -111,9 +111,7 @@ while seguir:
             juegos_lista.append(Juego(nombre, descripcion, img_url, generos, url_juego))
 
 # SUBIMOS A FIREBASE
-print('conecto bd')
 db = firebase.database()
 db.child('gratis').child('nintendo').remove()
-print('subo datos')
 for j in juegos_lista:
     db.child("gratis").child("nintendo").push(j.__json__())
