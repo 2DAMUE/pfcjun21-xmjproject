@@ -32,10 +32,12 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
     private final SearchRecycler context = this;
 
     ArrayList<String> favoritos;
+    public String filtro = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         favoritos = new ArrayList<>();
         setContentView(R.layout.activity_search_recycler);
         /*
@@ -61,7 +63,9 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 Log.d("MENSAJE", s.toString());
-                AccesoFirebase.obtenerVideojuegosFiltrado(context, s.toString());
+                filtro = s.toString();
+                AccesoFirebase.obtenerVideojuegosFavoritos(context);
+
             }
 
             @Override
@@ -374,5 +378,6 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
             favoritos.add(videojuego.getNombre());
         }
         AccesoFirebase.obtenerVideojuegosGratis(this);
+        AccesoFirebase.obtenerVideojuegosFiltrado(context, filtro);
     }
 }
