@@ -51,8 +51,8 @@
 
             <ImageView
                 android:id="@+id/imgIcon2"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
                 android:src="@drawable/gamesinfondo"
                 android:visibility="visible" />
 

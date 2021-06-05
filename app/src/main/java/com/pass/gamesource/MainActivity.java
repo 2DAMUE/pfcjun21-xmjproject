@@ -100,19 +100,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         Glide.with(view).load(videojuego.getImage_url()).centerCrop().into(imagenAlert);
-        String url = "";
         switch (videojuego.getPlataforma()) {
             case "ps":
-                url = "https://image.flaticon.com/icons/png/512/37/37812.png";
+                ivPlataforma.setImageResource(R.mipmap.logo_ps_foreground);
                 break;
             case "pc":
-                url = "https://w7.pngwing.com/pngs/829/293/png-transparent-computer-cases-housings-personal-computer-computer-icons-computer-monitors-logo-technology-computer-computer-network-rectangle-logo.png";
+                ivPlataforma.setImageResource(R.mipmap.logo_pc_foreground);
                 break;
             case "switch":
-                url = "https://w7.pngwing.com/pngs/868/467/png-transparent-nintendo-switch-gamecube-logo-nintendo-text-rectangle-nintendo.png";
+                ivPlataforma.setImageResource(R.mipmap.logo_switch_foreground);
                 break;
         }
-        Glide.with(view).load(url).centerCrop().into(ivPlataforma);
         tvDescripcion.setText(videojuego.getDescripcion());
         tvNombre.setText(videojuego.getNombre());
 

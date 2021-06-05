@@ -53,19 +53,17 @@ public class AdaptadorSearch extends RecyclerView.Adapter<AdaptadorSearch.MiCont
         holder.vista.startAnimation(animation);
         holder.tvTitulo.setText(juego.getNombre());
         holder.tvDescripcion.setText(juego.getDescripcion());
-        String url = "";
         switch (juego.getPlataforma()) {
             case "ps":
-                url = "https://image.flaticon.com/icons/png/512/37/37812.png";
+                holder.ivPlataforma.setImageResource(R.mipmap.logo_ps_foreground);
                 break;
             case "pc":
-                url = "https://w7.pngwing.com/pngs/829/293/png-transparent-computer-cases-housings-personal-computer-computer-icons-computer-monitors-logo-technology-computer-computer-network-rectangle-logo.png";
+                holder.ivPlataforma.setImageResource(R.mipmap.logo_pc_foreground);
                 break;
             case "switch":
-                url = "https://w7.pngwing.com/pngs/868/467/png-transparent-nintendo-switch-gamecube-logo-nintendo-text-rectangle-nintendo.png";
+                holder.ivPlataforma.setImageResource(R.mipmap.logo_switch_foreground);
                 break;
         }
-        Glide.with(holder.vista).load(url).centerCrop().into(holder.ivPlataforma);
         //Log.d("Contenedor", "Vinculando position " + position);
 
     }
