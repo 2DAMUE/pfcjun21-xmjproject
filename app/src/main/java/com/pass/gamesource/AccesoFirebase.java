@@ -19,6 +19,7 @@ public class AccesoFirebase {
 
     static FirebaseDatabase database = FirebaseDatabase.getInstance();
     static DatabaseReference myRef = database.getReference().child("gratis");
+    static DatabaseReference myRefProximos = database.getReference().child("proximos");
     static DatabaseReference myRefDestacado = database.getReference().child("epic_semanal");
     static DatabaseReference myRefFavorite = database.getReference().child("user_favorite");
 
@@ -140,7 +141,7 @@ public class AccesoFirebase {
                     a.obtenerVideojuegosFavoritos(videojuegosFavoritos);
                     return;
                 }
-                Log.d("MENSAJE",LoginActivity.userEmail.split("\\.")[0]);
+                Log.d("MENSAJE", LoginActivity.userEmail.split("\\.")[0]);
                 for (DataSnapshot esnapshot : snapshot.child(LoginActivity.userEmail.split("\\.")[0] + LoginActivity.userEmail.split("\\.")[1]).getChildren()) {
                     videojuegosFavoritos.add(esnapshot.getValue(Videojuego.class));
                 }
@@ -238,6 +239,29 @@ public class AccesoFirebase {
 
             }
 
+        });
+    }
+
+    /**
+     * Método que devuelves los próximos lanzamientos para añadirlos en el calendario
+     * @param a Interfaz de actualización para recuperar los datos en la clase llamante
+     */
+    public static void obtenerProximos(ActualizarVideojuegosGratis a) {
+        ArrayList<Videojuego> videojuegosGratis = new ArrayList<Videojuego>();
+        myRefProximos.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for (DataSnapshot esnapshot : snapshot.getChildren()) {
+                    videojuegosGratis.add(esnapshot.getValue(Videojuego.class));
+
+                }
+                a.recuperarVideojuegos(videojuegosGratis);
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
         });
     }
 }

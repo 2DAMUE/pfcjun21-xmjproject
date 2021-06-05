@@ -2,22 +2,20 @@ package com.pass.gamesource;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.google.android.material.navigation.NavigationView;
+import com.github.sundeepk.compactcalendarview.CompactCalendarView;
+import com.github.sundeepk.compactcalendarview.domain.Event;
 
-import org.jetbrains.annotations.NotNull;
+import java.text.ParseException;
+import java.util.ArrayList;
 
-public class CalendarActivity extends AppCompatActivity implements View.OnClickListener {
+public class CalendarActivity extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosGratis {
+    CompactCalendarView calendarView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +29,11 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.img_Historial_Logo).setOnClickListener(this);
         findViewById(R.id.img_Calendar_Logo).setOnClickListener(this);
         findViewById(R.id.btn_fab).setOnClickListener(this);
+
+        calendarView = (CompactCalendarView) findViewById(R.id.calendarView);
+        calendarView.setOnClickListener(v -> {
+            // calendarView.get
+        });
 
     }
 
@@ -75,4 +78,18 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
+    @Override
+    public void recuperarVideojuegos(ArrayList<Videojuego> videojuegos) {
+        for (Videojuego videojuego : videojuegos) {
+            try {
+                long epoch = new java.text.SimpleDateFormat("DD/mm/yyyy HH:mm:ss").parse(videojuego.getFecha_salida() + " 00:00:00").getTime();
+                Event evento = new Event(R.color.orange_GameSource, epoch);
+                Log.d("MENSAJE", evento.toString());
+                calendarView.addEvent(evento);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            //calendarView.addEvent(new Event(R.color.orange_GameSource, new Date(videojuego.getFecha_salida().split("/")[0])));
+        }
+    }
 }

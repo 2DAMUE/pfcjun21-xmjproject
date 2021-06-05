@@ -7,6 +7,7 @@ public class Videojuego {
     private String descripcion;
     private String image_url;
     private String plataforma;
+    private String fecha_salida;
     private String url_origen;
     private String nombreMin;
     private List<String> fechas;
@@ -43,6 +44,13 @@ public class Videojuego {
         this.image_url = image_url;
     }
 
+    public String getFecha_salida() {
+        return fecha_salida;
+    }
+
+    public void setFecha_salida(String fecha_salida) {
+        this.fecha_salida = fecha_salida;
+    }
 
     public String getUrl_origen() {
         return url_origen;
@@ -103,6 +111,7 @@ public class Videojuego {
                 ", descripcion='" + descripcion + '\'' +
                 ", image_url='" + image_url + '\'' +
                 ", plataforma='" + plataforma + '\'' +
+                ", fecha_salida='" + fecha_salida + '\'' +
                 ", url_origen='" + url_origen + '\'' +
                 ", nombreMin='" + nombreMin + '\'' +
                 ", fechas=" + fechas +
