@@ -24,6 +24,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class SearchRecycler extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosFavoritos, ActualizarVideojuegosGratis {
 
@@ -125,6 +127,7 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
         TextView tvNombre = view2.findViewById(R.id.nombreAlert);
         TextView tvDescripcion = view2.findViewById(R.id.descripcionAlert);
         ImageView imagenAlert = view2.findViewById(R.id.imagenJuego);
+        ImageView ivPlataforma = view2.findViewById(R.id.imgPlataforma);
         Button btnIrAJuego = view2.findViewById(R.id.buttonVerJuego);
         Button btnComparte = view2.findViewById(R.id.buttonComparteJuego);
         ImageButton btnFavorito = view2.findViewById(R.id.btnFavorito);
@@ -160,6 +163,17 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
             startActivity(Intent.createChooser(compartir, "Compartir vía"));
         });
         Glide.with(view).load(videojuego.getImage_url()).centerCrop().into(imagenAlert);
+        switch (videojuego.getPlataforma()) {
+            case "ps":
+                ivPlataforma.setImageResource(R.mipmap.logo_ps_foreground);
+                break;
+            case "pc":
+                ivPlataforma.setImageResource(R.mipmap.logo_pc_foreground);
+                break;
+            case "switch":
+                ivPlataforma.setImageResource(R.mipmap.logo_switch_foreground);
+                break;
+        }
 
         tvDescripcion.setText(videojuego.getDescripcion());
         tvNombre.setText(videojuego.getNombre());

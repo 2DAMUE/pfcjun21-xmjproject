@@ -22,7 +22,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosFavoritos, ActualizarVideojuegoDestacado, ActualizarVideojuegosGratis, ActualizarVideojuegosSteam, ActualizarVideojuegosEpic {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosFavoritos, ActualizarVideojuegoDestacado, ActualizarVideojuegosNintendo, ActualizarVideojuegosSteam, ActualizarVideojuegosEpic {
     MainActivity context = this;
     private SwipeRefreshLayout swipeLayout;
     ArrayList<String> favoritos;
@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView tvNombre = view2.findViewById(R.id.nombreAlert);
         TextView tvDescripcion = view2.findViewById(R.id.descripcionAlert);
         ImageView imagenAlert = view2.findViewById(R.id.imagenJuego);
+        ImageView ivPlataforma = view2.findViewById(R.id.imgPlataforma);
         Button btnComparte = view2.findViewById(R.id.buttonComparteJuego);
         Button btnVerJuego = view2.findViewById(R.id.buttonVerJuego);
         ImageButton btnFavorito = view2.findViewById(R.id.btnFavorito);
@@ -99,7 +100,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         Glide.with(view).load(videojuego.getImage_url()).centerCrop().into(imagenAlert);
-
+        switch (videojuego.getPlataforma()) {
+            case "ps":
+                ivPlataforma.setImageResource(R.mipmap.logo_ps_foreground);
+                break;
+            case "pc":
+                ivPlataforma.setImageResource(R.mipmap.logo_pc_foreground);
+                break;
+            case "switch":
+                ivPlataforma.setImageResource(R.mipmap.logo_switch_foreground);
+                break;
+        }
         tvDescripcion.setText(videojuego.getDescripcion());
         tvNombre.setText(videojuego.getNombre());
 
@@ -111,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         public void onRefresh() {
-            AccesoFirebase.obtenerVideojuegosGratis(context);
+            AccesoFirebase.obtenerVideojuegosNintendo(context);
             AccesoFirebase.obtenerVideojuegosPS(context);
             AccesoFirebase.obtenerVideojuegosSteam(context);
             Toast.makeText(MainActivity.this, "Actualizado", Toast.LENGTH_SHORT).show();
@@ -164,7 +175,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     @Override
-    public void recuperarVideojuegos(ArrayList<Videojuego> videojuegos) {
+    public void recuperarVideojuegosNintendo(ArrayList<Videojuego> videojuegos) {
 
         for (Videojuego videojuego : videojuegos) {
             if (favoritos.contains(videojuego.getNombre()))
@@ -235,9 +246,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (Videojuego videojuego : videojuegos) {
             favoritos.add(videojuego.getNombre());
         }
-        AccesoFirebase.obtenerVideojuegosGratis(this);
+        AccesoFirebase.obtenerVideojuegosNintendo(this);
         AccesoFirebase.obtenerVideojuegosPS(this);
         AccesoFirebase.obtenerVideojuegosSteam(this);
         AccesoFirebase.obtenerVideojuegoDestacado(this);
     }
+
+
 }

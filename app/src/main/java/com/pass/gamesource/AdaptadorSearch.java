@@ -53,6 +53,17 @@ public class AdaptadorSearch extends RecyclerView.Adapter<AdaptadorSearch.MiCont
         holder.vista.startAnimation(animation);
         holder.tvTitulo.setText(juego.getNombre());
         holder.tvDescripcion.setText(juego.getDescripcion());
+        switch (juego.getPlataforma()) {
+            case "ps":
+                holder.ivPlataforma.setImageResource(R.mipmap.logo_ps_foreground);
+                break;
+            case "pc":
+                holder.ivPlataforma.setImageResource(R.mipmap.logo_pc_foreground);
+                break;
+            case "switch":
+                holder.ivPlataforma.setImageResource(R.mipmap.logo_switch_foreground);
+                break;
+        }
         //Log.d("Contenedor", "Vinculando position " + position);
 
     }
@@ -64,6 +75,7 @@ public class AdaptadorSearch extends RecyclerView.Adapter<AdaptadorSearch.MiCont
 
     public class MiContenedorDeVistas extends RecyclerView.ViewHolder {
         public ImageView ivJuego;
+        public ImageView ivPlataforma;
         public TextView tvTitulo;
         public TextView tvDescripcion;
         public View vista;
@@ -73,6 +85,7 @@ public class AdaptadorSearch extends RecyclerView.Adapter<AdaptadorSearch.MiCont
             this.ivJuego = vista.findViewById(R.id.img_Caratula);
             this.tvTitulo = vista.findViewById(R.id.tv_Titulo);
             this.tvDescripcion = vista.findViewById(R.id.tv_descripcion);
+            this.ivPlataforma = vista.findViewById(R.id.imgIcon2);
             this.vista = vista;
 
 
