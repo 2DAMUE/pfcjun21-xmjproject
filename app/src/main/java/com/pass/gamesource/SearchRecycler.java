@@ -127,6 +127,7 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
         TextView tvNombre = view2.findViewById(R.id.nombreAlert);
         TextView tvDescripcion = view2.findViewById(R.id.descripcionAlert);
         ImageView imagenAlert = view2.findViewById(R.id.imagenJuego);
+        ImageView ivPlataforma = view2.findViewById(R.id.imgPlataforma);
         Button btnIrAJuego = view2.findViewById(R.id.buttonVerJuego);
         Button btnComparte = view2.findViewById(R.id.buttonComparteJuego);
         ImageButton btnFavorito = view2.findViewById(R.id.btnFavorito);
@@ -162,6 +163,19 @@ public class SearchRecycler extends AppCompatActivity implements View.OnClickLis
             startActivity(Intent.createChooser(compartir, "Compartir vía"));
         });
         Glide.with(view).load(videojuego.getImage_url()).centerCrop().into(imagenAlert);
+        String url = "";
+        switch (videojuego.getPlataforma()) {
+            case "ps":
+                url = "https://image.flaticon.com/icons/png/512/37/37812.png";
+                break;
+            case "pc":
+                url = "https://w7.pngwing.com/pngs/829/293/png-transparent-computer-cases-housings-personal-computer-computer-icons-computer-monitors-logo-technology-computer-computer-network-rectangle-logo.png";
+                break;
+            case "switch":
+                url = "https://w7.pngwing.com/pngs/868/467/png-transparent-nintendo-switch-gamecube-logo-nintendo-text-rectangle-nintendo.png";
+                break;
+        }
+        Glide.with(view).load(url).centerCrop().into(ivPlataforma);
 
         tvDescripcion.setText(videojuego.getDescripcion());
         tvNombre.setText(videojuego.getNombre());
