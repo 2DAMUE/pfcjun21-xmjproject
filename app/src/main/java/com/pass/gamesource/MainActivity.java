@@ -22,7 +22,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosFavoritos, ActualizarVideojuegoDestacado, ActualizarVideojuegosGratis, ActualizarVideojuegosSteam, ActualizarVideojuegosEpic {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosFavoritos, ActualizarVideojuegoDestacado, ActualizarVideojuegosNintendo, ActualizarVideojuegosSteam, ActualizarVideojuegosEpic {
     MainActivity context = this;
     private SwipeRefreshLayout swipeLayout;
     ArrayList<String> favoritos;
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         public void onRefresh() {
-            AccesoFirebase.obtenerVideojuegosGratis(context);
+            AccesoFirebase.obtenerVideojuegosNintendo(context);
             AccesoFirebase.obtenerVideojuegosPS(context);
             AccesoFirebase.obtenerVideojuegosSteam(context);
             Toast.makeText(MainActivity.this, "Actualizado", Toast.LENGTH_SHORT).show();
@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     @Override
-    public void recuperarVideojuegos(ArrayList<Videojuego> videojuegos) {
+    public void recuperarVideojuegosNintendo(ArrayList<Videojuego> videojuegos) {
 
         for (Videojuego videojuego : videojuegos) {
             if (favoritos.contains(videojuego.getNombre()))
@@ -235,9 +235,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (Videojuego videojuego : videojuegos) {
             favoritos.add(videojuego.getNombre());
         }
-        AccesoFirebase.obtenerVideojuegosGratis(this);
+        AccesoFirebase.obtenerVideojuegosNintendo(this);
         AccesoFirebase.obtenerVideojuegosPS(this);
         AccesoFirebase.obtenerVideojuegosSteam(this);
         AccesoFirebase.obtenerVideojuegoDestacado(this);
     }
+
+
 }

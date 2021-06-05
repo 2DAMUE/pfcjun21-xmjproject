@@ -128,6 +128,31 @@ public class AccesoFirebase {
     }
 
     /**
+     * Método que devuelve la lista de los videojuegos gratuitos de Steam accediendo a Firebase
+     *
+     * @param a Interfaz de actualización para poder recuperar los datos en el main o en la pantalla que se le requiera
+     */
+    public static void obtenerVideojuegosNintendo(ActualizarVideojuegosNintendo a) {
+        ArrayList<Videojuego> videojuegosSteam = new ArrayList<Videojuego>();
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for (DataSnapshot esnapshot : snapshot.child("nintendo").getChildren()) {
+                    videojuegosSteam.add(esnapshot.getValue(Videojuego.class));
+                }
+
+                //Log.d("MENSAJE", snapshot.getValue(Videojuego.class).toString());
+                a.recuperarVideojuegosNintendo(videojuegosSteam);
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    /**
      * Método que devuelve todos los juegos favoritos de un usuario
      *
      * @param a interfaz de actualizar los datos para manejar la callback
@@ -244,6 +269,7 @@ public class AccesoFirebase {
 
     /**
      * Método que devuelves los próximos lanzamientos para añadirlos en el calendario
+     *
      * @param a Interfaz de actualización para recuperar los datos en la clase llamante
      */
     public static void obtenerProximos(ActualizarVideojuegosGratis a) {
