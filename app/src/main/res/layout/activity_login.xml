@@ -211,13 +211,12 @@
         android:id="@+id/status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/signed_out"
         android:textColor="@color/white_GameSource"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.479"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -236,6 +235,20 @@
 
         <com.google.android.gms.common.internal.SignInButtonImpl
             android:id="@+id/disconnect_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/round"
+            android:text="@string/disconnect"
+            android:textColor="@color/black_GameSource"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.gms.common.internal.SignInButtonImpl
+            android:id="@+id/disconnect_button_Firebase"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
@@ -268,13 +281,24 @@
     <ImageView
         android:id="@+id/img_Google"
         android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_height="42dp"
         android:layout_marginStart="10dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout4"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout4"
         app:srcCompat="@drawable/logoogle" />
+
+    <ImageView
+        android:id="@+id/img_GameSource_encadenadas"
+        android:layout_width="59dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="20dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout4"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout4"
+        app:srcCompat="@drawable/letrasencadenadas" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

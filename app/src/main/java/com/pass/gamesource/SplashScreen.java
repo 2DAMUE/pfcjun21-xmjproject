@@ -67,7 +67,6 @@ public class SplashScreen extends AppCompatActivity {
         openApp();
         mediaplayer.start();
     }
-
     /**
      * Change of activity
      * Time in milliseconds

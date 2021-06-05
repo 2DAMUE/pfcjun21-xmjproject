@@ -46,12 +46,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         et_emailRegister = findViewById(R.id.et_emailRegister);
         et_passRegister = findViewById(R.id.et_passRegister);
         et_rePassRegister = findViewById(R.id.et_rePassRegister);
-
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
 
     }
-
     //<---------------------------------Login Normal-----------------------------------------------<
     private void crearUsuario(String email, String password) {
 
@@ -69,7 +67,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("prueba", "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(RegisterActivity.this, "Authentication failed.",
+                            Toast.makeText(RegisterActivity.this, getString(R.string.authenticationfailed),
                                     Toast.LENGTH_SHORT).show();
                             //updateUI(null);
                         }
@@ -77,8 +75,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     }
                 });
     }
-
-
     //>---------------------------------Fin Normal------------------------------------------------->
     @Override
     public void onClick(View v) {
@@ -91,27 +87,25 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
                     if (!correolleno.equals("") && !passlleno.equals("") && !repasslleno.equals("")) {
 
-
                         if (passlleno.length() >= 6 && repasslleno.length() >= 6) {
                             if (passlleno.equals(repasslleno)) {
                                 crearUsuario(correolleno, passlleno);
                             } else {
-                                Toast.makeText(RegisterActivity.this, "Las contraseñas no coinciden",
+                                Toast.makeText(this, getString(R.string.passnotmatch),
                                         Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(RegisterActivity.this, "La contraseña debe tener una longitud superior a 6 caracteres",
+                            Toast.makeText(this, getString(R.string.passlength),
                                     Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(RegisterActivity.this, "Email y contraseña no pueden estar vacios",
+                        Toast.makeText(this, getString(R.string.valuempty),
                                 Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(RegisterActivity.this, "Ya se ha iniciado sesion con " + currentUser.getEmail() ,
+                    Toast.makeText(this, getString(R.string.alreadysignin, currentUser.getEmail()),
                             Toast.LENGTH_SHORT).show();
                 }
-
                 break;
             case R.id.tv_back:
                 Intent intent2 = new Intent(RegisterActivity.this, LoginActivity.class);

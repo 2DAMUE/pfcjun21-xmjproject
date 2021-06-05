@@ -50,6 +50,12 @@
     <string name="tituloRecyclerNintendo">Nintendo</string>
     <string name="googleTitle">Sign In</string>
     <string name="here">Ya estas aqui</string>
+    <string name="passnotmatch">Las contraseñas no coinciden</string>
+    <string name="passlength">La contraseña debe tener una longitud superior o igual a 6 caracteres</string>
+    <string name="valuempty">Email y contraseña no pueden estar vacios</string>
+    <string name="alreadysignin">Ya se ha iniciado sesion con: %s</string>
+    <string name="signinwelcome">"Bienvenido, has iniciado sesion con:  %s</string>
+    <string name="authenticationfailed">Ha fallado la autenticacion</string>
 
 
 
