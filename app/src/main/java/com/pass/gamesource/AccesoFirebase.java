@@ -233,9 +233,25 @@ public class AccesoFirebase {
                                         videojuegosGratis.add(esnapshot.getValue(Videojuego.class));
 
                                 }
+                                DatabaseReference myRefFiltrarEpic = databaseF.getReference().child("epic_semanal");
+                                myRefFiltrarEpic.orderByChild("nombreMin").startAt(nombre.toLowerCase()).endAt(nombre.toLowerCase() + "\uf8ff").addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                        for (DataSnapshot esnapshot : snapshot.getChildren()) {
+                                            videojuegosGratis.add(esnapshot.getValue(Videojuego.class));
 
-                                Log.d("MENSAJE", videojuegosGratis.toString());
-                                a.recuperarVideojuegos(videojuegosGratis);
+                                        }
+
+                                        Log.d("MENSAJE", videojuegosGratis.toString());
+                                        a.recuperarVideojuegos(videojuegosGratis);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                                    }
+
+                                });
                             }
 
                             @Override

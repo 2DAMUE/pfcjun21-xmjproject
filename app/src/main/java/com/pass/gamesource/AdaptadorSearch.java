@@ -59,7 +59,7 @@ public class AdaptadorSearch extends RecyclerView.Adapter<AdaptadorSearch.MiCont
                 url = "https://image.flaticon.com/icons/png/512/37/37812.png";
                 break;
             case "pc":
-                url = "https://media.istockphoto.com/vectors/pc-icon-vector-sign-and-symbol-isolated-on-white-background-pc-logo-vector-id1023560094";
+                url = "https://w7.pngwing.com/pngs/829/293/png-transparent-computer-cases-housings-personal-computer-computer-icons-computer-monitors-logo-technology-computer-computer-network-rectangle-logo.png";
                 break;
             case "switch":
                 url = "https://w7.pngwing.com/pngs/868/467/png-transparent-nintendo-switch-gamecube-logo-nintendo-text-rectangle-nintendo.png";
