@@ -53,6 +53,19 @@ public class AdaptadorSearch extends RecyclerView.Adapter<AdaptadorSearch.MiCont
         holder.vista.startAnimation(animation);
         holder.tvTitulo.setText(juego.getNombre());
         holder.tvDescripcion.setText(juego.getDescripcion());
+        String url = "";
+        switch (juego.getPlataforma()) {
+            case "ps":
+                url = "https://image.flaticon.com/icons/png/512/37/37812.png";
+                break;
+            case "pc":
+                url = "https://media.istockphoto.com/vectors/pc-icon-vector-sign-and-symbol-isolated-on-white-background-pc-logo-vector-id1023560094";
+                break;
+            case "switch":
+                url = "https://w7.pngwing.com/pngs/868/467/png-transparent-nintendo-switch-gamecube-logo-nintendo-text-rectangle-nintendo.png";
+                break;
+        }
+        Glide.with(holder.vista).load(url).centerCrop().into(holder.ivPlataforma);
         //Log.d("Contenedor", "Vinculando position " + position);
 
     }
@@ -64,6 +77,7 @@ public class AdaptadorSearch extends RecyclerView.Adapter<AdaptadorSearch.MiCont
 
     public class MiContenedorDeVistas extends RecyclerView.ViewHolder {
         public ImageView ivJuego;
+        public ImageView ivPlataforma;
         public TextView tvTitulo;
         public TextView tvDescripcion;
         public View vista;
@@ -73,6 +87,7 @@ public class AdaptadorSearch extends RecyclerView.Adapter<AdaptadorSearch.MiCont
             this.ivJuego = vista.findViewById(R.id.img_Caratula);
             this.tvTitulo = vista.findViewById(R.id.tv_Titulo);
             this.tvDescripcion = vista.findViewById(R.id.tv_descripcion);
+            this.ivPlataforma = vista.findViewById(R.id.imgIcon2);
             this.vista = vista;
 
 

@@ -198,7 +198,9 @@ public class AccesoFirebase {
      * @param nombre El nombre del videojuego a buscar
      */
     public static void obtenerVideojuegosFiltrado(ActualizarVideojuegosGratis a, String nombre) {
-        HashSet<String> nombres = new HashSet<>();
+        HashSet<String> nombresPS = new HashSet<>();
+        HashSet<String> nombresPC = new HashSet<>();
+        HashSet<String> nombresN = new HashSet<>();
         FirebaseDatabase databaseF = FirebaseDatabase.getInstance();
         DatabaseReference myRefFiltrar = databaseF.getReference().child("gratis").child("ps_store_free");
 
@@ -208,7 +210,7 @@ public class AccesoFirebase {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for (DataSnapshot esnapshot : snapshot.getChildren()) {
-                    if (nombres.add(esnapshot.getValue(Videojuego.class).getNombre()))
+                    if (nombresPS.add(esnapshot.getValue(Videojuego.class).getNombre()))
                         videojuegosGratis.add(esnapshot.getValue(Videojuego.class));
 
                 }
@@ -218,13 +220,30 @@ public class AccesoFirebase {
                     @Override
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                         for (DataSnapshot esnapshot : snapshot.getChildren()) {
-                            if (nombres.add(esnapshot.getValue(Videojuego.class).getNombre()))
+                            if (nombresPC.add(esnapshot.getValue(Videojuego.class).getNombre()))
                                 videojuegosGratis.add(esnapshot.getValue(Videojuego.class));
 
                         }
+                        DatabaseReference myRefFiltrarNintendo = databaseF.getReference().child("gratis").child("nintendo");
+                        myRefFiltrarNintendo.orderByChild("nombreMin").startAt(nombre.toLowerCase()).endAt(nombre.toLowerCase() + "\uf8ff").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                for (DataSnapshot esnapshot : snapshot.getChildren()) {
+                                    if (nombresN.add(esnapshot.getValue(Videojuego.class).getNombre()))
+                                        videojuegosGratis.add(esnapshot.getValue(Videojuego.class));
 
-                        Log.d("MENSAJE", videojuegosGratis.toString());
-                        a.recuperarVideojuegos(videojuegosGratis);
+                                }
+
+                                Log.d("MENSAJE", videojuegosGratis.toString());
+                                a.recuperarVideojuegos(videojuegosGratis);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                            }
+
+                        });
                     }
 
                     @Override

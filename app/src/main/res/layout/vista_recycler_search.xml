@@ -49,6 +49,13 @@
                 android:text="16/9/18"
                 android:textSize="12sp" />
 
+            <ImageView
+                android:id="@+id/imgIcon2"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/gamesinfondo"
+                android:visibility="visible" />
+
         </LinearLayout>
 
 
@@ -79,13 +86,6 @@
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:src="@drawable/s"
-                    android:visibility="gone" />
-
-                <ImageView
-                    android:id="@+id/imgIcon2"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/gamesinfondo"
                     android:visibility="gone" />
 
                 <ImageView
