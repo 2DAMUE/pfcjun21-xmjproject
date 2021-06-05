@@ -117,10 +117,21 @@ public class FavoritosActivity extends AppCompatActivity implements View.OnClick
         TextView tvNombre = view2.findViewById(R.id.nombreAlert);
         TextView tvDescripcion = view2.findViewById(R.id.descripcionAlert);
         ImageView imagenAlert = view2.findViewById(R.id.imagenJuego);
+        ImageView ivPlataforma = view2.findViewById(R.id.imgPlataforma);
         Button btnIrAJuego = view2.findViewById(R.id.buttonVerJuego);
         Button btnComparte = view2.findViewById(R.id.buttonComparteJuego);
         ImageButton btnFavorito = view2.findViewById(R.id.btnFavorito);
-
+        switch (v.getPlataforma()) {
+            case "ps":
+                ivPlataforma.setImageResource(R.mipmap.logo_ps_foreground);
+                break;
+            case "pc":
+                ivPlataforma.setImageResource(R.mipmap.logo_pc_foreground);
+                break;
+            case "switch":
+                ivPlataforma.setImageResource(R.mipmap.logo_switch_foreground);
+                break;
+        }
         //Manejo del aspecto del botón de favoritos
 
         btnFavorito.setImageResource(R.drawable.btn_favorites_filled_foreground);

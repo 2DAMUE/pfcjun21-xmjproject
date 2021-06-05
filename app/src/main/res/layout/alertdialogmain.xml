@@ -28,6 +28,7 @@
             android:id="@+id/nombreAlert"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:textAlignment="center"
             android:text=""
             android:layout_marginStart="66dp"
             android:textColor="@color/orange_GameSource"
