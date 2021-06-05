@@ -33,6 +33,7 @@ storage = firebase.storage()
 class Juego():
     def __init__(self, nombre, fecha, descripcion, my_db_image, generos, url_origen):
         self.nombre = nombre
+        self.nombre_min = nombre.lower()
         self.fecha = fecha
         self.descripcion = descripcion
         self.my_db_image = my_db_image
@@ -44,7 +45,7 @@ class Juego():
         return ("""el juego %s con fechas %s estado %s"""%(self.nombre, self.fecha , self.estado))
 
     def __json__(self):
-        return {'nombre': self.nombre, 'fechas': [self.fecha[0],self.fecha[1]], 
+        return {'nombre': self.nombre, 'nombreMin': self.nombre_min , 'fechas': [self.fecha[0],self.fecha[1]], 
     'descripcion': self.descripcion, 'image_url': self.my_db_image, 'generos': self.generos,
     'url_origen': self.url_origen ,'plataforma': self.plataforma}
 
@@ -79,12 +80,13 @@ def obtenerGeneros(url):
     return generos
 
 def guardarImagen(image_url, nombre):
+    nombre = nombre.replace('/', '*').replace(' ','')
     image_object = requests.get(image_url)
     image = Image.open(BytesIO(image_object.content))
     image.save("img/epic/" + nombre + "." + image.format, image.format)
     nombre_juego = nombre + "." + image.format
-    storage.child('epic_free/'+nombre_juego).put("img/epic/" + nombre_juego)
-    url_my_db = storage.child('epic_free/'+ nombre_juego).get_url(None)
+    storage.child('epic_free_semanal/'+nombre_juego).put("img/epic/" + nombre_juego)
+    url_my_db = storage.child('epic_free_semanal/'+ nombre_juego).get_url(None)
     return url_my_db
 
 def obtenerDescripcion(url):

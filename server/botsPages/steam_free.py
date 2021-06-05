@@ -90,6 +90,7 @@ for i in range(0, last_page):
 class Juego():
     def __init__(self, nombre, descripcion, my_db_image, generos, url_origen):
         self.nombre = nombre
+        self.nombre_min = nombre.lower()
         self.descripcion = descripcion
         self.my_db_image = my_db_image
         self.generos = generos
@@ -97,11 +98,12 @@ class Juego():
         self.plataforma = 'pc'
         
     def __json__(self):
-        return {'nombre': self.nombre, 'descripcion': self.descripcion, 'image_url': self.my_db_image,
+        return {'nombre': self.nombre, 'nombreMin': self.nombre_min, 'descripcion': self.descripcion, 'image_url': self.my_db_image,
          'generos': self.generos, 'url_origen': self.url_origen, 'plataforma': self.plataforma}
 
 # CREAMOS METODOS PARA EXTRAER DATOS
 def guardarImagen(image_url, nombreJ):
+    nombreJ = nombreJ.replace('/', '*').replace(' ', '')
     image_object = requests.get(image_url)
     image = Image.open(BytesIO(image_object.content))
     image.save("img/steam_free/" + nombreJ + "." + image.format, image.format)
@@ -131,7 +133,6 @@ for urlJ in urls_games:
     my_url_img = guardarImagen(url_img, nombre)
     j = Juego(nombre, descripcion, my_url_img, generos, urlJ)
     juegos.append(j)
-    print('juego añadido:', nombre)
     #FIN DEL BUCLE QUE BUSCA EN CADA URL DE CADA JUEGO
 
 
