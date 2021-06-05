@@ -18,7 +18,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -37,6 +36,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private TextView mStatusTextView;
     private TextInputEditText correo;
     private TextInputEditText pass;
+    private TextView register;
+    private FirebaseUser user;
+
     //    Normal Login
     public static FirebaseUser currentUser;
 
@@ -45,6 +47,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
 
         /*
          * implements and starts animations
@@ -55,17 +58,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Animation animRightlogoS = AnimationUtils.loadAnimation(this, R.anim.moverightlogin);
         iv_fondo_logoG.startAnimation(animLeftlogoG);
         iv_fondo_logoS.startAnimation(animRightlogoS);
+        register = findViewById(R.id.tv_Register);
 
         findViewById(R.id.btn_login).setOnClickListener(this);
         findViewById(R.id.tv_Register).setOnClickListener(this);
         findViewById(R.id.btn_Google).setOnClickListener(this);
         findViewById(R.id.disconnect_button).setOnClickListener(this);
+        findViewById(R.id.disconnect_button_Firebase).setOnClickListener(this);
         findViewById(R.id.btn_login).setOnClickListener(this);
+        findViewById(R.id.btn_login_logueado).setOnClickListener(this);
         findViewById(R.id.tv_Register).setOnClickListener(this);
-//        SignInButton signInButton = findViewById(R.id.btn_Google);
-//        signInButton.setColorScheme(SignInButton.COLOR_LIGHT);
 
-        // Views
         mStatusTextView = findViewById(R.id.status);
         correo = findViewById(R.id.et_email);
         pass = findViewById(R.id.et_Password);
@@ -93,40 +96,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("prueba", "signInWithEmail:success");
                             updateUIF(currentUser);
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
+//                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                            startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("prueba", "signInWithEmail:failure", task.getException());
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
-                            // ...
-                        }
+                            updateUIF(null);
 
-                        // ...
+                        }
                     }
                 });
-    }
-
-    private void updateUIF(FirebaseUser user) {
-        if (user != null) {
-            mStatusTextView.setText(getString(R.string.signed_in_fmt, user.getDisplayName()));
-            ((TextView) findViewById(R.id.status)).setText(R.string.signed_in);
-            findViewById(R.id.btn_Google).setVisibility(View.GONE);
-            findViewById(R.id.disconnect_button).setVisibility(View.VISIBLE);
-            Log.d("TAG", currentUser.getEmail());
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-
-        } else {
-            mStatusTextView.setText(R.string.signed_out);
-
-            findViewById(R.id.btn_Google).setVisibility(View.VISIBLE);
-            findViewById(R.id.disconnect_button).setVisibility(View.GONE);
-            ((TextView) findViewById(R.id.status)).setText(R.string.signed_out);
-        }
-
     }
 
     /**
@@ -135,12 +116,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onStart() {
         super.onStart();
-
         // INICIO on_start_sign_in
         // Compruebe la cuenta de inicio de sesión de Google existente, si el usuario ya ha iniciado sesión
         // GoogleSignInAccount no será nulo.
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        updateUI(account);
+        if (account != null && currentUser == null) {
+            updateUI(account);
+        } else {
+            updateUIF(currentUser);
+        }
         // END on_start_sign_in
     }
 
@@ -173,7 +157,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-
             // Se registró correctamente, muestra la interfaz de usuario autenticada.
             updateUI(account);
         } catch (ApiException e) {
@@ -195,7 +178,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
     // Final signIn
 
-
     /**
      * Cierra sesion de google
      */
@@ -214,32 +196,101 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     // Fin acceso revocado
 
     /**
-     * @param account le pasa los datos a ala cuenta si se ha inciado o no la sesion.
-     *                comparamos resultado y realizamos acciones segun necesitemos
+     * Cierra sesion de Firebase
      */
-    //Comprueba si estas conectado
-    public void updateUI(@Nullable GoogleSignInAccount account) {
-        if (account != null) {
-            userEmail = account.getEmail();
-            mStatusTextView.setText(getString(R.string.signed_in_fmt, account.getDisplayName()));
+    // Inicio acceso revocado
+    public void revokeAccessLoginNormal() {
+        mGoogleSignInClient.revokeAccess()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        mAuth.signOut();
+                        updateUIF(null);
+                        // Fin Excluido
+                    }
+                });
+    }
+
+    // Fin acceso revocado
+    private void updateUIF(FirebaseUser user) {
+        if (user != null) {
+            userEmail = user.getEmail();
+            Toast.makeText(this, getString(R.string.signinwelcome, currentUser.getEmail()),
+                    Toast.LENGTH_SHORT).show();
+            mStatusTextView.setText(getString(R.string.signed_in_fmt, user.getDisplayName()));
             ((TextView) findViewById(R.id.status)).setText(R.string.signed_in);
             findViewById(R.id.btn_Google).setVisibility(View.GONE);
-            findViewById(R.id.disconnect_button).setVisibility(View.VISIBLE);
+            findViewById(R.id.btn_login).setVisibility(View.GONE);
+            findViewById(R.id.btn_login_logueado).setVisibility(View.VISIBLE);
+            findViewById(R.id.disconnect_button_Firebase).setVisibility(View.VISIBLE);
+            findViewById(R.id.disconnect_button).setVisibility(View.GONE);
+            findViewById(R.id.et_email).setVisibility(View.GONE);
+            findViewById(R.id.et_Password).setVisibility(View.GONE);
+            findViewById(R.id.img_Google).setVisibility(View.GONE);
+            findViewById(R.id.img_GameSource_encadenadas).setVisibility(View.VISIBLE);
+            findViewById(R.id.tv_Register).setEnabled(false);
+            register.setTextColor(getResources().getColor(R.color.grayligh_GameSource));
 
-
-//            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//            startActivity(intent);
 
         } else {
             mStatusTextView.setText(R.string.signed_out);
 
             findViewById(R.id.btn_Google).setVisibility(View.VISIBLE);
             findViewById(R.id.disconnect_button).setVisibility(View.GONE);
+            findViewById(R.id.disconnect_button_Firebase).setVisibility(View.GONE);
             ((TextView) findViewById(R.id.status)).setText(R.string.signed_out);
-        }
+            findViewById(R.id.et_email).setVisibility(View.VISIBLE);
+            findViewById(R.id.et_Password).setVisibility(View.VISIBLE);
+            findViewById(R.id.btn_login_logueado).setVisibility(View.GONE);
+            findViewById(R.id.btn_login).setVisibility(View.VISIBLE);
+            findViewById(R.id.img_GameSource_encadenadas).setVisibility(View.GONE);
+            findViewById(R.id.img_Google).setVisibility(View.VISIBLE);
+            findViewById(R.id.tv_Register).setEnabled(true);
+            register.setTextColor(getResources().getColor(R.color.white_GameSource));
 
+        }
     }
 
+    /**
+     * @param account le pasa los datos a ala cuenta si se ha inciado o no la sesion.
+     *                comparamos resultado y realizamos acciones segun necesitemos
+     */
+    //Comprueba si estas conectado
+    public void updateUI(@Nullable GoogleSignInAccount account) {
+        if (account != null) {
+            Toast.makeText(this, getString(R.string.signinwelcome, account.getEmail()),
+                    Toast.LENGTH_SHORT).show();
+            userEmail = account.getEmail();
+            mStatusTextView.setText(getString(R.string.signed_in_fmt, account.getDisplayName()));
+            ((TextView) findViewById(R.id.status)).setText(R.string.signed_in);
+            findViewById(R.id.btn_Google).setVisibility(View.GONE);
+            findViewById(R.id.btn_login).setVisibility(View.GONE);
+            findViewById(R.id.btn_login_logueado).setVisibility(View.VISIBLE);
+            findViewById(R.id.disconnect_button).setVisibility(View.VISIBLE);
+            findViewById(R.id.disconnect_button_Firebase).setVisibility(View.GONE);
+            findViewById(R.id.et_email).setVisibility(View.GONE);
+            findViewById(R.id.et_Password).setVisibility(View.GONE);
+            findViewById(R.id.img_GameSource_encadenadas).setVisibility(View.GONE);
+            findViewById(R.id.tv_Register).setEnabled(false);
+            register.setTextColor(getResources().getColor(R.color.grayligh_GameSource));
+
+        } else {
+            mStatusTextView.setText(R.string.signed_out);
+
+            findViewById(R.id.btn_Google).setVisibility(View.VISIBLE);
+            findViewById(R.id.disconnect_button).setVisibility(View.GONE);
+            findViewById(R.id.disconnect_button_Firebase).setVisibility(View.GONE);
+            ((TextView) findViewById(R.id.status)).setText(R.string.signed_out);
+            findViewById(R.id.et_email).setVisibility(View.VISIBLE);
+            findViewById(R.id.et_Password).setVisibility(View.VISIBLE);
+            findViewById(R.id.btn_login_logueado).setVisibility(View.GONE);
+            findViewById(R.id.btn_login).setVisibility(View.VISIBLE);
+            findViewById(R.id.img_GameSource_encadenadas).setVisibility(View.GONE);
+            findViewById(R.id.img_Google).setVisibility(View.VISIBLE);
+            findViewById(R.id.tv_Register).setEnabled(true);
+            register.setTextColor(getResources().getColor(R.color.white_GameSource));
+        }
+    }
 
     @Override
     public void onClick(View v) {
@@ -254,25 +305,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.disconnect_button:
                 revokeAccess();
                 break;
+            case R.id.disconnect_button_Firebase:
+                revokeAccessLoginNormal();
+                break;
             case R.id.btn_login:
                 String correolleno = correo.getText().toString();
                 String passlleno = pass.getText().toString();
-
                 if (!correolleno.equals("") && !passlleno.equals("")) {
                     if (passlleno.length() >= 6) {
                         login(correolleno, passlleno);
-
-                    } else {
-                        Toast.makeText(LoginActivity.this, "La contraseña debe tener una longitud superior a 6 caracteres",
-                                Toast.LENGTH_SHORT).show();
-                        //layaout.setBackground(R.drawable.);
-
                     }
                 } else {
-
-                    Toast.makeText(LoginActivity.this, "Email y contraseña no pueden estar vacios",
+                    Toast.makeText(this, getString(R.string.valuempty),
                             Toast.LENGTH_SHORT).show();
                 }
+                break;
+            case R.id.btn_login_logueado:
+                Intent intent2 = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent2);
                 break;
         }
     }

@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/vw_Search"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white_GameSource">
+    android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerJuegosActivityFavoritos"

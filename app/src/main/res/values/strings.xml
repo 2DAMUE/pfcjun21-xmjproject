@@ -13,7 +13,7 @@
     <string name="stringPrecioAlert">Precio</string>
     <string name="copyright">© GameSource - GameSource.es \n Universida Europea</string>
     <string name="social">Social:</string>
-    <string name="share">Comparte</string>
+    <string name="share"><b>Comparte</b></string>
     <string name="emailTV"><b>EMAIL</b></string>
     <string name="emailHint"><b>Email</b></string>
     <string name="passTV"><b>CONTRASEÑA</b></string>
@@ -33,7 +33,7 @@
     <string name="RePassRegisterHint"><b>Repite la contraseña</b></string>
     <string name="register"><b>REGISTRARSE</b></string>
     <string name="send">Enviar</string>
-    <string name="rate">Puntua</string>
+    <string name="rate"><b>Puntua</b></string>
     <string name="sameActivity">¡Ya estás aquí!</string>
     <string name="coming_soon">Próximamente</string>
     <string name="share_message">La mejor App donde conseguir todos juegos GRATIS!!! de todas las plataformas, todo en uno, a que esperas!!! \n <u><b>¡¡¡Unete YA!! \n</b> </u><p>https://play.google.com/store/apps/details?id=com.pass.communify</p></string>
@@ -50,6 +50,12 @@
     <string name="tituloRecyclerNintendo">Nintendo</string>
     <string name="googleTitle">Sign In</string>
     <string name="here">Ya estas aqui</string>
+    <string name="passnotmatch">Las contraseñas no coinciden</string>
+    <string name="passlength">La contraseña debe tener una longitud superior o igual a 6 caracteres</string>
+    <string name="valuempty">Email y contraseña no pueden estar vacios</string>
+    <string name="alreadysignin">Ya se ha iniciado sesion con: %s</string>
+    <string name="signinwelcome">"Bienvenido, has iniciado sesion con:  %s</string>
+    <string name="authenticationfailed">Ha fallado la autenticacion</string>
 
 
 

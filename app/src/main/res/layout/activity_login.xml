@@ -127,6 +127,23 @@
         app:layout_constraintVertical_bias="0.515" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_login_logueado"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/round"
+        android:text="@string/signIn"
+        android:textColor="@color/black_GameSource"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.514" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -170,18 +187,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.9" />
 
-    <TextView
-        android:id="@+id/status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="@string/signed_out"
-        android:textColor="@color/white_GameSource"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <!--    <com.google.android.gms.common.SignInButton-->
 <!--        android:id="@+id/sign_in_button"-->
 <!--        android:layout_width="match_parent"-->
@@ -202,6 +207,18 @@
 
 <!--    </com.google.android.gms.common.SignInButton>-->
 
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="@string/signed_out"
+        android:textColor="@color/white_GameSource"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
@@ -218,6 +235,20 @@
 
         <com.google.android.gms.common.internal.SignInButtonImpl
             android:id="@+id/disconnect_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/round"
+            android:text="@string/disconnect"
+            android:textColor="@color/black_GameSource"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.gms.common.internal.SignInButtonImpl
+            android:id="@+id/disconnect_button_Firebase"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
@@ -250,13 +281,24 @@
     <ImageView
         android:id="@+id/img_Google"
         android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_height="42dp"
         android:layout_marginStart="10dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout4"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout4"
         app:srcCompat="@drawable/logoogle" />
+
+    <ImageView
+        android:id="@+id/img_GameSource_encadenadas"
+        android:layout_width="59dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="20dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout4"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout4"
+        app:srcCompat="@drawable/letrasencadenadas" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,4 +10,5 @@
     <color name="orange_GameSource">#FFA90A</color>
     <color name="gray_GameSource">#2B2A2A</color>
     <color name="grayligh_GameSource">#3A3939</color>
+    <color name="alpha">#003700B3</color>
 </resources>
