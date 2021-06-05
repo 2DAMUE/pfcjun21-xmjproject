@@ -10,6 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import pyrebase
 from datetime import datetime
 from datetime import timedelta
+import time
 
 ###### valores de los section de la primera url para distinguir paquetes########
 # Juegos = 0
@@ -30,6 +31,7 @@ firebase = pyrebase.initialize_app(config)
 class Paquete():
     def __init__(self, nombre, url_origen):
          self.nombre = nombre
+         self.nombre_min = nombre.lower()
          self.precio_tramos = []
          self.juegos_por_tramo = []
          self.fecha_expiracion = ''
@@ -39,7 +41,7 @@ class Paquete():
         return (""" el bundle %s con un rango de precios %s para los juegos %s"""%(self.nombre, self.precio_tramos, self.juegos_por_tramo))
 
     def __json__(self):
-        return {'nombre':self.nombre, 'precio_tramos': self.precio_tramos, 'juegos_tramo': self.juegos_por_tramo ,
+        return {'nombre':self.nombre,'nombreMin': self.nombre_min ,'precio_tramos': self.precio_tramos, 'juegos_tramo': self.juegos_por_tramo ,
          'fecha_expiracion': self.fecha_expiracion, 'url_origen': self.url_origen }
 
 ####################################################
@@ -59,7 +61,7 @@ def obtenerDatosPaquete(nombre,url):
     except Exception as  e:
         print(e)
 
-    WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CSS_SELECTOR,'div[class="countdown-timer-number js-countdown-timer-number"')))
+    WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.CSS_SELECTOR,'div[class="countdown-timer-number js-countdown-timer-number"')))
     html = driver.find_element_by_xpath("//body").get_attribute('outerHTML')
     soup = BeautifulSoup(html, 'lxml')
     driver.quit()
@@ -133,6 +135,7 @@ if len(h3s) == len(sections):
     for i in range(0, len(aes)):
         url_bundle = url_base + aes[i].attrs['href']
         nombre = nombres[i].text
+        time.sleep(randint(1,3))
         paquetes_section.append(obtenerDatosPaquete(nombre, url_bundle))
 
 

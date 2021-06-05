@@ -30,6 +30,7 @@ storage = firebase.storage()
 class Juego():
     def __init__(self, nombre, descripcion, my_db_image, generos, url_origen):
         self.nombre = nombre
+        self.nombre_min = nombre.lower()
         self.descripcion = descripcion
         self.my_db_image = my_db_image
         self.generos = generos
@@ -40,11 +41,12 @@ class Juego():
         return ("""el juego %s con fechas %s estado %s"""%(self.nombre, self.fecha , self.estado))
 
     def __json__(self):
-        return {'nombre': self.nombre, 'descripcion': self.descripcion, 'image_url': self.my_db_image, 'generos': self.generos,
+        return {'nombre': self.nombre, 'nombreMin': self.nombre_min, 'descripcion': self.descripcion, 'image_url': self.my_db_image, 'generos': self.generos,
     'url_origen': self.url_origen ,'plataforma': self.plataforma}
 
 # CREAMOS METODOS PARA EXTRAER DATOS
 def guardarImagen(image_url, nombreJ):
+    nombreJ = nombreJ.replace('/', '*').replace(' ','')
     image_object = requests.get(image_url)
     image = Image.open(BytesIO(image_object.content))
     image.save("img/ps_store_free/" + nombreJ + "." + image.format, image.format)
@@ -111,6 +113,7 @@ fin = int(buttons[len(buttons)-1].text)+1
 cont = 1
 juegos_lista = []
 while fin != cont:
+    print(cont)
     # INICIAMOS SCRAPING
     #abrimos ventana con la pagina del principio pora obtener cuantas paginas de juegos hay
     url = 'https://store.playstation.com/es-es/category/5c30b111-b867-4037-8f42-5b3db18d8e20/'+str(cont)
