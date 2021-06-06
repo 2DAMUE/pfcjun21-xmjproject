@@ -118,4 +118,5 @@
          from https://console.developers.google.com/ -->
     <string name="server_client_id">GameSource</string>
     <string name="oops">Oops! ¡Parece que este día no sale nada nuevo!</string>
+    <string name="tituloRecyclerEpic">Epic Games</string>
 </resources>

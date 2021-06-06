@@ -22,7 +22,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosFavoritos, ActualizarVideojuegoDestacado, ActualizarVideojuegosNintendo, ActualizarVideojuegosSteam, ActualizarVideojuegosEpic {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosFavoritos, ActualizarVideojuegoDestacado, ActualizarVideojuegosNintendo, ActualizarVideojuegosSteam, ActualizarVideojuegosEpic, ActualizarVideojuegosEpicTodos {
     MainActivity context = this;
     private SwipeRefreshLayout swipeLayout;
     ArrayList<String> favoritos;
@@ -250,7 +250,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         AccesoFirebase.obtenerVideojuegosPS(this);
         AccesoFirebase.obtenerVideojuegosSteam(this);
         AccesoFirebase.obtenerVideojuegoDestacado(this);
+        AccesoFirebase.obtenerVideojuegosEpicTodos(this);
     }
 
 
+    @Override
+    public void recuperarVideojuegosEpicTodos(ArrayList<Videojuego> videojuegos) {
+        for (Videojuego videojuego : videojuegos) {
+            if (favoritos.contains(videojuego.getNombre()))
+                videojuego.setFavorito(true);
+            else
+                videojuego.setFavorito(false);
+
+        }
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerMainEpic);
+        RecyclerView.LayoutManager gestor = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        AdaptadorRecyclerMain adaptador = new AdaptadorRecyclerMain(videojuegos, this);
+        recyclerView.setLayoutManager(gestor);
+        recyclerView.setAdapter(adaptador);
+    }
 }
