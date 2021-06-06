@@ -15,10 +15,12 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class AdaptadorCalendario extends RecyclerView.Adapter<AdaptadorCalendario.MiContenedorDeVistas> {
-    private ArrayList<Videojuego> listaVideojuegos = new ArrayList<>();
+    private ArrayList<Videojuego> listaVideojuegos;
+    private CalendarActivity main;
 
-    public AdaptadorCalendario(ArrayList<Videojuego> listaVideojuegos) {
+    public AdaptadorCalendario(ArrayList<Videojuego> listaVideojuegos, CalendarActivity main) {
         this.listaVideojuegos = listaVideojuegos;
+        this.main = main;
     }
 
     @NonNull
@@ -39,6 +41,9 @@ public class AdaptadorCalendario extends RecyclerView.Adapter<AdaptadorCalendari
         Glide.with(holder.vista).load(juego.getImage_url()).centerCrop().into(holder.ivJuego);
         holder.tvTitulo.setText(juego.getNombre());
         holder.tvDescripcion.setText(juego.getDescripcion());
+        holder.vista.setOnClickListener(v -> {
+            main.mostrarAlertDialog(juego, main);
+        });
 
         //Log.d("Contenedor", "Vinculando position " + position);
 

@@ -307,15 +307,19 @@ public class AccesoFirebase {
      *
      * @param a Interfaz de actualización para recuperar los datos en la clase llamante
      */
-    public static void obtenerProximos(ActualizarVideojuegosGratis a) {
+    public static void obtenerProximos(ActualizarVideojuegosGratis a, String nombre) {
+        DatabaseReference myRefFiltrarProximos = database.getReference().child("proximos");
         ArrayList<Videojuego> videojuegosGratis = new ArrayList<Videojuego>();
-        myRefProximos.addValueEventListener(new ValueEventListener() {
+
+        myRefFiltrarProximos.orderByChild("nombreMin").startAt(nombre.toLowerCase()).endAt(nombre.toLowerCase() + "\uf8ff").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for (DataSnapshot esnapshot : snapshot.getChildren()) {
                     videojuegosGratis.add(esnapshot.getValue(Videojuego.class));
 
                 }
+
+                Log.d("MENSAJE", videojuegosGratis.toString());
                 a.recuperarVideojuegos(videojuegosGratis);
             }
 
@@ -323,6 +327,7 @@ public class AccesoFirebase {
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
 
             }
+
         });
     }
 }

@@ -30,11 +30,10 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:text=""
-            android:layout_marginStart="66dp"
             android:textColor="@color/orange_GameSource"
             android:textSize="15pt"
             app:layout_constraintEnd_toStartOf="@+id/btnFavorito"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgPlataforma"
             app:layout_constraintTop_toBottomOf="@+id/buttonVerJuego" />
 
         <TextView

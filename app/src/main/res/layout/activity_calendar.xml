@@ -25,23 +25,39 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.714" />
 
+    <EditText
+        android:id="@+id/searchCalendar"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/round"
+        android:maxLines="1"
+        android:paddingStart="37dp"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_notificacion2" />
+
     <com.github.sundeepk.compactcalendarview.CompactCalendarView
         android:id="@+id/calendarView"
         android:layout_width="0dp"
+        android:layout_marginTop="45dp"
         android:layout_height="0dp"
-        android:layout_marginTop="100dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:paddingStart="30dp"
-        app:compactCalendarEventIndicatorStyle="fill_large_indicator"
         android:paddingEnd="30dp"
         app:compactCalendarCurrentSelectedDayBackgroundColor="@color/orange_GameSource"
-        app:compactCalendarTargetHeight="250dp"
+        app:compactCalendarEventIndicatorStyle="fill_large_indicator"
         app:compactCalendarTextSize="17sp"
         app:layout_constraintBottom_toTopOf="@id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_Notificaciones" />
+        app:layout_constraintTop_toBottomOf="@id/searchCalendar" />
 
     <TextView
         android:id="@+id/tv_Notificaciones"
@@ -175,5 +191,15 @@
         app:layout_constraintHorizontal_bias="0.102"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_marginLeft="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/searchCalendar"
+        app:layout_constraintStart_toStartOf="@+id/searchCalendar"
+        app:layout_constraintTop_toTopOf="@+id/searchCalendar"
+        app:srcCompat="@android:drawable/ic_menu_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
