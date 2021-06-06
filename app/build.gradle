@@ -56,7 +56,8 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-database:7.1.1'
 
 
-    compile 'com.github.sundeepk:compact-calendar-view:3.0.0'
+    implementation 'com.github.sundeepk:compact-calendar-view:3.0.0'
+
 
 
 
