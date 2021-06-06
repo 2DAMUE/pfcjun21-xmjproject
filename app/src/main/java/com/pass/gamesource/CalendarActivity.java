@@ -13,12 +13,14 @@ import com.github.sundeepk.compactcalendarview.domain.Event;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class CalendarActivity extends AppCompatActivity implements View.OnClickListener, ActualizarVideojuegosGratis {
     CompactCalendarView calendarView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AccesoFirebase.obtenerProximos(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         /*
@@ -30,7 +32,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.img_Calendar_Logo).setOnClickListener(this);
         findViewById(R.id.btn_fab).setOnClickListener(this);
 
-        calendarView = (CompactCalendarView) findViewById(R.id.calendarView);
+        calendarView = findViewById(R.id.calendarView);
         calendarView.setOnClickListener(v -> {
             // calendarView.get
         });
@@ -82,7 +84,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
     public void recuperarVideojuegos(ArrayList<Videojuego> videojuegos) {
         for (Videojuego videojuego : videojuegos) {
             try {
-                long epoch = new java.text.SimpleDateFormat("DD/mm/yyyy HH:mm:ss").parse(videojuego.getFecha_salida() + " 00:00:00").getTime();
+                long epoch = new java.text.SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).parse(videojuego.getFecha_salida() + " 00:00:00").getTime();
                 Event evento = new Event(R.color.orange_GameSource, epoch);
                 Log.d("MENSAJE", evento.toString());
                 calendarView.addEvent(evento);

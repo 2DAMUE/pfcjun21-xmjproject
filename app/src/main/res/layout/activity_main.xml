@@ -186,7 +186,7 @@
             app:layout_constraintEnd_toStartOf="@id/guideline_75"
             app:layout_constraintStart_toStartOf="@id/guideline_50"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/historial_logo_foreground" />
+            app:srcCompat="@drawable/btn_favorites_filled_foreground" />
 
         <ImageView
             android:id="@+id/img_Calendar_Logo"
