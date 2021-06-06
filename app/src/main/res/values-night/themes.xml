@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/orange_GameSource</item>
         <item name="colorPrimaryVariant">@color/gray_GameSource</item>
         <item name="colorOnPrimary">@color/black_GameSource</item>
+        <item name="android:textColor">@color/black_GameSource</item>
         <item name="compactCalendarBackgroundColor">@color/white_GameSource</item>
         <item name="compactCalendarTextColor">@color/black_GameSource</item>
         <!-- Secondary brand color. -->
@@ -20,8 +21,8 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/orange_GameSource</item>
         <item name="colorPrimaryVariant">@color/gray_GameSource</item>
+        <item name="android:textColor">@color/white_GameSource</item>
         <item name="colorOnPrimary">@color/black_GameSource</item>
-        <item name="backgroundColor">@color/gray_GameSource</item>
         <item name="compactCalendarBackgroundColor">@color/gray_GameSource</item>
         <item name="compactCalendarTextColor">@color/white_GameSource</item>
         <!-- Secondary brand color. -->
