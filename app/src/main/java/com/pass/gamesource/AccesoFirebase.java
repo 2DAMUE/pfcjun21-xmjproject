@@ -19,7 +19,6 @@ public class AccesoFirebase {
 
     static FirebaseDatabase database = FirebaseDatabase.getInstance();
     static DatabaseReference myRef = database.getReference().child("gratis");
-    static DatabaseReference myRefProximos = database.getReference().child("proximos");
     static DatabaseReference myRefDestacado = database.getReference().child("epic_semanal");
     static DatabaseReference myRefFavorite = database.getReference().child("user_favorite");
 
@@ -118,6 +117,25 @@ public class AccesoFirebase {
 
                 //Log.d("MENSAJE", snapshot.getValue(Videojuego.class).toString());
                 a.recuperarVideojuegosSteam(videojuegosSteam);
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+    }
+    public static void obtenerVideojuegosEpicTodos(ActualizarVideojuegosEpicTodos a) {
+        ArrayList<Videojuego> videojuegosSteam = new ArrayList<Videojuego>();
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for (DataSnapshot esnapshot : snapshot.child("epic").getChildren()) {
+                    videojuegosSteam.add(esnapshot.getValue(Videojuego.class));
+                }
+
+                //Log.d("MENSAJE", snapshot.getValue(Videojuego.class).toString());
+                a.recuperarVideojuegosEpicTodos(videojuegosSteam);
             }
 
             @Override
@@ -241,9 +259,25 @@ public class AccesoFirebase {
                                             videojuegosGratis.add(esnapshot.getValue(Videojuego.class));
 
                                         }
+                                        DatabaseReference myRefFiltrarEpic2 = databaseF.getReference().child("gratis").child("epic");
+                                        myRefFiltrarEpic2.orderByChild("nombreMin").startAt(nombre.toLowerCase()).endAt(nombre.toLowerCase() + "\uf8ff").addValueEventListener(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                                for (DataSnapshot esnapshot : snapshot.getChildren()) {
+                                                    videojuegosGratis.add(esnapshot.getValue(Videojuego.class));
 
-                                        Log.d("MENSAJE", videojuegosGratis.toString());
-                                        a.recuperarVideojuegos(videojuegosGratis);
+                                                }
+
+                                                Log.d("MENSAJE", videojuegosGratis.toString());
+                                                a.recuperarVideojuegos(videojuegosGratis);
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                                            }
+
+                                        });
                                     }
 
                                     @Override

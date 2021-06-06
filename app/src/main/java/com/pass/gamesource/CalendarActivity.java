@@ -48,6 +48,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.img_Historial_Logo).setOnClickListener(this);
         findViewById(R.id.img_Calendar_Logo).setOnClickListener(this);
         findViewById(R.id.btn_fab).setOnClickListener(this);
+        TextView tvMes = findViewById(R.id.tvMes);
         EditText searchCalendar = findViewById(R.id.searchCalendar);
         searchCalendar.addTextChangedListener(new TextWatcher() {
 
@@ -70,6 +71,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
         calendarView = findViewById(R.id.calendarView);
         calendarView.setLocale(TimeZone.getDefault(), Locale.getDefault());
         calendarView.setUseThreeLetterAbbreviation(true);
+
         calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
@@ -104,7 +106,9 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
 
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
-
+                String mes = firstDayOfNewMonth.toString().split(" ")[1];
+                String anio = firstDayOfNewMonth.toString().split(" ")[5];
+                tvMes.setText(mes + " " + anio);
             }
         });
     }
