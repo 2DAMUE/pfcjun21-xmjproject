@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">GameSource</string>
     <string name="activityCalendar">Calendario</string>
-    <string name="activitySearch">Busqueda</string>
+    <string name="activitySearch">Búsqueda</string>
     <string name="activityFavorites">Favoritos</string>
     <string name="activityOption">Opciones</string>
     <string name="Volver">&lt; <b>volver</b></string>
@@ -20,7 +20,7 @@
     <string name="passHint"><b>Contraseña</b></string>
     <string name="socialLogin"><b>Social</b></string>
     <string name="dontHaveAccount"><b>¿No tienes una cuenta?</b></string>
-    <string name="registerBTN"><b><u>Registrate</u></b></string>
+    <string name="registerBTN"><b><u>Regístrate</u></b></string>
     <string name="nameRegister"><b>NOMBRE</b></string>
     <string name="nameRegisterHint"><b>Nombre</b></string>
     <string name="lastNameRegister"><b>APELLIDO</b></string>
@@ -36,9 +36,9 @@
     <string name="rate"><b>Puntua</b></string>
     <string name="sameActivity">¡Ya estás aquí!</string>
     <string name="coming_soon">Próximamente</string>
-    <string name="share_message">La mejor App donde conseguir todos juegos GRATIS!!! de todas las plataformas, todo en uno, a que esperas!!! \n <u><b>¡¡¡Unete YA!! \n</b> </u><p>https://play.google.com/store/apps/details?id=com.pass.communify</p></string>
-    <string name="share_messageGame">Por cortesía de GameSource ¡Échale un vistazo a este juego! \n </string>
-    <string name="calendar_title"><b>Proximos Lanzamientos</b></string>
+    <string name="share_message">La mejor App donde conseguir todos juegos GRATIS de todas las plataformas, todo en uno ¿A qué esperas para descargarla? \n <u><b>¡¡¡Unete YA!! \n</b> </u><p>https://play.google.com/store/apps/details?id=com.pass.communify</p></string>
+    <string name="share_messageGame">GameSource ha encontrado este juego gratuito ¡Descárgalo ya! \n </string>
+    <string name="calendar_title"><b>Próximos Lanzamientos</b></string>
     <string name="signIn"><b>Entrar</b></string>
     <string name="signUp"><b>Registrarse</b></string>
     <string name="tool"><b>Herramientas</b></string>
@@ -49,7 +49,7 @@
     <string name="tituloRecyclerPlayStation">PlayStation</string>
     <string name="tituloRecyclerNintendo">Nintendo</string>
     <string name="googleTitle">Sign In</string>
-    <string name="here">Ya estas aqui</string>
+    <string name="here">Ya estas aquí</string>
     <string name="passnotmatch">Las contraseñas no coinciden</string>
     <string name="passlength">La contraseña debe tener una longitud superior o igual a 6 caracteres</string>
     <string name="valuempty">Email y contraseña no pueden estar vacios</string>
