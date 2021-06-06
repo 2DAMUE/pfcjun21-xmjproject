@@ -115,7 +115,7 @@ driver.quit()
 divs = soup.find_all('div', class_='mod-ga-det')
 cont = 0
 juegos_lista = []
-for i in range(0,60):
+for i in range(0,150):
     nombre = divs[i].find('a', class_='l-und').text
     descripcion = divs[i].find('div', class_='ga-plot').text
     lis = divs[i].find_all('li', class_='rel-tags-i')

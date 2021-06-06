@@ -49,6 +49,7 @@ class Juego():
     'descripcion': self.descripcion, 'image_url': self.my_db_image, 'generos': self.generos,
     'url_origen': self.url_origen ,'plataforma': self.plataforma}
 
+# METODOS DE EXTRACCION DE DATOS
 def sacar_datos(datos, url, image_url):
     estado = True
     if(datos[0].lower().find("gratis")):
@@ -85,7 +86,7 @@ def guardarImagen(image_url, nombre):
     image = Image.open(BytesIO(image_object.content))
     image.save("img/epic/" + nombre + "." + image.format, image.format)
     nombre_juego = nombre + "." + image.format
-    storage.child('epic_free_semanal/'+nombre_juego).put("img/epic/" + nombre_juego)
+    storage.child('epic_free_semanal/'+nombre_juego).put("img/epic_semanal/" + nombre_juego)
     url_my_db = storage.child('epic_free_semanal/'+ nombre_juego).get_url(None)
     return url_my_db
 
