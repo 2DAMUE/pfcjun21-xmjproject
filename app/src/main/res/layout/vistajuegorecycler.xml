@@ -16,7 +16,6 @@
         android:layout_marginTop="5dp"
         android:gravity="center_horizontal"
         android:textAlignment="center"
-        android:textColor="@color/white_GameSource"
         android:textSize="8pt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
