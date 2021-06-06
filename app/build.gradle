@@ -58,7 +58,7 @@ dependencies {
 
     implementation 'com.github.sundeepk:compact-calendar-view:3.0.0'
 
-
+//            ./gradlew signingReport
 
 
 }
