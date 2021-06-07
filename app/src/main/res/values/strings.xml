@@ -37,7 +37,7 @@
     <string name="sameActivity">¡Ya estás aquí!</string>
     <string name="coming_soon">Próximamente</string>
     <string name="share_message">La mejor App donde conseguir todos juegos GRATIS de todas las plataformas, todo en uno ¿A qué esperas para descargarla? \n <u><b>¡¡¡Unete YA!! \n</b> </u><p>https://play.google.com/store/apps/details?id=com.pass.gamesource</p></string>
-    <string name="share_messageGame">GameSource ha encontrado este juego gratuito ¡Descárgalo ya! \n </string>
+    <string name="share_messageGame"><a href="https://play.google.com/store/apps/details?id=com.pass.gamesource">GameSource</a> ha encontrado este juego gratuito ¡Descárgalo ya! \n </string>
     <string name="calendar_title"><b>Próximos Lanzamientos</b></string>
     <string name="signIn"><b>Entrar</b></string>
     <string name="signUp"><b>Registrarse</b></string>
@@ -45,9 +45,10 @@
     <string name="updateToast"><b>Actualizado</b></string>
     <string name="botonIrAJuego">Ir al juego</string>
     <string name="botoncompartirJuego">Comparte</string>
-    <string name="tituloRecyclerSteam">Steam</string>
-    <string name="tituloRecyclerPlayStation">PlayStation</string>
-    <string name="tituloRecyclerNintendo">Nintendo</string>
+    <string name="tituloRecyclerSteam"><b>Steam</b></string>
+    <string name="tituloRecyclerPlayStation"><b>PlayStation</b></string>
+    <string name="tituloRecyclerNintendo"><b>Nintendo</b></string>
+    <string name="tituloRecyclerEpic"><b>Epic Games</b></string>
     <string name="googleTitle">Sign In</string>
     <string name="here">Ya estas aquí</string>
     <string name="passnotmatch">Las contraseñas no coinciden</string>
@@ -118,5 +119,5 @@
          from https://console.developers.google.com/ -->
     <string name="server_client_id">GameSource</string>
     <string name="oops">Oops! ¡Parece que este día no sale nada nuevo!</string>
-    <string name="tituloRecyclerEpic">Epic Games</string>
+
 </resources>
